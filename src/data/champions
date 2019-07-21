@@ -1,0 +1,465 @@
+{
+  "aatrox": {
+    "name": "Aatrox",
+    "class": [
+      "blademaster"
+    ],
+    "origin": [
+      "demon"
+    ]
+  },
+  "ahri": {
+    "name": "Ahri",
+    "class": [
+      "sorcerer"
+    ],
+    "origin": [
+      "wild"
+    ]
+  },
+  "akali": {
+    "name": "Akali",
+    "class": [
+      "assassin"
+    ],
+    "origin": [
+      "ninja"
+    ]
+  },
+  "anivia": {
+    "name": "Anivia",
+    "class": [
+      "elementalist"
+    ],
+    "origin": [
+      "glacial"
+    ]
+  },
+  "ashe": {
+    "name": "Ashe",
+    "class": [
+      "ranger"
+    ],
+    "origin": [
+      "glacial"
+    ]
+  },
+  "aurelionsol": {
+    "name": "Aurelion Sol",
+    "class": [
+      "sorcerer"
+    ],
+    "origin": [
+      "dragon"
+    ]
+  },
+  "blitzcrank": {
+    "name": "Blitzcrank",
+    "class": [
+      "brawler"
+    ],
+    "origin": [
+      "robot"
+    ]
+  },
+  "brand": {
+    "name": "Brand",
+    "class": [
+      "elementalist"
+    ],
+    "origin": [
+      "demon"
+    ]
+  },
+  "braum": {
+    "name": "Braum",
+    "class": [
+      "guardian"
+    ],
+    "origin": [
+      "glacial"
+    ]
+  },
+  "chogath": {
+    "name": "Cho'Gath",
+    "class": [
+      "brawler"
+    ],
+    "origin": [
+      "void"
+    ]
+  },
+  "darius": {
+    "name": "Darius",
+    "class": [
+      "knight"
+    ],
+    "origin": [
+      "imperial"
+    ]
+  },
+  "draven": {
+    "name": "Draven",
+    "class": [
+      "blademaster"
+    ],
+    "origin": [
+      "imperial"
+    ]
+  },
+  "elise": {
+    "name": "Elise",
+    "class": [
+      "shapeshifter"
+    ],
+    "origin": [
+      "demon"
+    ]
+  },
+  "evelynn": {
+    "name": "Evelynn",
+    "class": [
+      "assassin"
+    ],
+    "origin": [
+      "demon"
+    ]
+  },
+  "fiora": {
+    "name": "Fiora",
+    "class": [
+      "blademaster"
+    ],
+    "origin": [
+      "noble"
+    ]
+  },
+  "gangplank": {
+    "name": "Gangplank",
+    "class": [
+      "gunslinger",
+      "blademaster"
+    ],
+    "origin": [
+      "pirate"
+    ]
+  },
+  "garen": {
+    "name": "Garen",
+    "class": [
+      "knight"
+    ],
+    "origin": [
+      "noble"
+    ]
+  },
+  "gnar": {
+    "name": "Gnar",
+    "class": [
+      "shapeshifter"
+    ],
+    "origin": [
+      "wild",
+      "yordle"
+    ]
+  },
+  "graves": {
+    "name": "Graves",
+    "class": [
+      "gunslinger"
+    ],
+    "origin": [
+      "pirate"
+    ]
+  },
+  "karthus": {
+    "name": "Karthus",
+    "class": [
+      "sorcerer"
+    ],
+    "origin": [
+      "phantom"
+    ]
+  },
+  "kassadin": {
+    "name": "Kassadin",
+    "class": [
+      "sorcerer"
+    ],
+    "origin": [
+      "void"
+    ]
+  },
+  "katarina": {
+    "name": "Katarina",
+    "class": [
+      "assassin"
+    ],
+    "origin": [
+      "imperial"
+    ]
+  },
+  "kayle": {
+    "name": "Kayle",
+    "class": [
+      "knight"
+    ],
+    "origin": [
+      "noble"
+    ]
+  },
+  "kennen": {
+    "name": "Kennen",
+    "class": [
+      "elementalist"
+    ],
+    "origin": [
+      "ninja",
+      "yordle"
+    ]
+  },
+  "khazix": {
+    "name": "Kha'Zix",
+    "class": [
+      "assassin"
+    ],
+    "origin": [
+      "void"
+    ]
+  },
+  "kindred": {
+    "name": "Kindred",
+    "class": [
+      "ranger"
+    ],
+    "origin": [
+      "phantom"
+    ]
+  },
+  "leona": {
+    "name": "Leona",
+    "class": [
+      "guardian"
+    ],
+    "origin": [
+      "noble"
+    ]
+  },
+  "lissandra": {
+    "name": "Lissandra",
+    "class": [
+      "elementalist"
+    ],
+    "origin": [
+      "glacial"
+    ]
+  },
+  "lucian": {
+    "name": "Lucian",
+    "class": [
+      "gunslinger"
+    ],
+    "origin": [
+      "noble"
+    ]
+  },
+  "lulu": {
+    "name": "Lulu",
+    "class": [
+      "sorcerer"
+    ],
+    "origin": [
+      "yordle"
+    ]
+  },
+  "missfortune": {
+    "name": "Miss Fortune",
+    "class": [
+      "gunslinger"
+    ],
+    "origin": [
+      "pirate"
+    ]
+  },
+  "mordekaiser": {
+    "name": "Mordekaiser",
+    "class": [
+      "knight"
+    ],
+    "origin": [
+      "phantom"
+    ]
+  },
+  "morgana": {
+    "name": "Morgana",
+    "class": [
+      "sorcerer"
+    ],
+    "origin": [
+      "demon"
+    ]
+  },
+  "nidealee": {
+    "name": "Nidalee",
+    "class": [
+      "shapeshifter"
+    ],
+    "origin": [
+      "wild"
+    ]
+  },
+  "poppy": {
+    "name": "Poppy",
+    "class": [
+      "knight"
+    ],
+    "origin": [
+      "yordle"
+    ]
+  },
+  "pyke": {
+    "name": "Pyke",
+    "class": [
+      "assassin"
+    ],
+    "origin": [
+      "pirate"
+    ]
+  },
+  "reksai": {
+    "name": "Rek'Sai",
+    "class": [
+      "brawler"
+    ],
+    "origin": [
+      "void"
+    ]
+  },
+  "rengar": {
+    "name": "Rengar",
+    "class": [
+      "assassin"
+    ],
+    "origin": [
+      "wild"
+    ]
+  },
+  "sejuani": {
+    "name": "Sejuani",
+    "class": [
+      "knight"
+    ],
+    "origin": [
+      "glacial"
+    ]
+  },
+  "shen": {
+    "name": "Shen",
+    "class": [
+      "blademaster"
+    ],
+    "origin": [
+      "ninja"
+    ]
+  },
+  "shyvana": {
+    "name": "Shyvana",
+    "class": [
+      "shapeshifter"
+    ],
+    "origin": [
+      "dragon"
+    ]
+  },
+  "swain": {
+    "name": "Swain",
+    "class": [
+      "shapeshifter"
+    ],
+    "origin": [
+      "imperial",
+      "demon"
+    ]
+  },
+  "tristana": {
+    "name": "Tristana",
+    "class": [
+      "gunslinger"
+    ],
+    "origin": [
+      "yordle"
+    ]
+  },
+  "twistedfate": {
+    "name": "Twisted Fate",
+    "class": [
+      "sorcerer"
+    ],
+    "origin": [
+      "pirate"
+    ]
+  },
+  "varus": {
+    "name": "Varus",
+    "class": [
+      "ranger"
+    ],
+    "origin": [
+      "demon"
+    ]
+  },
+  "vayne": {
+    "name": "Vayne",
+    "class": [
+      "ranger"
+    ],
+    "origin": [
+      "noble"
+    ]
+  },
+  "veigar": {
+    "name": "Veigar",
+    "class": [
+      "sorcerer"
+    ],
+    "origin": [
+      "yordle"
+    ]
+  },
+  "volibear": {
+    "name": "Volibear",
+    "class": [
+      "brawler"
+    ],
+    "origin": [
+      "glacial"
+    ]
+  },
+  "warwick": {
+    "name": "Warwick",
+    "class": [
+      "brawler"
+    ],
+    "origin": [
+      "wild"
+    ]
+  },
+  "yasuo": {
+    "name": "Yasuo",
+    "class": [
+      "blademaster"
+    ],
+    "origin": [
+      "exile"
+    ]
+  },
+  "zed": {
+    "name": "Zed",
+    "class": [
+      "assassin"
+    ],
+    "origin": [
+      "ninja"
+    ]
+  }
+}
