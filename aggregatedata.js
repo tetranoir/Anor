@@ -5,7 +5,7 @@ const p = require('path');
 const verbose = false;
 const path = 'data'; // path to data
 const target = 'src';
-const name = 'champions';
+const name = 'champions.json';
 
 fs.readdir(path, (err, files) => {
   if (err) {
@@ -25,7 +25,7 @@ fs.readdir(path, (err, files) => {
     }
   });
 
-  fs.writeFile(p.join(target, path, 'champions'), JSON.stringify(agg, null, 2), err => {
+  fs.writeFile(p.join(target, path, name), JSON.stringify(agg, null, 2), err => {
     if (err) {
       console.log(err);
       return;
