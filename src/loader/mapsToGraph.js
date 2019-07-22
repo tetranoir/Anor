@@ -10,8 +10,7 @@ export function mapsToD3Graph(objs, maps) {
           const source = objs[i].name;
           const target = objs[j].name;
           if (!hist[source]) hist[source] = {};
-          if (!hist[target]) hist[target] = {};
-          if (hist[source][target] || hist[target][source]) return;
+          if (hist[source][target]) break;
           lks.push({ source, target });
           hist[source][target] = true;
         }
