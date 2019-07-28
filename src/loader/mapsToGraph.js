@@ -1,5 +1,5 @@
-export function mapsToD3Graph(objs, maps) {
-  const nodes = objs.map(o => ({ ...o, id: o.name }));
+export function mapsToD3Graph(id, objs, filtered, maps) {
+  const nodes = objs.filter(o => o.active).map(o => ({ ...o, id: o[id] }));
 
   const hist = {};
 
@@ -9,6 +9,7 @@ export function mapsToD3Graph(objs, maps) {
         for (let j = i + 1; j < objs.length; j++) {
           const source = objs[i].name;
           const target = objs[j].name;
+          if (filtered[target] || filtered[source]) break;
           if (!hist[source]) hist[source] = {};
           if (hist[source][target]) break;
           lks.push({ source, target });
@@ -18,6 +19,10 @@ export function mapsToD3Graph(objs, maps) {
     });
     return lks;
   }, []);
+
+  if (nodes.length === 0) {
+    nodes.push({id: '???'});
+  }
 
   return { nodes, links };
 }
