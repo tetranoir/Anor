@@ -1,54 +1,27 @@
+// DEPREICATED V1
 import React, { useState } from 'react';
 import { Graph } from 'react-d3-graph';
 
+import { objFromAry } from './util';
+import { keys, id, defaultConfig } from './config';
 import * as dataModule from './data/champions.json';
 import { mapsToD3Graph } from './loader/mapsToGraph';
 import { jsonToMaps } from './loader/dataToMaps';
 import './App.css';
 
-// UTIL
-// no conflicting keys
-function objFromAry(key, ary) {
-  return ary.reduce((obj, el) => {
-    obj[el[key]] = el;
-    return obj;
-  }, {});
-}
-
-// CONFIG
-const keys = ['class', 'origin'];
-const id = 'name';
-
-const defaultConfig = {
-  nodeHighlightBehavior: true,
-  node: {
-    color: 'lightblue',
-    size: 500,
-    highlightStrokeColor: 'navy'
-  },
-  link: {
-    highlightColor: 'navy'
-  },
-  height: window.innerHeight,
-  width: window.innerWidth,
-  d3: {
-    gravity: -300,
-  },
-};
-
 // DATA
 const champions = Object.values(dataModule.default).map(c => ({ ...c, active: true }));
-console.log(window.champions = champions);
+console.log('champions', window.champions = champions);
 
 const maps = jsonToMaps(champions);
-console.log(window.maps = maps);
+console.log('maps', window.maps = maps);
 
 // map of vals to keys (uniques vals)
 const valToKey = champions.reduce((vals, c) => {
   keys.forEach(k => c[k].forEach(v => vals[v] = k));
   return vals;
 }, {});
-console.log(window.valToKey = valToKey);
+console.log('valtokey', window.valToKey = valToKey);
 
 // pure filters
 const filterFns = Object.entries(valToKey).reduce((fMap, [val, key]) => {
@@ -61,7 +34,7 @@ const filterContexts = Object.entries(valToKey).reduce((fMap, [val, key]) => {
   fMap[val] = isActive => {maps[key][val].forEach(c => c.active = isActive)}
   return fMap;
 }, {});
-console.log(window.filterContexts = filterContexts);
+console.log('filtercontexts', window.filterContexts = filterContexts);
 
 
 function useConfig(defaultConfig) {
