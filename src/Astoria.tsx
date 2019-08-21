@@ -86,11 +86,11 @@ function useChampion(champion: ChampionState) {
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [active, setActive] = useState(champion.active);
+  champion.active = active; // sychronous side effect
 
   // use setActive from closure
   function onChange(e) {
     setActive(e.target.checked);
-    champion.active = e.target.checked; // synchronous side effect
   }
 
   const render = (
@@ -103,8 +103,8 @@ function useChampion(champion: ChampionState) {
     />
   );
 
-  useChampion.memo[champion[id]] = render;
-  return render;
+  useChampion.memo[champion[id]] = { render, active, setActive };
+  return useChampion.memo[champion[id]];
 }
 useChampion.memo = {};
 
@@ -112,15 +112,15 @@ useChampion.memo = {};
 function renderMapAsCheckboxes(name, map): {render: React.ReactElement, checked: boolean} {
   function mapCheckboxOnChange(e) {
     const { value, checked } = e.target;
-    walkLeaves(obj => obj.active = checked, isLeaf, map[value]);
+    walkLeaves(champion => useChampion(champion).setActive(checked), isLeaf, map[value]);
   }
 
   const { render, checked } = Object.entries(map[name]).reduce((acc, [k, v]) => {
     if (isLeaf(v)) {
       // acc.render.push(renderObjAsCheckbox(v));
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      acc.render.push(useChampion(v));
-      acc.checked = acc.checked && v.active;
+      acc.render.push(useChampion(v).render);
+      acc.checked = acc.checked && useChampion(v).active;
     } else {
       const { render, checked } = renderMapAsCheckboxes(k, map[name]);
       acc.render.push(render);
@@ -166,13 +166,16 @@ function renderKeysAsCheckboxes(keyToMap) {
 function Astoria() {
   const [config, ConfigEditor] = useConfig(defaultConfig);
 
-  const filteredMap = objFromAry(id, champions.filter(c => !c.active));
+  const render = renderKeysAsCheckboxes(keyToMap);
+  // const filteredMap = objFromAry(id, champions.filter(c => !c.active));
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const filteredMap = objFromAry(id, champions.filter(c => !useChampion(c).active));
   const graph = mapsToD3Graph(id, champions, filteredMap, Object.values(keyToMap));
-  console.log('ASTORIA RENDER');
+  console.log('ASTORIA RENDER', filteredMap);
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
       {ConfigEditor}
-      {renderKeysAsCheckboxes(keyToMap)}
+      {render}
       <Graph id="graph" data={graph} config={config} />
     </div>
   );
