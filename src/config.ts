@@ -1,8 +1,15 @@
-// object keys
+// object keys properties
 export const keys = ['class', 'origin'];
 
-// unique object prop
+// unique object property
 export const id = 'name';
+
+// champion interface (using object keys and object props)
+export interface Champion {
+  class: string[];
+  origin: string[];
+  name: string;
+}
 
 // graph config
 export const defaultConfig = {
