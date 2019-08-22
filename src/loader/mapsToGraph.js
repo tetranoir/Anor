@@ -7,15 +7,15 @@ export function mapsToD3Graph(id, objs, filtered, maps) {
     Object.values(map).forEach(objMaps => {
       const objs = Object.values(objMaps);
       for (let i = 0; i < objs.length - 1; i++) {
-        const source = objs[i].name;
-        if (filtered[source]) break;
+        const source = objs[i][id];
+        if (filtered[source]) continue;
         if (!hist[source]) {
           hist[source] = {};
         }
         for (let j = i + 1; j < objs.length; j++) {
-          const target = objs[j].name;
-          if (filtered[target]) break;
-          if (hist[source][target]) break;
+          const target = objs[j][id];
+          if (filtered[target]) continue;
+          if (hist[source][target]) continue;
           lks.push({ source, target });
           hist[source][target] = true;
         }
