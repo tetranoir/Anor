@@ -44,7 +44,7 @@ fs.readdir(path, (err, files) => {
 });
 
 var classstrs = ['assassin', 'blademaster', 'brawler', 'elementalist', 'guardian', 'gunslinger', 'knight', 'ranger', 'shapeshifter', 'sorcerer'].join('|');
-var originstrs = ['demon', 'dragon', 'exile', 'glacial', 'imperial', 'ninja', 'robot', 'pirate', 'phantom', 'noble', 'void', 'wild', 'yordle'].join('|');
+var originstrs = ['demon', 'dragon', 'exile', 'glacial', 'hextech', 'imperial', 'ninja', 'robot', 'pirate', 'phantom', 'noble', 'void', 'wild', 'yordle'].join('|');
 var datatype = {
   name: '',
   class: [classstrs],

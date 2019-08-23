@@ -67,14 +67,16 @@ function walkLeaves(cb, isLeaf, tree) {
 function LabeledCheckbox({label, checked, onChange, className, children = []}) {
   return (
     <div className={className}>
-      <input
-        id={label}
-        type="checkbox"
-        value={label}
-        checked={checked}
-        onChange={onChange}
-      />
-      <label htmlFor={label}>{label}</label>
+      <div className="labeledinput">
+        <input
+          id={label}
+          type="checkbox"
+          value={label}
+          checked={checked}
+          onChange={onChange}
+        />
+        <label htmlFor={label}>{label}</label>
+      </div>
       {children}
     </div>
   );
@@ -99,7 +101,7 @@ function useChampion(champion: ChampionState) {
       label={champion.name}
       checked={active}
       onChange={onChange}
-      className="container"
+      className="champion"
     />
   );
 
@@ -109,7 +111,7 @@ function useChampion(champion: ChampionState) {
 useChampion.memo = {};
 
 // return render: list of inputs
-function renderMapAsCheckboxes(name, map): {render: React.ReactElement, checked: boolean} {
+function renderMapAsCheckboxes(name, map, depth = 0): {render: React.ReactElement, checked: boolean} {
   function mapCheckboxOnChange(e) {
     const { value, checked } = e.target;
     walkLeaves(champion => useChampion(champion).setActive(checked), isLeaf, map[value]);
@@ -122,7 +124,7 @@ function renderMapAsCheckboxes(name, map): {render: React.ReactElement, checked:
       acc.render.push(useChampion(v).render);
       acc.checked = acc.checked && useChampion(v).active;
     } else {
-      const { render, checked } = renderMapAsCheckboxes(k, map[name]);
+      const { render, checked } = renderMapAsCheckboxes(k, map[name], depth+1);
       acc.render.push(render);
       acc.checked = acc.checked && checked;
     }
@@ -136,7 +138,7 @@ function renderMapAsCheckboxes(name, map): {render: React.ReactElement, checked:
         label={name}
         checked={checked}
         onChange={mapCheckboxOnChange}
-        className="container"
+        className={['container', `depth${depth}`].join(' ')}
       >
         {render}
       </LabeledCheckbox>

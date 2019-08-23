@@ -25,14 +25,34 @@
 
 .container {
   padding-left: 10px;
+  font-size: 9px;
+  display: flex;
+  place-items: start;
+}
+
+.depth1 {
+  flex-direction: column;
+}
+
+.champion {
+  padding-left: 10px;
+  font-size: 9px;
+  display: flex;
 }
 
 .checkboxes {
   display: flex;
   position: absolute;
+  flex-wrap: wrap;
 }
 
 .labeledinput {
+  display: flex;
+  place-items: center;
+}
+
+.labeledinput > label {
+  text-transform: capitalize;
 }
 
 @keyframes App-logo-spin {

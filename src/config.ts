@@ -30,4 +30,7 @@ export const defaultConfig = {
   panAndZoom: false,
   maxZoom: 1,
   minZoom: 1,
+  // staticGraph: true,
+  highlightDegree: 1,
+  highlightOpacity: 0.3,
 };
