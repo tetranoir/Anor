@@ -14,7 +14,7 @@ export interface Champion {
 
 export const isChampion = o => {
   return keys.reduce((acc, key) => acc && Boolean(o[key]), true);
-}
+};
 
 export const classstrs = [
   'assassin', 'blademaster', 'brawler', 'elementalist','guardian',
