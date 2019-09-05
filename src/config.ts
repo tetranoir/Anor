@@ -1,16 +1,3 @@
-// object keys properties
-export const keys = ['class', 'origin'];
-
-// unique object property
-export const id = 'name';
-
-// champion interface (using object keys and object props)
-export interface Champion {
-  class: string[];
-  origin: string[];
-  name: string;
-}
-
 // graph config
 export const defaultConfig = {
   nodeHighlightBehavior: true,
@@ -25,7 +12,7 @@ export const defaultConfig = {
   height: window.innerHeight,
   width: window.innerWidth,
   d3: {
-    gravity: -300,
+    gravity: -150,
   },
   panAndZoom: false,
   maxZoom: 1,

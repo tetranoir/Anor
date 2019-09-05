@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useMemo } from 'react';
 import { Graph } from 'react-d3-graph';
 
 import { objFromAry } from './util';
@@ -14,32 +14,72 @@ declare global {
     champions: any;
     keyToMap: any;
     valToKey: any;
+    idToChampion: any;
+    useChampion: any;
   }
 }
 
 interface State {
   active: boolean;
   selected: boolean;
+  setActive: (boolean) => void;
+  setSelected: (boolean) => void;
+  render: () => void;
 }
 
 type ChampionState = State & Champion;
 
+function useChampion(champion: Champion) {
+  const [active, setActive] = useState(true);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [selected, setSelected] = useState(false);
+
+  // use setActive from closure
+  function onChange(e) {
+    setActive(e.target.checked);
+  }
+
+  const render = (
+    <LabeledCheckbox
+      key={champion.name}
+      label={champion.name}
+      checked={active}
+      onChange={onChange}
+      className="champion"
+    />
+  );
+
+  return {
+    ...champion,
+    render,
+    active,
+    setActive,
+    setSelected,
+    selected,
+  };
+}
+
 // DATA
 const data = Object.values((dataModule as any).default) as Champion[];
-const champions: ChampionState[] = data.map(c => ({ ...c, active: true, selected: false }));
-console.log(window.champions = champions);
-const idToChampion = objFromAry(id, champions);
 
-const keyToMap = jsonToMaps(champions);
-console.log(window.keyToMap = keyToMap);
+function setChampionData(data) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const champions: ChampionState[] = data.map(c => useChampion(c));
+  window.champions = champions;
+  const idToChampion = objFromAry(id, champions);
+  window.idToChampion = idToChampion;
+  const keyToMap = jsonToMaps(champions);
+  window.keyToMap = keyToMap;
+  // map of vals to keys (uniques vals)
+  const valToKey = champions.reduce((vals, c) => {
+    keys.forEach(k => (c[k] || []).forEach(v => vals[v] = k));
+    return vals;
+  }, {});
+  window.valToKey = valToKey;
 
-// map of vals to keys (uniques vals)
-const valToKey = champions.reduce((vals, c) => {
-  keys.forEach(k => (c[k] || []).forEach(v => vals[v] = k));
-  return vals;
-}, {});
-console.log(window.valToKey = valToKey);
-
+  return { keyToMap, idToChampion, champions };
+}
 
 function useConfig(defaultConfig) {
   const [config, setConfig] = useState(defaultConfig);
@@ -86,55 +126,19 @@ function LabeledCheckbox({label, checked, onChange, className, children = []}) {
   );
 }
 
-function useChampion(champion?: ChampionState) {
-  if (!champion) {
-    return useChampion.memo;
-  }
-  if (useChampion.memo[champion[id]]) {
-    return useChampion.memo[champion[id]];
-  }
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [active, setActive] = useState(champion.active);
-  champion.active = active; // sychronous side effect
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [selected, setSelected] = useState(champion.selected);
-  champion.selected = selected; // sychronous side effect
-
-  // use setActive from closure
-  function onChange(e) {
-    setActive(e.target.checked);
-  }
-
-  const render = (
-    <LabeledCheckbox
-      key={champion.name}
-      label={champion.name}
-      checked={active}
-      onChange={onChange}
-      className="champion"
-    />
-  );
-
-  useChampion.memo[champion[id]] = { render, active, setActive, setSelected, selected };
-  // console.log('count', Object.values(useChampion.memo).length);
-  return useChampion.memo[champion[id]];
-}
-useChampion.memo = {};
-
 // return render: list of inputs
 function renderMapAsCheckboxes(name, map, depth = 0): {render: React.ReactElement, checked: boolean} {
   function mapCheckboxOnChange(e) {
     const { value, checked } = e.target;
-    walkLeaves(champion => useChampion(champion).setActive(checked), isLeaf, map[value]);
+    walkLeaves(champion => champion.setActive(checked), isLeaf, map[value]);
   }
 
   const { render, checked } = Object.entries(map[name]).reduce((acc, [k, v]) => {
     if (isLeaf(v)) {
       // acc.render.push(renderObjAsCheckbox(v));
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      acc.render.push(useChampion(v).render);
-      acc.checked = acc.checked && useChampion(v).active;
+      acc.render.push(v.render);
+      acc.checked = acc.checked && v.active;
     } else {
       const { render, checked } = renderMapAsCheckboxes(k, map[name], depth+1);
       acc.render.push(render);
@@ -178,21 +182,19 @@ function Astoria() {
   const [config, ConfigEditor] = useConfig(defaultConfig);
   // const [selectedMap, setSelectedMap] = useState({});
 
+  const { champions, keyToMap, idToChampion } = setChampionData(data);
+
   function onClickNode(id) {
-    const champion = useChampion.memo[id];
+    const champion = idToChampion[id];
     // eslint-disable-next-line react-hooks/rules-of-hooks
     champion.setSelected(!champion.selected);
   }
 
-  // because rendermap needs it reset
-  useChampion.memo = {};
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const filteredMap = objFromAry(id, champions.filter(c => !useChampion(c).active));
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const selectedMap = objFromAry(id, champions.filter(c => useChampion(c).selected));
-  console.log('ASTORIA RENDER', filteredMap) //, selectedMap);
+  const filteredMap = objFromAry(id, champions.filter(c => !c.active));
+  const selectedMap = objFromAry(id, champions.filter(c => c.selected));
+  console.log('ARIANDEL RENDER', filteredMap, selectedMap);
   const render = renderKeysAsCheckboxes(keyToMap);
-  const graph = mapsToD3Graph(id, champions, useChampion(), Object.values(keyToMap));
+  const graph = mapsToD3Graph(id, champions, idToChampion, Object.values(keyToMap));
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
       {ConfigEditor}

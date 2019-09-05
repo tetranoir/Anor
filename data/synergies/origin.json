@@ -1,0 +1,54 @@
+{
+    "demon": {
+        "2": "Demons have 40% Chance on Hit to Burn 20 Mana and Restore 15 Mana",
+        "4": "Demons have 40% Chance on Hit to Burn 20 Mana and Restore 30 Mana",
+        "6": "Demons have 40% Chance on Hit to Burn 20 Mana and Restore 45 Mana"
+    },
+    "dragon": {
+        "2": "Dragons are Immune to 83% Magic Damage"
+    },
+    "exile": {
+        "1": "Exiles gain a shield equal to 100% Maximum Health"
+    },
+    "glacial": {
+        "2": "Glacials have a 20% Chance to Stun for 2 seconds",
+        "4": "Glacials have a 30% Chance to Stun for 2 seconds",
+        "6": "Glacials have a 45% Chance to Stun for 2 seconds"
+    },
+    "hextech": {
+        "2": "Disable Enemy Items in 1 Hex Radius for 7 seconds",
+        "4": "Disable Enemy Items in 2 Hex Radius for 7 seconds"
+    },
+    "robot": {
+        "1": "Robots start combat with Full Mana"
+    },
+    "imperial": {
+        "2": "1 Random Imperial deals Double Damage",
+        "4": "All Imperials deal Double Damage"
+    },
+    "noble": {
+        "3": "1 Random ally +50 Armor +50 Magic Resist and 25 Health per Hit",
+        "6": "All allies +50 Armor +50 Magic Resist and 25 Health per Hit"
+    },
+    "ninja": {
+        "-1": "With exactly 1 Ninja, it gains +50% Attack Damage and Ability Power",
+        "-4": "With exactly 4 Ninjas, they gain +70% Attack Damage and Ability Power"
+    },
+    "pirate": {
+        "3": "Randomly earn up to 4 gold every turn (avg of 1.75 gold)",
+    },
+    "phantom": {
+        "2": "Curse a random Enemy at the start of combat, setting their HP to 100",
+    },
+    "wild": {
+        "2": "Wild only gain 12% Attack Speed per Attack (stacks up to 5 times)",
+        "4": "All allies gain 12% Attack Speed per Attack (stacks up to 5 times)"
+    },
+    "void": {
+        "3": "Voids deal True Damage"
+    },
+    "Yordle": {
+        "3": "Yordles have 35% chance to dodge an Attack",
+        "6": "Yordles have 60% chance to dodge an Attack"
+    }
+}

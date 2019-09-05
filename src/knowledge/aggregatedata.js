@@ -3,9 +3,10 @@ const p = require('path');
 
 // config
 const verbose = false;
-const path = 'data'; // path to data
-const target = 'src';
-const name = 'champions.json';
+const path = 'data/champions'; // path to data
+const target = 'src'; // target of generated file
+const name = 'champions.json'; // name of generated file
+
 
 fs.readdir(path, (err, files) => {
   if (err) {
