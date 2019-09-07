@@ -1,5 +1,6 @@
 {
     "name": "Gangplank",
     "class": ["gunslinger", "blademaster"],
-    "origin": ["pirate"]
+    "origin": ["pirate"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Gangplank.png"
 }

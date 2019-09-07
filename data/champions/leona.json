@@ -1,5 +1,6 @@
 {
     "name": "Leona",
     "class": ["guardian"],
-    "origin": ["noble"]
+    "origin": ["noble"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Leona.png"
 }

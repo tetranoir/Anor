@@ -1,5 +1,6 @@
 {
     "name": "Varus",
     "class": ["ranger"],
-    "origin": ["demon"]
+    "origin": ["demon"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Varus.png"
 }

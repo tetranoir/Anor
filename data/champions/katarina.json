@@ -1,5 +1,6 @@
 {
     "name": "Katarina",
     "class": ["assassin"],
-    "origin": ["imperial"]
+    "origin": ["imperial"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Katarina.png"
 }

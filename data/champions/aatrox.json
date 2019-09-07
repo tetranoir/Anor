@@ -1,5 +1,6 @@
 {
     "name": "Aatrox",
     "class": ["blademaster"],
-    "origin": ["demon"]
+    "origin": ["demon"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Aatrox.png"
 }

@@ -1,0 +1,1 @@
+### This folder is for GENERATED data used by the app and is typically sourced then converted into the form you see here. Don't touch unless you know what you're doing.

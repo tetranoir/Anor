@@ -1,5 +1,6 @@
 {
     "name": "Kassadin",
     "class": ["sorcerer"],
-    "origin": ["void"]
+    "origin": ["void"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Kassadin.png"
 }

@@ -1,5 +1,6 @@
 {
     "name": "Ashe",
     "class": ["ranger"],
-    "origin": ["glacial"]
+    "origin": ["glacial"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Ashe.png"
 }

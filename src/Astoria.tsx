@@ -4,10 +4,13 @@ import { Graph } from 'react-d3-graph';
 import { objFromAry } from './util';
 import { defaultConfig } from './config';
 import { keys, isChampion, Champion, id } from './knowledge/modeldata';
-import * as dataModule from './data/champions.json';
 import { mapsToD3Graph } from './loader/mapsToGraph';
 import { jsonToMaps } from './loader/dataToMaps';
 import './App.css';
+
+// TODO: maybe consolidate into 1 data import?
+import * as dataModule from './data/champions.json';
+import * as synergyModule from './data/synergies.json';
 
 declare global {
   interface Window {

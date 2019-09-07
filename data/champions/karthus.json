@@ -1,5 +1,6 @@
 {
     "name": "Karthus",
     "class": ["sorcerer"],
-    "origin": ["phantom"]
+    "origin": ["phantom"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Karthus.png"
 }

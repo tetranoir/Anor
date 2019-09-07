@@ -10,6 +10,7 @@ export interface Champion {
   origin: string[];
   name: string;
   cost: number;
+  iconSrc: string;
 }
 
 export const isChampion = o => {
@@ -30,6 +31,7 @@ export const datatype = {
   name: '',
   class: [classstrs],
   origin: [originstrs],
+  iconSrc: '',
 };
 
 // checks for module exports for node

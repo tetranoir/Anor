@@ -1,0 +1,102 @@
+{
+  "class": {
+    "assassin": {
+      "3": "Assassins gain 75% Crit Damage & 10% Crit Chance",
+      "6": "Assassins gain 150% Crit Damage & 25% Crit Chance"
+    },
+    "blademaster": {
+      "3": "Blademasters have a 35% chance to Attack 1 additional time",
+      "6": "Blademasters have a 35% chance to Attack 2 additional times",
+      "9": "Blademasters have a 35% chance to Attack 4 additional times"
+    },
+    "brawler": {
+      "2": "Brawlers gain 250 bonus Health",
+      "4": "Brawlers gain 500 bonus Health",
+      "6": "Brawlers gain 900 bonus Health"
+    },
+    "elementalist": {
+      "3": "At the start of combat, summon a Golem with 2200 Health and 100 Attack Damage",
+      "passive": "Elementalists gain double mana from attacking"
+    },
+    "guardian": {
+      "2": "Guardians gain 35 Armor. At the start of combat, all adjacent allies receive +35 armor. Stacks any number of times"
+    },
+    "gunslinger": {
+      "2": "Gunslingers have a 50% chance to Attack 1 additional random enemy in Range",
+      "4": "Gunslingers have a 50% chance to Attack 2 additional random enemy in Range",
+      "6": "Gunslingers have a 50% chance to Attack 3 additional random enemy in Range"
+    },
+    "knight": {
+      "2": "Your team ignores 15 damage from all sources",
+      "4": "Your team ignores 30 damage from all sources",
+      "6": "Your team ignores 55 damage from all sources"
+    },
+    "ranger": {
+      "2": "Rangers have a 30% Chance to double Attack Speed for the next 3s",
+      "4": "Rangers have a 70% Chance to double Attack Speed for the next 3s"
+    },
+    "shapeshifter": {
+      "3": "Shapeshifters gain 60% Bonus Maximum Health when they Transform",
+      "6": "Shapeshifters gain 120% Bonus Maximum Health when they Transform"
+    },
+    "sorcerer": {
+      "3": "Allies have 40% increased Spell Damage",
+      "6": "Allies have 100% increased Spell Damage",
+      "passive": "Sorcerers gain double mana from Attacking"
+    }
+  },
+  "origin": {
+    "demon": {
+      "2": "Demons have 40% Chance on Hit to Burn 20 Mana and Restore 15 Mana",
+      "4": "Demons have 40% Chance on Hit to Burn 20 Mana and Restore 30 Mana",
+      "6": "Demons have 40% Chance on Hit to Burn 20 Mana and Restore 45 Mana"
+    },
+    "dragon": {
+      "2": "Dragons are Immune to 83% Magic Damage"
+    },
+    "exile": {
+      "1": "Exiles gain a shield equal to 100% Maximum Health"
+    },
+    "glacial": {
+      "2": "Glacials have a 20% Chance to Stun for 2 seconds",
+      "4": "Glacials have a 30% Chance to Stun for 2 seconds",
+      "6": "Glacials have a 45% Chance to Stun for 2 seconds"
+    },
+    "hextech": {
+      "2": "Disable Enemy Items in 1 Hex Radius for 7 seconds",
+      "4": "Disable Enemy Items in 2 Hex Radius for 7 seconds"
+    },
+    "robot": {
+      "1": "Robots start combat with Full Mana"
+    },
+    "imperial": {
+      "2": "1 Random Imperial deals Double Damage",
+      "4": "All Imperials deal Double Damage"
+    },
+    "noble": {
+      "3": "1 Random ally +50 Armor +50 Magic Resist and 25 Health per Hit",
+      "6": "All allies +50 Armor +50 Magic Resist and 25 Health per Hit"
+    },
+    "ninja": {
+      "-1": "With exactly 1 Ninja, it gains +50% Attack Damage and Ability Power",
+      "-4": "With exactly 4 Ninjas, they gain +70% Attack Damage and Ability Power"
+    },
+    "pirate": {
+      "3": "Randomly earn up to 4 gold every turn (avg of 1.75 gold)"
+    },
+    "phantom": {
+      "2": "Curse a random Enemy at the start of combat, setting their HP to 100"
+    },
+    "wild": {
+      "2": "Wild only gain 12% Attack Speed per Attack (stacks up to 5 times)",
+      "4": "All allies gain 12% Attack Speed per Attack (stacks up to 5 times)"
+    },
+    "void": {
+      "3": "Voids deal True Damage"
+    },
+    "Yordle": {
+      "3": "Yordles have 35% chance to dodge an Attack",
+      "6": "Yordles have 60% chance to dodge an Attack"
+    }
+  }
+}

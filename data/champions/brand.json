@@ -1,5 +1,6 @@
 {
     "name": "Brand",
     "class": ["elementalist"],
-    "origin": ["demon"]
+    "origin": ["demon"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Brand.png"
 }

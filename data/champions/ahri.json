@@ -1,5 +1,6 @@
 {
     "name": "Ahri",
     "class": ["sorcerer"],
-    "origin": ["wild"]
+    "origin": ["wild"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Ahri.png"
 }

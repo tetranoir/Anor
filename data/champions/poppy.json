@@ -1,5 +1,6 @@
 {
     "name": "Poppy",
     "class": ["knight"],
-    "origin": ["yordle"]
+    "origin": ["yordle"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Poppy.png"
 }

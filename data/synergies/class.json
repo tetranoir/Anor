@@ -6,16 +6,16 @@
     "blademaster": {
         "3": "Blademasters have a 35% chance to Attack 1 additional time",
         "6": "Blademasters have a 35% chance to Attack 2 additional times",
-        "9": "Blademasters have a 35% chance to Attack 4 additional times",
+        "9": "Blademasters have a 35% chance to Attack 4 additional times"
     },
     "brawler": {
         "2": "Brawlers gain 250 bonus Health",
         "4": "Brawlers gain 500 bonus Health",
-        "6": "Brawlers gain 900 bonus Health",
+        "6": "Brawlers gain 900 bonus Health"
     },
     "elementalist": {
         "passive": "Elementalists gain double mana from attacking",
-        "3": "At the start of combat, summon a Golem with 2200 Health and 100 Attack Damage",
+        "3": "At the start of combat, summon a Golem with 2200 Health and 100 Attack Damage"
     },
     "guardian": {
         "2": "Guardians gain 35 Armor. At the start of combat, all adjacent allies receive +35 armor. Stacks any number of times"
@@ -32,7 +32,7 @@
     },
     "ranger": {
         "2": "Rangers have a 30% Chance to double Attack Speed for the next 3s",
-        "4": "Rangers have a 70% Chance to double Attack Speed for the next 3s",
+        "4": "Rangers have a 70% Chance to double Attack Speed for the next 3s"
     },
     "shapeshifter": {
         "3": "Shapeshifters gain 60% Bonus Maximum Health when they Transform",

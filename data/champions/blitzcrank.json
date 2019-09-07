@@ -1,5 +1,6 @@
 {
     "name": "Blitzcrank",
     "class": ["brawler"],
-    "origin": ["robot"]
+    "origin": ["robot"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Blitzcrank.png"
 }

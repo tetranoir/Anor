@@ -1,5 +1,6 @@
 {
     "name": "Gnar",
     "class": ["shapeshifter"],
-    "origin": ["wild", "yordle"]
+    "origin": ["wild", "yordle"],
+    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Gnar.png"
 }

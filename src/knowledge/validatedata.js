@@ -59,6 +59,7 @@ var datatype = {
   name: '',
   class: [classstrs],
   origin: [originstrs],
+  iconSrc: '',
 };
 
 function validateStr(typestr, s) {

@@ -35,10 +35,10 @@
         "-4": "With exactly 4 Ninjas, they gain +70% Attack Damage and Ability Power"
     },
     "pirate": {
-        "3": "Randomly earn up to 4 gold every turn (avg of 1.75 gold)",
+        "3": "Randomly earn up to 4 gold every turn (avg of 1.75 gold)"
     },
     "phantom": {
-        "2": "Curse a random Enemy at the start of combat, setting their HP to 100",
+        "2": "Curse a random Enemy at the start of combat, setting their HP to 100"
     },
     "wild": {
         "2": "Wild only gain 12% Attack Speed per Attack (stacks up to 5 times)",
