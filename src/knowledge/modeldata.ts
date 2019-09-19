@@ -1,5 +1,5 @@
 // object keys properties
-export const keys = ['class', 'origin'];
+export const keys: SynergyType[] = ['class', 'origin'];
 
 // unique object property
 export const id = 'name';
@@ -33,6 +33,19 @@ export const datatype = {
   origin: [originstrs],
   iconSrc: '',
 };
+
+export type SynergyType = 'class' | 'origin';
+
+export interface SynergyMap {
+  [synergy: string]: {
+    [key: string]: string;
+  }
+}
+
+export interface Synergy {
+  passive?: string;
+  [threshold: number]: string;
+}
 
 // checks for module exports for node
 if (typeof module !== 'undefined' && module.exports) {

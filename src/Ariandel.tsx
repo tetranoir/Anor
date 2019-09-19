@@ -3,19 +3,26 @@ import { Graph } from 'react-d3-graph';
 
 import { objFromAry } from './util';
 import { defaultConfig } from './config';
-import { keys, isChampion, Champion, id } from './knowledge/modeldata';
-import * as dataModule from './data/champions.json';
+import { keys, isChampion, Champion, id, Synergy, SynergyMap} from './knowledge/modeldata';
+
 import { mapsToD3Graph } from './loader/mapsToGraph';
 import { jsonToMaps } from './loader/dataToMaps';
 import './App.css';
+
+// TODO: maybe consolidate into 1 data import?
+import * as dataModule from './data/champions.json';
+import * as synergyModule from './data/synergies.json';
+
 
 declare global {
   interface Window {
     champions: any;
     keyToMap: any;
-    valToKey: any;
+    // valToKey: any;
     idToChampion: any;
     useChampion: any;
+    synergies: any;
+    selected: any;
   }
 }
 
@@ -31,9 +38,8 @@ type ChampionState = State & Champion;
 
 function useChampion(champion: Champion) {
   const [active, setActive] = useState(true);
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [selected, setSelected] = useState(false);
+  const [grouped, setGrouped] = useState(false);
 
   // use setActive from closure
   function onChange(e) {
@@ -54,31 +60,32 @@ function useChampion(champion: Champion) {
     ...champion,
     render,
     active,
+    selected,
+    grouped,
     setActive,
     setSelected,
-    selected,
+    setGrouped,
   };
 }
 
 // DATA
 const data = Object.values((dataModule as any).default) as Champion[];
+const synergies = (synergyModule as any).default as SynergyMap;
+window.synergies = synergies;
 
 function setChampionData(data) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const champions: ChampionState[] = data.map(c => useChampion(c));
-  window.champions = champions;
   const idToChampion = objFromAry(id, champions);
-  window.idToChampion = idToChampion;
   const keyToMap = jsonToMaps(champions);
-  window.keyToMap = keyToMap;
-  // map of vals to keys (uniques vals)
-  const valToKey = champions.reduce((vals, c) => {
-    keys.forEach(k => (c[k] || []).forEach(v => vals[v] = k));
-    return vals;
-  }, {});
-  window.valToKey = valToKey;
+  const selected = champions.filter(c => c.selected);
 
-  return { keyToMap, idToChampion, champions };
+  window.champions = champions;
+  window.idToChampion = idToChampion;
+  window.keyToMap = keyToMap;
+  window.selected = selected;
+
+  return { keyToMap, idToChampion, champions, selected };
 }
 
 function useConfig(defaultConfig) {
@@ -165,20 +172,35 @@ function renderMapAsCheckboxes(name, map, depth = 0): {render: React.ReactElemen
 
 // creates check boxes with objects at leaves, based on a maps of props vals -> objs
 function renderKeysAsCheckboxes(keyToMap) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [hidden, setHidden] = useState(true);
+
+  function toggleHidden() {
+    setHidden(!hidden);
+  }
   const checkboxes = Object.entries(keyToMap).map(([key, valMap]) => {
     const { render, checked } = renderMapAsCheckboxes(key, keyToMap);
     return render;
   });
 
   return (
-    <div className="checkboxes">
-      {checkboxes}
+    <div className="checkboxes-container">
+      <div className="checkboxes" hidden={hidden}>
+        {checkboxes}
+      </div>
+      <button className="checkboxes-toggle" onClick={toggleHidden}>
+        Filters
+      </button>
     </div>
   );
 }
 
+function renderChampionSynergies(champions) {
+
+}
+
 // try constructing inside first, then build outer
-function Astoria() {
+function Ariandel() {
   const [config, ConfigEditor] = useConfig(defaultConfig);
   // const [selectedMap, setSelectedMap] = useState({});
 
@@ -191,17 +213,15 @@ function Astoria() {
   }
 
   const filteredMap = objFromAry(id, champions.filter(c => !c.active));
-  const selectedMap = objFromAry(id, champions.filter(c => c.selected));
-  console.log('ARIANDEL RENDER', filteredMap, selectedMap);
-  const render = renderKeysAsCheckboxes(keyToMap);
+  console.log('ARIANDEL RENDER');
   const graph = mapsToD3Graph(id, champions, idToChampion, Object.values(keyToMap));
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
       {ConfigEditor}
-      {render}
+      {renderKeysAsCheckboxes(keyToMap)}
       <Graph id="graph" data={graph} config={config} onClickNode={onClickNode} />
     </div>
   );
 }
 
-export default Astoria;
+export default Ariandel;

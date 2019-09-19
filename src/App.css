@@ -40,9 +40,23 @@
   display: flex;
 }
 
+.checkboxes-container {
+  position: absolute;
+}
+
+div[hidden] {
+  display: none;
+}
+
+.checkboxes-toggle {
+  display: inline-block;
+  padding: 2px;
+  border: 1px solid black;
+  font-size: 16px;
+}
+
 .checkboxes {
   display: flex;
-  position: absolute;
   flex-wrap: wrap;
 }
 

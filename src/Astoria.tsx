@@ -20,6 +20,12 @@ declare global {
   }
 }
 
+declare namespace JSX {
+  interface IntrinsicElements {
+    [elemName: string]: any;
+  }
+}
+
 interface State {
   active: boolean;
   selected: boolean;
@@ -164,14 +170,25 @@ function renderMapAsCheckboxes(name, map, depth = 0): {render: React.ReactElemen
 
 // creates check boxes with objects at leaves, based on a maps of props vals -> objs
 function renderKeysAsCheckboxes(keyToMap) {
+  const [hidden, setHidden] = useState(false);
+
+  function toggleHidden() {
+    setHidden(!hidden);
+  }
+
   const checkboxes = Object.entries(keyToMap).map(([key, valMap]) => {
     const { render, checked } = renderMapAsCheckboxes(key, keyToMap);
     return render;
   });
 
   return (
-    <div className="checkboxes">
-      {checkboxes}
+    <div className="checkboxes-container">
+      <div className="checkboxes" hidden={hidden}>
+        {checkboxes}
+      </div>
+      <div className="checkboxes-toggle" onClick={toggleHidden}>
+        Filters
+      </div>
     </div>
   );
 }
