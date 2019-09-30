@@ -36,9 +36,14 @@ export const datatype = {
 
 export type SynergyType = 'class' | 'origin';
 
+// map of synergy name to synergy data
 export interface SynergyMap {
-  [synergy: string]: {
-    [key: string]: string;
+  [synergy: string]: Synergy;
+}
+
+export interface SynergyTypeMap<T> {
+  [synergyType: string]: {
+    [synergy: string]: T;
   }
 }
 

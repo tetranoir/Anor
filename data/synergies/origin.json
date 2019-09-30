@@ -47,7 +47,7 @@
     "void": {
         "3": "Voids deal True Damage"
     },
-    "Yordle": {
+    "yordle": {
         "3": "Yordles have 35% chance to dodge an Attack",
         "6": "Yordles have 60% chance to dodge an Attack"
     }

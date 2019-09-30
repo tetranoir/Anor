@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useLayoutEffect, useMemo } from 'react';
 import { Graph } from 'react-d3-graph';
+import cx from 'classnames/bind';
+import * as ramda from 'ramda';
 
 import { objFromAry } from './util';
 import { defaultConfig } from './config';
-import { keys, isChampion, Champion, id, Synergy, SynergyMap} from './knowledge/modeldata';
+import { keys, isChampion, Champion, id, Synergy, SynergyMap,
+  SynergyTypeMap, SynergyType } from './knowledge/modeldata';
 
 import { mapsToD3Graph } from './loader/mapsToGraph';
 import { jsonToMaps } from './loader/dataToMaps';
 import './App.css';
 
 // TODO: maybe consolidate into 1 data import?
-import * as dataModule from './data/champions.json';
+import * as championModule from './data/champions.json';
 import * as synergyModule from './data/synergies.json';
 
 
@@ -22,15 +25,21 @@ declare global {
     idToChampion: any;
     useChampion: any;
     synergies: any;
+    keyToSynergy: any;
     selected: any;
+    R: any
   }
 }
+var R = ramda;
+window.R = ramda;
 
 interface State {
   active: boolean;
   selected: boolean;
+  grouped: boolean;
   setActive: (boolean) => void;
   setSelected: (boolean) => void;
+  setGrouped: (boolean) => void;
   render: () => void;
 }
 
@@ -68,10 +77,40 @@ function useChampion(champion: Champion) {
   };
 }
 
+// Adds stuff to synergy to make it easier to use
+type Threshold = [number, string];
+interface SynergyEnrichment {
+  getThresholdStr: (n: number) => string | null;
+}
+type EnrichedSynergy = Synergy & SynergyEnrichment;
+
 // DATA
-const data = Object.values((dataModule as any).default) as Champion[];
-const synergies = (synergyModule as any).default as SynergyMap;
-window.synergies = synergies;
+const championData = Object.values((championModule as any).default) as Champion[];
+const synergyData = (synergyModule as any).default as SynergyTypeMap<Synergy>;
+
+const keyToSynergy: SynergyTypeMap<EnrichedSynergy> =
+  R.mapObjIndexed(R.mapObjIndexed(enrichSynergy), synergyData)
+window.keyToSynergy = keyToSynergy;
+
+function synergyThreshold(sortedThresh: Threshold[], count: number) {
+  const isThresholdLte = (acc, thresh: Threshold) => R.lte(thresh[0], count);
+  const reducedVal = (acc, val) => val;
+  return R.reduceWhile(isThresholdLte, reducedVal, null, sortedThresh);
+}
+
+function isKeyInteger(val, key) {
+  return Number.isInteger(Number(key));
+}
+
+function enrichSynergy(synergy: Synergy, synergyName: string): EnrichedSynergy {
+  const thresholds = R.toPairs(R.pickBy(isKeyInteger, synergy)); // must be sorted
+  const getThresholdStr = R.curry(synergyThreshold)(thresholds);
+  // add threshold
+  return {
+    ...synergy,
+    getThresholdStr,
+  };
+}
 
 function setChampionData(data) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -79,6 +118,7 @@ function setChampionData(data) {
   const idToChampion = objFromAry(id, champions);
   const keyToMap = jsonToMaps(champions);
   const selected = champions.filter(c => c.selected);
+  // const filteredMap = objFromAry(id, champions.filter(c => !c.active));
 
   window.champions = champions;
   window.idToChampion = idToChampion;
@@ -133,8 +173,12 @@ function LabeledCheckbox({label, checked, onChange, className, children = []}) {
   );
 }
 
+interface RenderMapAsCheckboxes {
+  render: React.ReactElement;
+  checked: boolean;
+}
 // return render: list of inputs
-function renderMapAsCheckboxes(name, map, depth = 0): {render: React.ReactElement, checked: boolean} {
+function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
   function mapCheckboxOnChange(e) {
     const { value, checked } = e.target;
     walkLeaves(champion => champion.setActive(checked), isLeaf, map[value]);
@@ -195,16 +239,53 @@ function renderKeysAsCheckboxes(keyToMap) {
   );
 }
 
-function renderChampionSynergies(champions) {
+const filterNull = R.filter(R.identity);
+function ChampionSynergies(props) {
+  const {champions, className} = props;
 
+  const thresholds: Threshold[] = Object.entries(keyToSynergy).flatMap(([k, synergyMap]) => {
+    const synergies = champions.flatMap(c => c[k]);
+    const synergyCountMap = R.countBy(R.identity, synergies);
+    const mapCountsToThresholds = R.map(([synStr, synCount]) =>
+      synergyMap[synStr].getThresholdStr(synCount)
+    );
+    return filterNull(mapCountsToThresholds(R.toPairs(synergyCountMap)));
+  });
+
+  const renderThresholds = thresholds.map(th => (
+    <div key={th[1]} className="synergy">
+      {th}
+    </div>
+  ));
+
+  return (
+    <div className={cx('champion-synergies', className)}>
+      <div className="synergies">{renderThresholds}</div>
+    </div>
+  );
 }
 
-// try constructing inside first, then build outer
+// Component that shows list of champions
+function ChampionList(props) {
+  const {title, className, champions} = props;
+  const renderChampions = champions.map(c => (
+    <div key={c.name} className="champion">
+      {c.name}
+    </div>
+  ));
+  return (
+    <div className={cx('champion-list', className)}>
+      <div className="title">{title}</div>
+      <div className="champions">{renderChampions}</div>
+    </div>
+  )
+}
+
 function Ariandel() {
   const [config, ConfigEditor] = useConfig(defaultConfig);
   // const [selectedMap, setSelectedMap] = useState({});
 
-  const { champions, keyToMap, idToChampion } = setChampionData(data);
+  const { champions, keyToMap, idToChampion, selected } = setChampionData(championData);
 
   function onClickNode(id) {
     const champion = idToChampion[id];
@@ -212,13 +293,14 @@ function Ariandel() {
     champion.setSelected(!champion.selected);
   }
 
-  const filteredMap = objFromAry(id, champions.filter(c => !c.active));
   console.log('ARIANDEL RENDER');
   const graph = mapsToD3Graph(id, champions, idToChampion, Object.values(keyToMap));
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
       {ConfigEditor}
       {renderKeysAsCheckboxes(keyToMap)}
+      <ChampionList className="selected-champions" title="Selected" champions={selected} />
+      <ChampionSynergies className="selected-synergies" champions={selected} />
       <Graph id="graph" data={graph} config={config} onClickNode={onClickNode} />
     </div>
   );

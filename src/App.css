@@ -69,6 +69,11 @@ div[hidden] {
   text-transform: capitalize;
 }
 
+.champion-list {
+  position: absolute;
+  right: 0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
