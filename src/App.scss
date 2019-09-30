@@ -30,53 +30,53 @@
   place-items: start;
 }
 
-.depth1 {
-  flex-direction: column;
-}
-
-.checkboxes-container .champion {
-  padding-left: 10px;
-  font-size: 9px;
-  display: flex;
-}
-
 .checkboxes-container {
   position: absolute;
+
+  .champion {
+    padding-left: 10px;
+    font-size: 9px;
+    display: flex;
+  }
+
+  .depth1 {
+    flex-direction: column;
+  }
+
+  .checkboxes-toggle {
+    display: inline-block;
+    padding: 2px;
+    border: 1px solid black;
+    font-size: 16px;
+  }
 }
 
 div[hidden] {
   display: none;
 }
 
-.checkboxes-toggle {
-  display: inline-block;
-  padding: 2px;
-  border: 1px solid black;
-  font-size: 16px;
-}
-
 .checkboxes {
   display: flex;
   flex-wrap: wrap;
-}
 
-.labeledinput {
-  display: flex;
-  place-items: center;
-}
+  .labeledinput {
+    display: flex;
+    place-items: center;
+  }
 
-.labeledinput > label {
-  text-transform: capitalize;
+  .labeledinput > label {
+    text-transform: capitalize;
+  }
 }
 
 .selected-champions {
   position: absolute;
   right: 0;
-}
 
-.selected-champions .champion {
-  padding-left: 10px;
-  font-size: 9px;
+  .champion {
+    padding-left: 10px;
+    font-size: 9px;
+  }
 }
 
 .selected-synergies {

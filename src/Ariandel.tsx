@@ -10,7 +10,7 @@ import { keys, isChampion, Champion, id, Synergy, SynergyMap,
 
 import { mapsToD3Graph } from './loader/mapsToGraph';
 import { jsonToMaps } from './loader/dataToMaps';
-import './App.css';
+import './App.scss';
 
 // TODO: maybe consolidate into 1 data import?
 import * as championModule from './data/champions.json';
@@ -79,6 +79,10 @@ function useChampion(champion: Champion) {
 
 // Adds stuff to synergy to make it easier to use
 type Threshold = [number, string];
+interface ThresholdMap {
+  [threshold: number]: string;
+}
+
 interface SynergyEnrichment {
   getThresholdStr: (n: number) => string | null;
 }
@@ -92,7 +96,12 @@ const keyToSynergy: SynergyTypeMap<EnrichedSynergy> =
   R.mapObjIndexed(R.mapObjIndexed(enrichSynergy), synergyData)
 window.keyToSynergy = keyToSynergy;
 
-function synergyThreshold(sortedThresh: Threshold[], count: number) {
+function synergyThreshold(threshMap: ThresholdMap, count: number): Threshold {
+  if (threshMap[-count]) {
+    return [-count, threshMap[-count]]; // return exacts
+  }
+
+  const sortedThresh = R.toPairs(threshMap); // should be sorted
   const isThresholdLte = (acc, thresh: Threshold) => R.lte(thresh[0], count);
   const reducedVal = (acc, val) => val;
   return R.reduceWhile(isThresholdLte, reducedVal, null, sortedThresh);
@@ -103,8 +112,8 @@ function isKeyInteger(val, key) {
 }
 
 function enrichSynergy(synergy: Synergy, synergyName: string): EnrichedSynergy {
-  const thresholds = R.toPairs(R.pickBy(isKeyInteger, synergy)); // must be sorted
-  const getThresholdStr = R.curry(synergyThreshold)(thresholds);
+  const threshMap: ThresholdMap = R.pickBy(isKeyInteger, synergy);
+  const getThresholdStr = R.curry(synergyThreshold)(threshMap);
   // add threshold
   return {
     ...synergy,
@@ -241,7 +250,7 @@ function renderKeysAsCheckboxes(keyToMap) {
 
 const filterNull = R.filter(R.identity);
 function ChampionSynergies(props) {
-  const {champions, className} = props;
+  const {champions, title, className} = props;
 
   const thresholds: Threshold[] = Object.entries(keyToSynergy).flatMap(([k, synergyMap]) => {
     const synergies = champions.flatMap(c => c[k]);
@@ -254,19 +263,26 @@ function ChampionSynergies(props) {
 
   const renderThresholds = thresholds.map(th => (
     <div key={th[1]} className="synergy">
-      {th}
+      <div className="threshold">{th[0]}</div>
+      <div className="synergy-detail">{th[1]}</div>
     </div>
   ));
 
   return (
     <div className={cx('champion-synergies', className)}>
+      <div className="title">{title}</div>
       <div className="synergies">{renderThresholds}</div>
     </div>
   );
 }
 
+interface ChampionListProps {
+  title: string;
+  className?: string;
+  champions: Champion[];
+}
 // Component that shows list of champions
-function ChampionList(props) {
+function ChampionList(props: ChampionListProps) {
   const {title, className, champions} = props;
   const renderChampions = champions.map(c => (
     <div key={c.name} className="champion">
@@ -282,8 +298,8 @@ function ChampionList(props) {
 }
 
 function Ariandel() {
+  const start = Date.now();
   const [config, ConfigEditor] = useConfig(defaultConfig);
-  // const [selectedMap, setSelectedMap] = useState({});
 
   const { champions, keyToMap, idToChampion, selected } = setChampionData(championData);
 
@@ -293,14 +309,14 @@ function Ariandel() {
     champion.setSelected(!champion.selected);
   }
 
-  console.log('ARIANDEL RENDER');
   const graph = mapsToD3Graph(id, champions, idToChampion, Object.values(keyToMap));
+  console.log('ARIANDEL RENDER', Date.now() - start);
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
       {ConfigEditor}
       {renderKeysAsCheckboxes(keyToMap)}
       <ChampionList className="selected-champions" title="Selected" champions={selected} />
-      <ChampionSynergies className="selected-synergies" champions={selected} />
+      <ChampionSynergies className="selected-synergies" title="Synergies" champions={selected} />
       <Graph id="graph" data={graph} config={config} onClickNode={onClickNode} />
     </div>
   );
