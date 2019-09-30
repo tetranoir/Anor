@@ -6,9 +6,10 @@ const p = require('path');
 // config
 const verbose = false;
 const tables = ['champions', 'synergies']; // determines name of generated file
-const path = 'data'; // path to data
+const source = 'data'; // path to source data
 const target = p.join('src', 'data'); // target of generated file
 
+console.log(__dirname)
 
 function aggregateFileData(path, target, name) {
   fs.readdir(path, (err, files) => {
@@ -41,4 +42,4 @@ function aggregateFileData(path, target, name) {
   });
 }
 
-tables.forEach(t => aggregateFileData(p.join(path, t), target, `${t}.json`));
+tables.forEach(t => aggregateFileData(p.join(source, t), target, `${t}.json`));
