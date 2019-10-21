@@ -24,7 +24,6 @@
 }
 
 .container {
-  padding-left: 10px;
   font-size: 9px;
   display: flex;
   place-items: start;
@@ -37,6 +36,7 @@
     padding-left: 10px;
     font-size: 9px;
     display: flex;
+
   }
 
   .depth1 {
@@ -49,38 +49,78 @@
     border: 1px solid black;
     font-size: 16px;
   }
+
+  .checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+
+    .labeledinput {
+      display: flex;
+      place-items: center;
+    }
+
+    .labeledinput > label {
+      text-transform: capitalize;
+    }
+  }
 }
 
 div[hidden] {
-  display: none;
+  display: none !important;
 }
 
-.checkboxes {
+.right-container {
+  position: absolute;
+  right: 10px;
+  top: 10px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 150px;
 
-  .labeledinput {
-    display: flex;
-    place-items: center;
+  & > div {
+    margin-bottom: 10px;
   }
+}
 
-  .labeledinput > label {
-    text-transform: capitalize;
+.panel {
+  padding: 0 0 5px 0;
+  background-color: whitesmoke;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+
+  .title {
+    padding: 0 5px 2px 5px;
   }
 }
 
 .selected-champions {
-  position: absolute;
-  right: 0;
-
   .champion {
-    padding-left: 10px;
+    padding: 0 10px;
     font-size: 9px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: lightgray;
+    }
   }
 }
 
 .selected-synergies {
-  position: absolute;
+  .synergy {
+    display: flex;
+    font-size: 9px;
+    padding: 0 10px;
+
+    .threshold {
+      margin-right: 5px;
+    }
+  }
+}
+
+#graph {
+  .node-label {
+    transform: translate(-14px, 22px);
+  }
 }
 
 @keyframes App-logo-spin {

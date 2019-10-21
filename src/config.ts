@@ -1,9 +1,10 @@
 // graph config
-export const defaultConfig = {
+export const graphConfig = {
   nodeHighlightBehavior: true,
+  linkHighlightBehavior: true,
   node: {
-    color: 'lightblue',
     size: 500,
+    color: 'lightblue',
     highlightStrokeColor: 'navy'
   },
   link: {
@@ -19,5 +20,5 @@ export const defaultConfig = {
   minZoom: 1,
   // staticGraph: true,
   highlightDegree: 1,
-  highlightOpacity: 0.3,
+  // highlightOpacity: 0.3,
 };

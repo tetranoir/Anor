@@ -2,9 +2,9 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { Graph } from 'react-d3-graph';
 
 import { objFromAry } from './util';
-import { defaultConfig } from './config';
+import { graphConfig } from './config';
 import { keys, isChampion, Champion, id } from './knowledge/modeldata';
-import { mapsToD3Graph } from './loader/mapsToGraph';
+import { mapToReactD3Graph } from './loader/mapsToGraph';
 import { jsonToMaps } from './loader/dataToMaps';
 import './App.css';
 
@@ -50,8 +50,8 @@ const valToKey = champions.reduce((vals, c) => {
 console.log(window.valToKey = valToKey);
 
 
-function useConfig(defaultConfig) {
-  const [config, setConfig] = useState(defaultConfig);
+function useConfig(graphConfig) {
+  const [config, setConfig] = useState(graphConfig);
 
   const ConfigEditor = (
     <div id="config-editor">
@@ -195,7 +195,7 @@ function renderKeysAsCheckboxes(keyToMap) {
 
 // try constructing inside first, then build outer
 function Astoria() {
-  const [config, ConfigEditor] = useConfig(defaultConfig);
+  const [config, ConfigEditor] = useConfig(graphConfig);
   // const [selectedMap, setSelectedMap] = useState({});
 
   function onClickNode(id) {
@@ -212,7 +212,7 @@ function Astoria() {
   const selectedMap = objFromAry(id, champions.filter(c => useChampion(c).selected));
   console.log('ASTORIA RENDER', filteredMap) //, selectedMap);
   const render = renderKeysAsCheckboxes(keyToMap);
-  const graph = mapsToD3Graph(id, champions, useChampion(), Object.values(keyToMap));
+  const graph = mapToReactD3Graph(id, champions, useChampion(), Object.values(keyToMap));
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
       {ConfigEditor}

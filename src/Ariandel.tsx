@@ -1,17 +1,27 @@
-import React, { useState, useEffect, useLayoutEffect, useMemo } from 'react';
-import { Graph } from 'react-d3-graph';
+// third party
+import React, { useState, useEffect, useLayoutEffect, useMemo, cloneElement } from 'react';
+// import { Graph } from 'react-d3-graph';
+// import { Graph, DefaultLink, DefaultNode } from '@vx/network';
+import { InteractiveForceGraph, ForceGraphNode, ForceGraphLink, ForceGraph } from 'react-vis-force';
+// import { scaleCategory20 } from 'd3-scale';
 import cx from 'classnames/bind';
 import * as ramda from 'ramda';
 
+// fundamentals
 import { objFromAry } from './util';
-import { defaultConfig } from './config';
-import { keys, isChampion, Champion, id, Synergy, SynergyMap,
-  SynergyTypeMap, SynergyType } from './knowledge/modeldata';
+import { graphConfig } from './config';
+import { keys, isChampion, Champion, id, Synergy} from './knowledge/modeldata';
+import { SynergyMap, SynergyTypeMap, SynergyType } from './knowledge/modeldata';
+import { State } from './knowledge/modelapp';
 
-import { mapsToD3Graph } from './loader/mapsToGraph';
+// loaders
+import { mapToReactD3Graph, mapToVxNetwork, mapToReactVisForce } from './loader/mapsToGraph';
 import { jsonToMaps } from './loader/dataToMaps';
+
+// styles
 import './App.scss';
 
+// data
 // TODO: maybe consolidate into 1 data import?
 import * as championModule from './data/champions.json';
 import * as synergyModule from './data/synergies.json';
@@ -32,16 +42,6 @@ declare global {
 }
 var R = ramda;
 window.R = ramda;
-
-interface State {
-  active: boolean;
-  selected: boolean;
-  grouped: boolean;
-  setActive: (boolean) => void;
-  setSelected: (boolean) => void;
-  setGrouped: (boolean) => void;
-  render: () => void;
-}
 
 type ChampionState = State & Champion;
 
@@ -96,24 +96,31 @@ const keyToSynergy: SynergyTypeMap<EnrichedSynergy> =
   R.mapObjIndexed(R.mapObjIndexed(enrichSynergy), synergyData)
 window.keyToSynergy = keyToSynergy;
 
-function synergyThreshold(threshMap: ThresholdMap, count: number): Threshold {
-  if (threshMap[-count]) {
-    return [-count, threshMap[-count]]; // return exacts
+function synergyThreshold(
+  posThreshMap: ThresholdMap, exactThreshMap: ThresholdMap, count: number
+): Threshold {
+  if (exactThreshMap[-count]) {
+    return [-count, exactThreshMap[-count]]; // return exacts
   }
 
-  const sortedThresh = R.toPairs(threshMap); // should be sorted
+  const sortedThresh = R.toPairs(posThreshMap); // should be sorted
   const isThresholdLte = (acc, thresh: Threshold) => R.lte(thresh[0], count);
   const reducedVal = (acc, val) => val;
   return R.reduceWhile(isThresholdLte, reducedVal, null, sortedThresh);
 }
 
-function isKeyInteger(val, key) {
-  return Number.isInteger(Number(key));
+function isKeyPositive(val, key) {
+  return Number(key) > 0;
+}
+
+function isKeyNegative(val, key) {
+  return Number(key) < 0;
 }
 
 function enrichSynergy(synergy: Synergy, synergyName: string): EnrichedSynergy {
-  const threshMap: ThresholdMap = R.pickBy(isKeyInteger, synergy);
-  const getThresholdStr = R.curry(synergyThreshold)(threshMap);
+  const posThreshMap: ThresholdMap = R.pickBy(isKeyPositive, synergy);
+  const negThreshMap: ThresholdMap = R.pickBy(isKeyNegative, synergy);
+  const getThresholdStr = R.curry(synergyThreshold)(posThreshMap, negThreshMap);
   // add threshold
   return {
     ...synergy,
@@ -137,8 +144,8 @@ function setChampionData(data) {
   return { keyToMap, idToChampion, champions, selected };
 }
 
-function useConfig(defaultConfig) {
-  const [config, setConfig] = useState(defaultConfig);
+function useConfig(graphConfig) {
+  const [config, setConfig] = useState(graphConfig);
 
   const ConfigEditor = (
     <div id="config-editor">
@@ -263,7 +270,7 @@ function ChampionSynergies(props) {
 
   const renderThresholds = thresholds.map(th => (
     <div key={th[1]} className="synergy">
-      <div className="threshold">{th[0]}</div>
+      <div className="threshold">{Math.abs(th[0])}</div>
       <div className="synergy-detail">{th[1]}</div>
     </div>
   ));
@@ -280,44 +287,97 @@ interface ChampionListProps {
   title: string;
   className?: string;
   champions: Champion[];
+  onClick?: (championName: string) => void;
 }
 // Component that shows list of champions
 function ChampionList(props: ChampionListProps) {
-  const {title, className, champions} = props;
+  const {title, className, champions, onClick} = props;
+
+  function handleOnClick(event: React.MouseEvent<HTMLDivElement>) {
+    const target = event.target as HTMLDivElement;
+    const championId = target.textContent;
+    onClick && onClick(championId);
+  }
+
   const renderChampions = champions.map(c => (
-    <div key={c.name} className="champion">
+    <div key={c.name} className="champion" onClick={handleOnClick}>
       {c.name}
     </div>
   ));
   return (
     <div className={cx('champion-list', className)}>
-      <div className="title">{title}</div>
+      <div className="title">{title} ({champions.length})</div>
       <div className="champions">{renderChampions}</div>
     </div>
   )
 }
 
+function attachEvents(child) {
+  return cloneElement(child, {
+    onMouseDown: () => console.log(`clicked <${child.type.name} />`),
+    onMouseOver: () => console.log(`hovered <${child.type.name} />`),
+    onMouseOut: () => console.log(`blurred <${child.type.name} />`),
+  });
+}
+
 function Ariandel() {
   const start = Date.now();
-  const [config, ConfigEditor] = useConfig(defaultConfig);
+  // const [config, ConfigEditor] = useConfig(graphConfig);
 
   const { champions, keyToMap, idToChampion, selected } = setChampionData(championData);
 
-  function onClickNode(id) {
+  function toggleChampion(id) {
     const champion = idToChampion[id];
     // eslint-disable-next-line react-hooks/rules-of-hooks
     champion.setSelected(!champion.selected);
   }
 
-  const graph = mapsToD3Graph(id, champions, idToChampion, Object.values(keyToMap));
+  // const graph = mapToReactD3Graph(id, champions, idToChampion, Object.values(keyToMap));
+  // const graph = mapToVxNetwork();
+  const {nodes, links} = mapToReactVisForce(id, champions, idToChampion, Object.values(keyToMap));
   console.log('ARIANDEL RENDER', Date.now() - start);
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
-      {ConfigEditor}
       {renderKeysAsCheckboxes(keyToMap)}
-      <ChampionList className="selected-champions" title="Selected" champions={selected} />
-      <ChampionSynergies className="selected-synergies" title="Synergies" champions={selected} />
-      <Graph id="graph" data={graph} config={config} onClickNode={onClickNode} />
+      <div className="right-container">
+        <ChampionList
+          className="panel selected-champions"
+          title="Selected"
+          champions={selected}
+          onClick={toggleChampion}
+        />
+        <ChampionSynergies
+          className="panel selected-synergies"
+          title="Synergies"
+          champions={selected}
+        />
+      </div>
+      {/*<Graph id="graph" data={graph} config={graphConfig} onClickNode={toggleChampion} />*/}
+      {/*<Graph id="graph" linkComponent={DefaultLink} nodeComponent={DefaultNode} />*/}
+      <div id="graph">
+        <ForceGraph
+          highlightDependencies
+          showLabels
+          simulationOptions={{
+            radiusMargin: 18,
+            // strength: { x: -1, y: -1 },
+          }}
+        >
+          {nodes.map(forceNode => (
+            <ForceGraphNode
+              key={forceNode.node.id}
+              labelClass="node-label"
+              {...forceNode}
+            />
+          )).map(attachEvents)}
+          {links.map(forceLink => (
+            <ForceGraphLink
+              key={`${forceLink.link.source}=>${forceLink.link.target}`}
+              {...forceLink}
+            />
+          )).map(attachEvents)}
+        </ForceGraph>
+      </div>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+/* DEPRECATED */
 .App {
   text-align: center;
 }
@@ -23,6 +24,7 @@
   color: #61dafb;
 }
 
+/* checkbox css */
 .container {
   padding-left: 10px;
   font-size: 9px;
@@ -69,6 +71,7 @@ div[hidden] {
   text-transform: capitalize;
 }
 
+/* selected box css */
 .selected-champions {
   position: absolute;
   right: 0;
@@ -81,6 +84,11 @@ div[hidden] {
 
 .selected-synergies {
   position: absolute;
+}
+
+/* Graph css */
+.node-label {
+  transform: translate(-14px, 22px);
 }
 
 @keyframes App-logo-spin {
