@@ -49,6 +49,7 @@ function useChampion(champion: Champion) {
   const [active, setActive] = useState(true);
   const [selected, setSelected] = useState(false);
   const [grouped, setGrouped] = useState(false);
+  const [highlighted, setHighlighted] = useState(false);
 
   // use setActive from closure
   function onChange(e) {
@@ -71,9 +72,11 @@ function useChampion(champion: Champion) {
     active,
     selected,
     grouped,
+    highlighted,
     setActive,
     setSelected,
     setGrouped,
+    setHighlighted,
   };
 }
 
@@ -131,9 +134,10 @@ function enrichSynergy(synergy: Synergy, synergyName: string): EnrichedSynergy {
 function setChampionData(data) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const champions: ChampionState[] = data.map(c => useChampion(c));
-  const idToChampion = objFromAry(id, champions);
+  const idToChampion: { [id:string]: ChampionState } = objFromAry(id, champions);
   const keyToMap = jsonToMaps(champions);
   const selected = champions.filter(c => c.selected);
+  const highlighted = champions.filter(c => c.highlighted);
   // const filteredMap = objFromAry(id, champions.filter(c => !c.active));
 
   window.champions = champions;
@@ -141,7 +145,7 @@ function setChampionData(data) {
   window.keyToMap = keyToMap;
   window.selected = selected;
 
-  return { keyToMap, idToChampion, champions, selected };
+  return { keyToMap, idToChampion, champions, selected, highlighted };
 }
 
 function useConfig(graphConfig) {
@@ -248,7 +252,7 @@ function renderKeysAsCheckboxes(keyToMap) {
       <div className="checkboxes" hidden={hidden}>
         {checkboxes}
       </div>
-      <button className="checkboxes-toggle" onClick={toggleHidden}>
+      <button className="checkboxes-toggle panel" onClick={toggleHidden}>
         Filters
       </button>
     </div>
@@ -314,7 +318,7 @@ function ChampionList(props: ChampionListProps) {
 
 function attachEvents(child) {
   return cloneElement(child, {
-    onMouseDown: () => console.log(`clicked <${child.type.name} />`),
+    onMouseDown: () => console.log(`clicked <${child.type.name} />`, child),
     onMouseOver: () => console.log(`hovered <${child.type.name} />`),
     onMouseOut: () => console.log(`blurred <${child.type.name} />`),
   });
@@ -324,12 +328,35 @@ function Ariandel() {
   const start = Date.now();
   // const [config, ConfigEditor] = useConfig(graphConfig);
 
-  const { champions, keyToMap, idToChampion, selected } = setChampionData(championData);
+  const { champions, keyToMap, idToChampion, selected, highlighted }
+    = setChampionData(championData);
 
-  function toggleChampion(id) {
+  function toggleSelectChampion(id: string) {
     const champion = idToChampion[id];
     // eslint-disable-next-line react-hooks/rules-of-hooks
     champion.setSelected(!champion.selected);
+  }
+
+  function relatedChampions(c: ChampionState): ChampionState[] {
+    return R.uniqBy((c: ChampionState) => c.name, keys.flatMap(
+      key => c[key].flatMap(
+        (syn: string) => Object.values(keyToMap[key][syn])
+      )
+    ));
+  }
+
+  function setChampionHighlight(id: string, bool: boolean) {
+    const champion: ChampionState = idToChampion[id];
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    relatedChampions(champion).forEach(c => c.setHighlighted(bool));
+  }
+
+  function attachNodeEvents(node) {
+    return cloneElement(node, {
+      onMouseDown: () => toggleSelectChampion(node.props.node.id),
+      onMouseOver: () => setChampionHighlight(node.props.node.id, true),
+      onMouseOut: () => setChampionHighlight(node.props.node.id, false),
+    });
   }
 
   // const graph = mapToReactD3Graph(id, champions, idToChampion, Object.values(keyToMap));
@@ -344,32 +371,39 @@ function Ariandel() {
           className="panel selected-champions"
           title="Selected"
           champions={selected}
-          onClick={toggleChampion}
+          onClick={toggleSelectChampion}
         />
         <ChampionSynergies
           className="panel selected-synergies"
           title="Synergies"
           champions={selected}
         />
+        <ChampionList
+          className="panel highlighted-champions"
+          title="Highlighted"
+          champions={highlighted}
+        />
       </div>
-      {/*<Graph id="graph" data={graph} config={graphConfig} onClickNode={toggleChampion} />*/}
-      {/*<Graph id="graph" linkComponent={DefaultLink} nodeComponent={DefaultNode} />*/}
       <div id="graph">
         <ForceGraph
           highlightDependencies
           showLabels
+          zoom
           simulationOptions={{
-            radiusMargin: 18,
-            // strength: { x: -1, y: -1 },
+            radiusMargin: 40,
+            strength: { x: -.07, y: -.05 },
+            // animate: true,
+            // alphaDecay: .01,
+            height: 900,
+            width: 1100,
           }}
         >
           {nodes.map(forceNode => (
             <ForceGraphNode
               key={forceNode.node.id}
-              labelClass="node-label"
               {...forceNode}
             />
-          )).map(attachEvents)}
+          )).map(attachNodeEvents)}
           {links.map(forceLink => (
             <ForceGraphLink
               key={`${forceLink.link.source}=>${forceLink.link.target}`}

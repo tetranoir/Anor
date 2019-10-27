@@ -1,16 +1,25 @@
 import { State } from '../knowledge/modelapp';
+import cx from 'classnames/bind';
 
-const hideFilter = true;
+// if false, then hide. if true, then filter
+const hideFilter = false;
 
 /// EXPORT to react-vis-force
 type HexColor = string;
 interface RVF_ForceNode {
   node: RVF_Node;
+  cx?: number;
+  cy?: number;
+  r?: number;
   className?: string;
+  labelClass?: string;
   fill?: HexColor;
   opacity?: number; // 0 - 1
   stroke?: HexColor;
   strokeWidth?: number; // in pixels
+  onMouseDown?: (e: MouseEvent) => void;
+  onMouseOver?: (e: MouseEvent) => void;
+  onMouseOut?: (e: MouseEvent) => void;
 }
 interface RVF_ForceLink {
   link: RVF_Link,
@@ -19,6 +28,9 @@ interface RVF_ForceLink {
   className?: string;
   opacity?: number;
   stroke?: HexColor;
+  onMouseDown?: (e: MouseEvent) => void;
+  onMouseOver?: (e: MouseEvent) => void;
+  onMouseOut?: (e: MouseEvent) => void;
 }
 interface RVF_Node {
   id: string;
@@ -35,49 +47,65 @@ export function mapToReactVisForce(id, objs: State[], allObjMap, maps) {
   }
 
   const nodes: RVF_ForceNode[] = objs.map(o => {
+    const { active, selected, grouped, highlighted } = o;
     const rvfNode = {
       node: {
         id: o[id],
         radius: 12,
       },
-      opacity: o.active ? 1 : 0.3,
+      className: cx('graph-node', { active, selected, grouped, highlighted }),
+      labelClass: cx('node-label', { active, selected, grouped, highlighted }),
     };
     return rvfNode;
   });
 
   const hist = {}; // (hist)ory of links made
-  const links: RVF_ForceLink[] = maps.reduce((lks, map) => {
+  // the extra arrays are to influence draw order
+  const links: RVF_ForceLink[] = [];
+  const sLinks: RVF_ForceLink[] = [];
+  const hLinks: RVF_ForceLink[] = [];
+  maps.forEach(map => {
     Object.values(map).forEach(objMaps => {
-      const objs = Object.values(objMaps);
+      const objs: State[] = Object.values(objMaps);
       for (let i = 0; i < objs.length - 1; i++) {
-        const source = objs[i][id];
+        const src: State = objs[i];
+        const source: string = src[id];
         if (!hist[source]) {
           hist[source] = {};
         }
         for (let j = i + 1; j < objs.length; j++) {
-          const target = objs[j][id];
-          if (hist[source][target]) continue;
+          const tgt: State= objs[j];
+          const { active, selected, grouped, highlighted } = tgt;
+          const target: string = tgt[id];
+          if (hist[source][target]) continue; // drop dup links
+
+          const toHighlight = highlighted && src.highlighted;
+          const toSelect = selected && src.selected;
           const rvfLink: RVF_ForceLink = {
             link: { source, target, value: 4 },
+            className: cx('graph-link', {
+              active: active && src.active,
+              selected: toSelect,
+              highlighted: toHighlight,
+            }),
           };
-          if (!allObjMap[target].active || !allObjMap[source].active) {
-            if (hideFilter) {
-              continue;
-            }
-          }
-          lks.push(rvfLink);
-          hist[source][target] = rvfLink;
+
+          const linkPtr =
+            toHighlight ? hLinks :
+              toSelect ? sLinks : links;
+
+          linkPtr.push(rvfLink);
+          hist[source][target] = rvfLink; // record link
         }
       }
     });
-    return lks;
-  }, []);
+  });
 
   if (nodes.length === 0) {
     nodes.push({node: {id: '???'}});
   }
 
-  return { nodes, links };
+  return { nodes, links: links.concat(sLinks).concat(hLinks) };
 }
 
 /// EXPORT TO vx/network

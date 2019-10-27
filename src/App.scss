@@ -31,12 +31,13 @@
 
 .checkboxes-container {
   position: absolute;
+  left: 10px;
+  top: 10px;
 
   .champion {
     padding-left: 10px;
     font-size: 9px;
     display: flex;
-
   }
 
   .depth1 {
@@ -46,7 +47,6 @@
   .checkboxes-toggle {
     display: inline-block;
     padding: 2px;
-    border: 1px solid black;
     font-size: 16px;
   }
 
@@ -93,7 +93,8 @@ div[hidden] {
   }
 }
 
-.selected-champions {
+.selected-champions,
+.highlighted-champions {
   .champion {
     padding: 0 10px;
     font-size: 9px;
@@ -116,10 +117,55 @@ div[hidden] {
     }
   }
 }
-
+/* blue pastels dark -> light */
+/* #4477b2, #5284bd, #6591c4, #779ecb, #89abd2, #9cb8d9, #aec5e0 */
 #graph {
-  .node-label {
-    transform: translate(-14px, 22px);
+  text.node-label {
+    transform: translate(-14px, 26px);
+    user-select: none;
+    display: none;
+    pointer-events: none;
+    z-index: 0;
+  }
+  text.node-label.active {
+    display: block;
+    opacity: 0.7;
+  }
+  text.node-label.highlighted {
+    font-weight: bold;
+    opacity: 1;
+    z-index: 2;
+  }
+  line.graph-link {
+    opacity: 0.0;
+    stroke: #BBB;
+    z-index: 1;
+  }
+  line.graph-link.active {
+    opacity: 1;
+  }
+  line.graph-link.selected {
+    stroke: #89abd2;
+    z-index: 2;
+  }
+  line.graph-link.highlighted {
+    stroke: #4477b2;
+    z-index: 3;
+  }
+  circle.graph-node {
+    cursor: pointer;
+    opacity: 0.0;
+    stroke-width: 3px;
+    fill: #888;
+  }
+  circle.graph-node.active {
+    opacity: 1;
+  }
+  circle.graph-node.selected {
+    fill: #89abd2;
+  }
+  circle.graph-node.highlighted {
+    stroke: #4477b2;
   }
 }
 
