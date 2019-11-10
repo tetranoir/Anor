@@ -1,5 +1,6 @@
 import { State } from '../knowledge/modelapp';
 import cx from 'classnames/bind';
+import * as R from 'ramda';
 
 // if false, then hide. if true, then filter
 const hideFilter = false;
@@ -41,20 +42,31 @@ interface RVF_Link {
   target: string;
   value?: number;
 }
-export function mapToReactVisForce(id, objs: State[], allObjMap, maps) {
-  if (hideFilter) {
-    objs = objs.filter(o => o.active);
-  }
-
+type Identifiable<T extends string, U = {}> = Record<T, string> & U;
+/**
+ * @param id       parameter that exists in T
+ * @param objs     List of objects
+ * @param maps.....Maps mappings of "Keys" to objects (TODO: deprecate in
+ *                 favor of extracting this information from objs)
+ * @param nodeProps Function that extracts properties from a T object
+ */
+type mapToReactVisForce =
+  <T extends string, S, U extends Identifiable<T, S>>(
+    id: T,
+    objs: U[],
+    maps,
+    nodeProps: (o: S) => object,
+  ) => { nodes: RVF_ForceNode[], links: RVF_ForceLink[] };
+export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps) => {
   const nodes: RVF_ForceNode[] = objs.map(o => {
-    const { active, selected, grouped, highlighted } = o;
+    const props = nodeProps(o);
     const rvfNode = {
       node: {
         id: o[id],
         radius: 12,
       },
-      className: cx('graph-node', { active, selected, grouped, highlighted }),
-      labelClass: cx('node-label', { active, selected, grouped, highlighted }),
+      className: cx('graph-node', props),
+      labelClass: cx('node-label', props),
     };
     return rvfNode;
   });
@@ -66,44 +78,37 @@ export function mapToReactVisForce(id, objs: State[], allObjMap, maps) {
   const hLinks: RVF_ForceLink[] = [];
   maps.forEach(map => {
     Object.values(map).forEach(objMaps => {
-      const objs: State[] = Object.values(objMaps);
+      const objs = Object.values(objMaps);
       for (let i = 0; i < objs.length - 1; i++) {
-        const src: State = objs[i];
+        const src = objs[i];
+        const srcProps = nodeProps(src);
         const source: string = src[id];
         if (!hist[source]) {
           hist[source] = {};
         }
         for (let j = i + 1; j < objs.length; j++) {
-          const tgt: State= objs[j];
-          const { active, selected, grouped, highlighted } = tgt;
+          const tgt = objs[j];
+          const tgtProps = tgt;
           const target: string = tgt[id];
           if (hist[source][target]) continue; // drop dup links
 
-          const toHighlight = highlighted && src.highlighted;
-          const toSelect = selected && src.selected;
+          const linkProps = R.mergeDeepWith(R.and, srcProps, tgtProps);
           const rvfLink: RVF_ForceLink = {
             link: { source, target, value: 4 },
-            className: cx('graph-link', {
-              active: active && src.active,
-              selected: toSelect,
-              highlighted: toHighlight,
-            }),
+            className: cx('graph-link', linkProps),
           };
 
-          const linkPtr =
-            toHighlight ? hLinks :
-              toSelect ? sLinks : links;
+          // TODO, shouldnt expose highlight and selected
+          const linksPtr =
+            linkProps.highlight ? hLinks :
+              linkProps.selected ? sLinks : links;
 
-          linkPtr.push(rvfLink);
+          linksPtr.push(rvfLink);
           hist[source][target] = rvfLink; // record link
         }
       }
     });
   });
-
-  if (nodes.length === 0) {
-    nodes.push({node: {id: '???'}});
-  }
 
   return { nodes, links: links.concat(sLinks).concat(hLinks) };
 }

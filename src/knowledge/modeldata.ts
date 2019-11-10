@@ -2,7 +2,11 @@
 export const keys: SynergyType[] = ['class', 'origin'];
 
 // unique object property
-export const id = 'name';
+export type Identity = 'name';
+export const id: Identity = 'name';
+export interface Identifiable {
+  name: string;
+}
 
 // champion interface (using object keys and object props)
 export interface Champion {

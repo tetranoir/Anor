@@ -12,7 +12,7 @@ import { objFromAry } from './util';
 import { graphConfig } from './config';
 import { keys, isChampion, Champion, id, Synergy} from './knowledge/modeldata';
 import { SynergyMap, SynergyTypeMap, SynergyType } from './knowledge/modeldata';
-import { State } from './knowledge/modelapp';
+import { State, pickState } from './knowledge/modelapp';
 
 // loaders
 import { mapToReactD3Graph, mapToVxNetwork, mapToReactVisForce } from './loader/mapsToGraph';
@@ -50,6 +50,7 @@ function useChampion(champion: Champion) {
   const [selected, setSelected] = useState(false);
   const [grouped, setGrouped] = useState(false);
   const [highlighted, setHighlighted] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   // use setActive from closure
   function onChange(e) {
@@ -73,10 +74,12 @@ function useChampion(champion: Champion) {
     selected,
     grouped,
     highlighted,
+    hovered,
     setActive,
     setSelected,
     setGrouped,
     setHighlighted,
+    setHovered,
   };
 }
 
@@ -361,7 +364,7 @@ function Ariandel() {
 
   // const graph = mapToReactD3Graph(id, champions, idToChampion, Object.values(keyToMap));
   // const graph = mapToVxNetwork();
-  const {nodes, links} = mapToReactVisForce(id, champions, idToChampion, Object.values(keyToMap));
+  const {nodes, links} = mapToReactVisForce(id, champions, Object.values(keyToMap), pickState);
   console.log('ARIANDEL RENDER', Date.now() - start);
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
