@@ -1,0 +1,606 @@
+[
+  {
+    "name": "Aatrox",
+    "tier": 3,
+    "origin": [
+      "Light"
+    ],
+    "class": [
+      "Blademaster"
+    ]
+  },
+  {
+    "name": "Annie",
+    "tier": 4,
+    "origin": [
+      "Inferno"
+    ],
+    "class": [
+      "Summoner"
+    ]
+  },
+  {
+    "name": "Ashe",
+    "tier": 4,
+    "origin": [
+      "Crystal"
+    ],
+    "class": [
+      "Ranger"
+    ]
+  },
+  {
+    "name": "Azir",
+    "tier": 3,
+    "origin": [
+      "Desert"
+    ],
+    "class": [
+      "Summoner"
+    ]
+  },
+  {
+    "name": "Brand",
+    "tier": 4,
+    "origin": [
+      "Inferno"
+    ],
+    "class": [
+      "Mage"
+    ]
+  },
+  {
+    "name": "Braum",
+    "tier": 2,
+    "origin": [
+      "Glacial"
+    ],
+    "class": [
+      "Warden"
+    ]
+  },
+  {
+    "name": "Diana",
+    "tier": 1,
+    "origin": [
+      "Inferno"
+    ],
+    "class": [
+      "Assassin"
+    ]
+  },
+  {
+    "name": "Dr. Mundo",
+    "tier": 3,
+    "origin": [
+      "Poison"
+    ],
+    "class": [
+      "Berserker"
+    ]
+  },
+  {
+    "name": "Ezreal",
+    "tier": 3,
+    "origin": [
+      "Glacial"
+    ],
+    "class": [
+      "Ranger"
+    ]
+  },
+  {
+    "name": "Ivern",
+    "tier": 1,
+    "origin": [
+      "Woodland"
+    ],
+    "class": [
+      "Druid"
+    ]
+  },
+  {
+    "name": "Janna",
+    "tier": 4,
+    "origin": [
+      "Cloud"
+    ],
+    "class": [
+      "Mystic"
+    ]
+  },
+  {
+    "name": "Jax",
+    "tier": 2,
+    "origin": [
+      "Light"
+    ],
+    "class": [
+      "Berserker"
+    ]
+  },
+  {
+    "name": "Kha'Zix",
+    "tier": 4,
+    "origin": [
+      "Desert"
+    ],
+    "class": [
+      "Assassin"
+    ]
+  },
+  {
+    "name": "Kindred",
+    "tier": 3,
+    "origin": [
+      "Shadow",
+      "Inferno"
+    ],
+    "class": [
+      "Ranger"
+    ]
+  },
+  {
+    "name": "Kog'Maw",
+    "tier": 1,
+    "origin": [
+      "Poison"
+    ],
+    "class": [
+      "Predator"
+    ]
+  },
+  {
+    "name": "LeBlanc",
+    "tier": 2,
+    "origin": [
+      "Woodland"
+    ],
+    "class": [
+      "Assassin"
+    ]
+  },
+  {
+    "name": "Lux",
+    "tier": 5,
+    "origin": [
+      "Cloud"
+    ],
+    "class": [
+      "Crystal"
+    ]
+  },
+  {
+    "name": "Lux",
+    "tier": 5,
+    "origin": [
+      "Crystal"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  {
+    "name": "Lux",
+    "tier": 5,
+    "origin": [
+      "Electric"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  {
+    "name": "Lux",
+    "tier": 5,
+    "origin": [
+      "Glacial"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  {
+    "name": "Lux",
+    "tier": 5,
+    "origin": [
+      "Inferno"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  {
+    "name": "Lux",
+    "tier": 5,
+    "origin": [
+      "Light"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  {
+    "name": "Lux",
+    "tier": 5,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  {
+    "name": "Lux",
+    "tier": 5,
+    "origin": [
+      "Shadow"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  {
+    "name": "Lux",
+    "tier": 5,
+    "origin": [
+      "Steel"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  {
+    "name": "Lux",
+    "tier": 5,
+    "origin": [
+      "Woodland"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  {
+    "name": "Malphite",
+    "tier": 4,
+    "origin": [
+      "Mountain"
+    ],
+    "class": [
+      "Warden"
+    ]
+  },
+  {
+    "name": "Malzahar",
+    "tier": 2,
+    "origin": [
+      "Shadow"
+    ],
+    "class": [
+      "Summoner"
+    ]
+  },
+  {
+    "name": "Maokai",
+    "tier": 1,
+    "origin": [
+      "Woodland"
+    ],
+    "class": [
+      "Druid"
+    ]
+  },
+  {
+    "name": "Master Yi",
+    "tier": 5,
+    "origin": [
+      "Shadow"
+    ],
+    "class": [
+      "Mystic",
+      "Blademaster"
+    ]
+  },
+  {
+    "name": "Nami",
+    "tier": 5,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Mystic"
+    ]
+  },
+  {
+    "name": "Nasus",
+    "tier": 1,
+    "origin": [
+      "Light"
+    ],
+    "class": [
+      "Warden"
+    ]
+  },
+  {
+    "name": "Nautilus",
+    "tier": 3,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Warden"
+    ]
+  },
+  {
+    "name": "Neeko",
+    "tier": 2,
+    "origin": [
+      "Woodland"
+    ],
+    "class": [
+      "Druid"
+    ]
+  },
+  {
+    "name": "Nocturne",
+    "tier": 3,
+    "origin": [
+      "Steel"
+    ],
+    "class": [
+      "Assassin"
+    ]
+  },
+  {
+    "name": "Olaf",
+    "tier": 4,
+    "origin": [
+      "Glacial"
+    ],
+    "class": [
+      "Berserker"
+    ]
+  },
+  {
+    "name": "Ornn",
+    "tier": 1,
+    "origin": [
+      "Electric"
+    ],
+    "class": [
+      "Warden"
+    ]
+  },
+  {
+    "name": "Qiyana",
+    "tier": 3,
+    "origin": [
+      "Variable"
+    ],
+    "class": [
+      "Assassin"
+    ]
+  },
+  {
+    "name": "Rek'Sai",
+    "tier": 2,
+    "origin": [
+      "Steel"
+    ],
+    "class": [
+      "Predator"
+    ]
+  },
+  {
+    "name": "Renekton",
+    "tier": 1,
+    "origin": [
+      "Desert"
+    ],
+    "class": [
+      "Berserker"
+    ]
+  },
+  {
+    "name": "Singed",
+    "tier": 5,
+    "origin": [
+      "Poison"
+    ],
+    "class": [
+      "Alchemist"
+    ]
+  },
+  {
+    "name": "Sion",
+    "tier": 3,
+    "origin": [
+      "Shadow"
+    ],
+    "class": [
+      "Berserker"
+    ]
+  },
+  {
+    "name": "Sivir",
+    "tier": 3,
+    "origin": [
+      "Desert"
+    ],
+    "class": [
+      "Blademaster"
+    ]
+  },
+  {
+    "name": "Skarner",
+    "tier": 2,
+    "origin": [
+      "Crystal"
+    ],
+    "class": [
+      "Predator"
+    ]
+  },
+  {
+    "name": "Soraka",
+    "tier": 3,
+    "origin": [
+      "Light"
+    ],
+    "class": [
+      "Mystic"
+    ]
+  },
+  {
+    "name": "Syndra",
+    "tier": 2,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Mage"
+    ]
+  },
+  {
+    "name": "Taliyah",
+    "tier": 1,
+    "origin": [
+      "Mountain"
+    ],
+    "class": [
+      "Mage"
+    ]
+  },
+  {
+    "name": "Taric",
+    "tier": 5,
+    "origin": [
+      "Crystal"
+    ],
+    "class": [
+      "Warden"
+    ]
+  },
+  {
+    "name": "Thresh",
+    "tier": 2,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Warden"
+    ]
+  },
+  {
+    "name": "Twitch",
+    "tier": 4,
+    "origin": [
+      "Poison"
+    ],
+    "class": [
+      "Ranger"
+    ]
+  },
+  {
+    "name": "Varus",
+    "tier": 2,
+    "origin": [
+      "Inferno"
+    ],
+    "class": [
+      "Ranger"
+    ]
+  },
+  {
+    "name": "Vayne",
+    "tier": 1,
+    "origin": [
+      "Light"
+    ],
+    "class": [
+      "Ranger"
+    ]
+  },
+  {
+    "name": "Veigar",
+    "tier": 3,
+    "origin": [
+      "Shadow"
+    ],
+    "class": [
+      "Mage"
+    ]
+  },
+  {
+    "name": "Vladimir",
+    "tier": 1,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Mage"
+    ]
+  },
+  {
+    "name": "Volibear",
+    "tier": 2,
+    "origin": [
+      "Glacial",
+      "Electric"
+    ],
+    "class": [
+      "Berserker"
+    ]
+  },
+  {
+    "name": "Warwick",
+    "tier": 1,
+    "origin": [
+      "Glacial"
+    ],
+    "class": [
+      "Predator"
+    ]
+  },
+  {
+    "name": "Yasuo",
+    "tier": 2,
+    "origin": [
+      "Cloud"
+    ],
+    "class": [
+      "Blademaster"
+    ]
+  },
+  {
+    "name": "Yorick",
+    "tier": 4,
+    "origin": [
+      "Light"
+    ],
+    "class": [
+      "Summoner"
+    ]
+  },
+  {
+    "name": "Zed",
+    "tier": 5,
+    "origin": [
+      "Electric"
+    ],
+    "class": [
+      "Assassin",
+      "Summoner"
+    ]
+  },
+  {
+    "name": "Zyra",
+    "tier": 1,
+    "origin": [
+      "Inferno"
+    ],
+    "class": [
+      "Summoner"
+    ]
+  }
+]

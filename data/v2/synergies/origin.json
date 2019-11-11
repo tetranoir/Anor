@@ -1,0 +1,58 @@
+{
+    "Cloud": {
+        "2": "All allies have a 15% chance to dodge enemy basic attacks.",
+        "3": "All allies have a 20% chance to dodge enemy basic attacks.",
+        "4": "All allies have a 30% chance to dodge enemy basic attacks."
+    },
+    "Crystal": {
+        "2": "Crystal units take a maximum of 100 damange from a single attack or ability hit.",
+        "4": "Crystal units take a maximum of 60 damange from a single attack or ability hit."
+    },
+    "Desert": {
+        "2": "Reduce each enemy's armor by 50%",
+        "4": "Reduce each enemy's armor by 90%",
+    },
+    "Electric": {
+        "2": "Electric units shock nearby enemies for 70 damage whenever they deal or receive a critical strike.",
+        "3": "Electric units shock nearby enemies for 250 damage whenever they deal or receive a critical strike.",
+        "4": "Electric units shock nearby enemies for 500 damage whenever they deal or receive a critical strike."
+    },
+    "Glacial": {
+        "2": "Glacial units basic attacks have a 20% chance to stun their target for 1.5 seconds on-hit.",
+        "4": "Glacial units basic attacks have a 40% chance to stun their target for 1.5 seconds on-hit.",
+        "6": "Glacial units basic attacks have a 60% chance to stun their target for 1.5 seconds on-hit."
+    },
+    "Inferno": {
+        "3": "Inferno spells burn the ground beneath the target, dealing 80% of that spell's pre-mitigation damage as magic damage over 5 seconds.",
+        "6": "Inferno spells burn the ground beneath the target, dealing 175% of that spell's pre-mitigation damage as magic damage over 5 seconds.",
+        "9": "Inferno spells burn the ground beneath the target, dealing 275% of that spell's pre-mitigation damage as magic damage over 5 seconds."
+    },
+    "Light": {
+        "3": "When a Light unit dies, all other Light units gain +10% bonus attack speed and are healed for 25% of their maximum health.",
+        "6": "When a Light unit dies, all other Light units gain +20% bonus attack speed and are healed for 25% of their maximum health.",
+        "9": "When a Light unit dies, all other Light units gain +35% bonus attack speed and are healed for 25% of their maximum health."
+    },
+    "Mountain": {
+        "2": "At the start of combat, a random ally gains a 1500 health stoneshield."
+    },
+    "Ocean": {
+        "2": "All allies restore +15 mana every 4 seconds.",
+        "4": "All allies restore +30 mana every 4 seconds.",
+        "6": "All allies restore +50 mana every 4 seconds."
+    },
+    "Poison": {
+        "3": "Poison units apply Neurotoxin when they deal damage, increasing the mana cost of the target's spell by 50%."
+    },
+    "Shadow": {
+        "2": "Shadow units deal +50% increased damage for 5 seconds at combat start, refreshed on self takedown.",
+        "4": "Shadow units deal +100% increased damage for 5 seconds at combat start, refreshed on any Shadow unit takedown."
+    },
+    "Steel": {
+        "2": "Steel units gain damage immunity for a 2 seconds when they are reduced below 50% health.",
+        "3": "Steel units gain damage immunity for a 3 seconds when they are reduced below 50% health.",
+        "4": "Steel units gain damage immunity for a 4 seconds when they are reduced below 50% health."
+    },
+    "Woodland": {
+        "3": "At the start of combat, a random Woodland champion makes a copy of themselves (excluding items)."
+    }
+}

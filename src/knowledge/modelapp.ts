@@ -18,10 +18,18 @@ export interface State extends StateVars {
 }
 
 // Picks state props from an object
-export const pickState: (o: StateVars) => StateVars = R.pick([
+export const pickStateVars: (o: StateVars) => StateVars = R.pick([
   'active',
   'selected',
   'grouped',
   'highlighted',
   'hovered',
 ]);
+
+export const mergeStateVars = (a: StateVars, b: StateVars): StateVars => ({
+  active: a.active && b.active,
+  selected: a.selected && b.selected,
+  grouped: a.grouped && b.grouped,
+  highlighted: a.highlighted && b.highlighted,
+  hovered: false,
+});

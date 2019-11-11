@@ -5,8 +5,8 @@ const p = require('path');
 
 // config
 const verbose = false;
-const tables = ['champions', 'synergies']; // determines name of generated file
-const source = 'data'; // path to source data
+const tables = ['champions', 'synergies']; // data files that exist
+const source = p.join('data', 'v1'); // path to source data
 const target = p.join('src', 'data'); // target of generated file
 
 console.log(__dirname)

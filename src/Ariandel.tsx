@@ -10,9 +10,11 @@ import * as ramda from 'ramda';
 // fundamentals
 import { objFromAry } from './util';
 import { graphConfig } from './config';
-import { keys, isChampion, Champion, id, Synergy} from './knowledge/modeldata';
-import { SynergyMap, SynergyTypeMap, SynergyType } from './knowledge/modeldata';
-import { State, pickState } from './knowledge/modelapp';
+import {
+  keys, isChampion, Champion, id, Synergy,
+  SynergyMap, SynergyTypeMap, SynergyType
+} from './knowledge/modeldata';
+import { State, pickStateVars, mergeStateVars } from './knowledge/modelapp';
 
 // loaders
 import { mapToReactD3Graph, mapToVxNetwork, mapToReactVisForce } from './loader/mapsToGraph';
@@ -364,7 +366,7 @@ function Ariandel() {
 
   // const graph = mapToReactD3Graph(id, champions, idToChampion, Object.values(keyToMap));
   // const graph = mapToVxNetwork();
-  const {nodes, links} = mapToReactVisForce(id, champions, Object.values(keyToMap), pickState);
+  const {nodes, links} = mapToReactVisForce(id, champions, Object.values(keyToMap), pickStateVars, mergeStateVars);
   console.log('ARIANDEL RENDER', Date.now() - start);
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
@@ -391,7 +393,6 @@ function Ariandel() {
         <ForceGraph
           highlightDependencies
           showLabels
-          zoom
           simulationOptions={{
             radiusMargin: 40,
             strength: { x: -.07, y: -.05 },

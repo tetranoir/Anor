@@ -1,4 +1,3 @@
-import { State } from '../knowledge/modelapp';
 import cx from 'classnames/bind';
 import * as R from 'ramda';
 
@@ -49,15 +48,17 @@ type Identifiable<T extends string, U = {}> = Record<T, string> & U;
  * @param maps.....Maps mappings of "Keys" to objects (TODO: deprecate in
  *                 favor of extracting this information from objs)
  * @param nodeProps Function that extracts properties from a T object
+ * @param linkPRops Function that extracts properties from 2 T objects
  */
 type mapToReactVisForce =
-  <T extends string, S, U extends Identifiable<T, S>>(
-    id: T,
+  <S extends string, T, U extends Identifiable<S, T>>(
+    id: S,
     objs: U[],
     maps,
-    nodeProps: (o: S) => object,
+    nodeProps: (o: T) => object,
+    linkProps: (a: T, b: T) => object,
   ) => { nodes: RVF_ForceNode[], links: RVF_ForceLink[] };
-export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps) => {
+export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps, linkProps) => {
   const nodes: RVF_ForceNode[] = objs.map(o => {
     const props = nodeProps(o);
     const rvfNode = {
@@ -81,27 +82,26 @@ export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps
       const objs = Object.values(objMaps);
       for (let i = 0; i < objs.length - 1; i++) {
         const src = objs[i];
-        const srcProps = nodeProps(src);
         const source: string = src[id];
         if (!hist[source]) {
           hist[source] = {};
         }
         for (let j = i + 1; j < objs.length; j++) {
           const tgt = objs[j];
-          const tgtProps = tgt;
           const target: string = tgt[id];
           if (hist[source][target]) continue; // drop dup links
 
-          const linkProps = R.mergeDeepWith(R.and, srcProps, tgtProps);
+          const lProps = linkProps(src, tgt);
           const rvfLink: RVF_ForceLink = {
             link: { source, target, value: 4 },
-            className: cx('graph-link', linkProps),
+            className: cx('graph-link', lProps),
           };
 
           // TODO, shouldnt expose highlight and selected
+          const __unsafe_lProps = lProps as any;
           const linksPtr =
-            linkProps.highlight ? hLinks :
-              linkProps.selected ? sLinks : links;
+            __unsafe_lProps.highlighted ? hLinks :
+              __unsafe_lProps.selected ? sLinks : links;
 
           linksPtr.push(rvfLink);
           hist[source][target] = rvfLink; // record link
