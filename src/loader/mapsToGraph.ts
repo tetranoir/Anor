@@ -78,7 +78,12 @@ export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps
   const sLinks: RVF_ForceLink[] = [];
   const hLinks: RVF_ForceLink[] = [];
   maps.forEach(map => {
-    Object.values(map).forEach(objMaps => {
+    Object.entries(map).forEach(([synergy, objMaps]) => {
+      // TODO, this is clearly bad, should instead find and hide links between
+      // synergies with only a thresh of 1
+      if (synergy === "Avatar") {
+        return;
+      }
       const objs = Object.values(objMaps);
       for (let i = 0; i < objs.length - 1; i++) {
         const src = objs[i];

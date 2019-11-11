@@ -23,6 +23,10 @@
   color: #61dafb;
 }
 
+.flex {
+  display: flex;
+}
+
 .container {
   font-size: 9px;
   display: flex;
@@ -93,8 +97,7 @@ div[hidden] {
   }
 }
 
-.selected-champions,
-.highlighted-champions {
+.champion-list {
   .champion {
     padding: 0 10px;
     font-size: 9px;
@@ -106,9 +109,8 @@ div[hidden] {
   }
 }
 
-.selected-synergies {
+.synergy-list {
   .synergy {
-    display: flex;
     font-size: 9px;
     padding: 0 10px;
 
@@ -131,7 +133,8 @@ div[hidden] {
     display: block;
     opacity: 0.7;
   }
-  text.node-label.highlighted {
+  text.node-label.highlighted,
+  text.node-label.hovered {
     font-weight: bold;
     opacity: 1;
     z-index: 2;
@@ -164,7 +167,8 @@ div[hidden] {
   circle.graph-node.selected {
     fill: #89abd2;
   }
-  circle.graph-node.highlighted {
+  circle.graph-node.highlighted,
+  circle.graph-node.hovered {
     stroke: #4477b2;
   }
 }

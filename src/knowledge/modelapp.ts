@@ -31,5 +31,5 @@ export const mergeStateVars = (a: StateVars, b: StateVars): StateVars => ({
   selected: a.selected && b.selected,
   grouped: a.grouped && b.grouped,
   highlighted: a.highlighted && b.highlighted,
-  hovered: false,
+  hovered: a.hovered && b.hovered,
 });
