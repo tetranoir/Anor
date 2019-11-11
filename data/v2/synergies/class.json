@@ -10,8 +10,8 @@
         "1": "Avatar's Origin Element is counted twice for Trait bonuses."
     },
     "Berserker": {
-        "3": "Berserkers have a 45% chance to hit all units in cone in front of them and apply on-hit effects.",
-        "6": "Berserkers have a 100% chance to hit all units in cone in front of them and apply on-hit effects."
+        "3": "Berserkers have a 45% chance to hit units in cone in front of them and apply on-hit effects.",
+        "6": "Berserkers have a 100% chance to hit units in cone in front of them and apply on-hit effects."
     },
     "Blademaster": {
         "2": "40% chance to trigger 1 additional attack against their target.",

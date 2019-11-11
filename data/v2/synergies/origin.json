@@ -23,14 +23,14 @@
         "6": "Glacial units basic attacks have a 60% chance to stun their target for 1.5 seconds on-hit."
     },
     "Inferno": {
-        "3": "Inferno spells burn the ground beneath the target, dealing 80% of that spell's pre-mitigation damage as magic damage over 5 seconds.",
-        "6": "Inferno spells burn the ground beneath the target, dealing 175% of that spell's pre-mitigation damage as magic damage over 5 seconds.",
-        "9": "Inferno spells burn the ground beneath the target, dealing 275% of that spell's pre-mitigation damage as magic damage over 5 seconds."
+        "3": "Inferno spells burn the ground beneath damage targets, dealing 80% of that spell's damage over 5 seconds.",
+        "6": "Inferno spells burn the ground beneath damage targets, dealing 175% of that spell's damage over 5 seconds.",
+        "9": "Inferno spells burn the ground beneath damage targets, dealing 275% of that spell's damage over 5 seconds."
     },
     "Light": {
-        "3": "When a Light unit dies, all other Light units gain +10% bonus attack speed and are healed for 25% of their maximum health.",
-        "6": "When a Light unit dies, all other Light units gain +20% bonus attack speed and are healed for 25% of their maximum health.",
-        "9": "When a Light unit dies, all other Light units gain +35% bonus attack speed and are healed for 25% of their maximum health."
+        "3": "When a Light unit dies, all other Light units gain +10% bonus attack speed and heal 25% of their maximum health.",
+        "6": "When a Light unit dies, all other Light units gain +20% bonus attack speed and heal 25% of their maximum health.",
+        "9": "When a Light unit dies, all other Light units gain +35% bonus attack speed and heal 25% of their maximum health."
     },
     "Mountain": {
         "2": "At the start of combat, a random ally gains a 1500 health stoneshield."
