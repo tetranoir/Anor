@@ -395,7 +395,7 @@ function Ariandel() {
           showLabels
           simulationOptions={{
             radiusMargin: 40,
-            strength: { x: -.07, y: -.05 },
+            // strength: { x: -.03, y: -.01 },
             // animate: true,
             // alphaDecay: .01,
             height: 900,

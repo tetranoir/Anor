@@ -161,100 +161,100 @@
     ]
   },
   {
-    "name": "Lux",
+    "name": "Lux Cloud",
     "tier": 5,
     "origin": [
-      "Cloud"
-    ],
-    "class": [
-      "Crystal"
-    ]
-  },
-  {
-    "name": "Lux",
-    "tier": 5,
-    "origin": [
-      "Crystal"
+      "Cloud", "Cloud"
     ],
     "class": [
       "Avatar"
     ]
   },
   {
-    "name": "Lux",
+    "name": "Lux Crystal",
     "tier": 5,
     "origin": [
-      "Electric"
+      "Crystal", "Crystal"
     ],
     "class": [
       "Avatar"
     ]
   },
   {
-    "name": "Lux",
+    "name": "Lux Electric",
     "tier": 5,
     "origin": [
-      "Glacial"
+      "Electric", "Electric"
     ],
     "class": [
       "Avatar"
     ]
   },
   {
-    "name": "Lux",
+    "name": "Lux Glacial",
     "tier": 5,
     "origin": [
-      "Inferno"
+      "Glacial", "Glacial"
     ],
     "class": [
       "Avatar"
     ]
   },
   {
-    "name": "Lux",
+    "name": "Lux Inferno",
     "tier": 5,
     "origin": [
-      "Light"
+      "Inferno", "Inferno"
     ],
     "class": [
       "Avatar"
     ]
   },
   {
-    "name": "Lux",
+    "name": "Lux Light",
     "tier": 5,
     "origin": [
-      "Ocean"
+      "Light", "Light"
     ],
     "class": [
       "Avatar"
     ]
   },
   {
-    "name": "Lux",
+    "name": "Lux Ocean",
     "tier": 5,
     "origin": [
-      "Shadow"
+      "Ocean", "Ocean"
     ],
     "class": [
       "Avatar"
     ]
   },
   {
-    "name": "Lux",
+    "name": "Lux Shadow",
     "tier": 5,
     "origin": [
-      "Steel"
+      "Shadow", "Shadow"
     ],
     "class": [
       "Avatar"
     ]
   },
   {
-    "name": "Lux",
+    "name": "Lux Steel",
     "tier": 5,
     "origin": [
-      "Woodland"
+      "Steel", "Steel"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  {
+    "name": "Lux Woodland",
+    "tier": 5,
+    "origin": [
+      "Woodland", "Woodland"
     ],
     "class": [
       "Avatar"

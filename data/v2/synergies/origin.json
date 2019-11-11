@@ -10,7 +10,7 @@
     },
     "Desert": {
         "2": "Reduce each enemy's armor by 50%",
-        "4": "Reduce each enemy's armor by 90%",
+        "4": "Reduce each enemy's armor by 90%"
     },
     "Electric": {
         "2": "Electric units shock nearby enemies for 70 damage whenever they deal or receive a critical strike.",

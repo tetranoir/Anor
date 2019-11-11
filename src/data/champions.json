@@ -1,516 +1,666 @@
 {
-  "aatrox": {
+  "Aatrox": {
     "name": "Aatrox",
-    "class": [
-      "blademaster"
-    ],
+    "tier": 3,
     "origin": [
-      "demon"
+      "Light"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Aatrox.png"
-  },
-  "ahri": {
-    "name": "Ahri",
     "class": [
-      "sorcerer"
+      "Blademaster"
     ],
-    "origin": [
-      "wild"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Ahri.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Aatrox.png"
   },
-  "akali": {
-    "name": "Akali",
+  "Annie": {
+    "name": "Annie",
+    "tier": 4,
+    "origin": [
+      "Inferno"
+    ],
     "class": [
-      "assassin"
+      "Summoner"
     ],
-    "origin": [
-      "ninja"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Akali.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Annie.png"
   },
-  "anivia": {
-    "name": "Anivia",
-    "class": [
-      "elementalist"
-    ],
-    "origin": [
-      "glacial"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Anivia.png"
-  },
-  "ashe": {
+  "Ashe": {
     "name": "Ashe",
-    "class": [
-      "ranger"
-    ],
+    "tier": 4,
     "origin": [
-      "glacial"
+      "Crystal"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Ashe.png"
-  },
-  "aurelionsol": {
-    "name": "Aurelion Sol",
     "class": [
-      "sorcerer"
+      "Ranger"
     ],
-    "origin": [
-      "dragon"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/AurelionSol.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Ashe.png"
   },
-  "blitzcrank": {
-    "name": "Blitzcrank",
+  "Azir": {
+    "name": "Azir",
+    "tier": 3,
+    "origin": [
+      "Desert"
+    ],
     "class": [
-      "brawler"
+      "Summoner"
     ],
-    "origin": [
-      "robot"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Blitzcrank.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Azir.png"
   },
-  "brand": {
+  "Brand": {
     "name": "Brand",
-    "class": [
-      "elementalist"
-    ],
+    "tier": 4,
     "origin": [
-      "demon"
+      "Inferno"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Brand.png"
+    "class": [
+      "Mage"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Brand.png"
   },
-  "braum": {
+  "Braum": {
     "name": "Braum",
-    "class": [
-      "guardian"
-    ],
+    "tier": 2,
     "origin": [
-      "glacial"
+      "Glacial"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Braum.png"
-  },
-  "chogath": {
-    "name": "Cho'Gath",
     "class": [
-      "brawler"
+      "Warden"
     ],
-    "origin": [
-      "void"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Chogath.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Braum.png"
   },
-  "darius": {
-    "name": "Darius",
+  "Diana": {
+    "name": "Diana",
+    "tier": 1,
+    "origin": [
+      "Inferno"
+    ],
     "class": [
-      "knight"
+      "Assassin"
     ],
-    "origin": [
-      "imperial"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Darius.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Diana.png"
   },
-  "draven": {
-    "name": "Draven",
+  "Dr. Mundo": {
+    "name": "Dr. Mundo",
+    "tier": 3,
+    "origin": [
+      "Poison"
+    ],
     "class": [
-      "blademaster"
+      "Berserker"
     ],
-    "origin": [
-      "imperial"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Draven.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/DrMundo.png"
   },
-  "elise": {
-    "name": "Elise",
+  "Ezreal": {
+    "name": "Ezreal",
+    "tier": 3,
+    "origin": [
+      "Glacial"
+    ],
     "class": [
-      "shapeshifter"
+      "Ranger"
     ],
-    "origin": [
-      "demon"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Elise.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Ezreal.png"
   },
-  "evelynn": {
-    "name": "Evelynn",
+  "Ivern": {
+    "name": "Ivern",
+    "tier": 1,
+    "origin": [
+      "Woodland"
+    ],
     "class": [
-      "assassin"
+      "Druid"
     ],
-    "origin": [
-      "demon"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Evelynn.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Ivern.png"
   },
-  "fiora": {
-    "name": "Fiora",
+  "Janna": {
+    "name": "Janna",
+    "tier": 4,
+    "origin": [
+      "Cloud"
+    ],
     "class": [
-      "blademaster"
+      "Mystic"
     ],
-    "origin": [
-      "noble"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Fiora.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Janna.png"
   },
-  "gangplank": {
-    "name": "Gangplank",
+  "Jax": {
+    "name": "Jax",
+    "tier": 2,
+    "origin": [
+      "Light"
+    ],
     "class": [
-      "gunslinger",
-      "blademaster"
+      "Berserker"
     ],
-    "origin": [
-      "pirate"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Gangplank.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Jax.png"
   },
-  "garen": {
-    "name": "Garen",
-    "class": [
-      "knight"
-    ],
-    "origin": [
-      "noble"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Garen.png"
-  },
-  "gnar": {
-    "name": "Gnar",
-    "class": [
-      "shapeshifter"
-    ],
-    "origin": [
-      "wild",
-      "yordle"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Gnar.png"
-  },
-  "graves": {
-    "name": "Graves",
-    "class": [
-      "gunslinger"
-    ],
-    "origin": [
-      "pirate"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Graves.png"
-  },
-  "karthus": {
-    "name": "Karthus",
-    "class": [
-      "sorcerer"
-    ],
-    "origin": [
-      "phantom"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Karthus.png"
-  },
-  "kassadin": {
-    "name": "Kassadin",
-    "class": [
-      "sorcerer"
-    ],
-    "origin": [
-      "void"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Kassadin.png"
-  },
-  "katarina": {
-    "name": "Katarina",
-    "class": [
-      "assassin"
-    ],
-    "origin": [
-      "imperial"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Katarina.png"
-  },
-  "kayle": {
-    "name": "Kayle",
-    "class": [
-      "knight"
-    ],
-    "origin": [
-      "noble"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Kayle.png"
-  },
-  "kennen": {
-    "name": "Kennen",
-    "class": [
-      "elementalist"
-    ],
-    "origin": [
-      "ninja",
-      "yordle"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Kennen.png"
-  },
-  "khazix": {
+  "Kha'Zix": {
     "name": "Kha'Zix",
-    "class": [
-      "assassin"
-    ],
+    "tier": 4,
     "origin": [
-      "void"
+      "Desert"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Khazix.png"
+    "class": [
+      "Assassin"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Khazix.png"
   },
-  "kindred": {
+  "Kindred": {
     "name": "Kindred",
-    "class": [
-      "ranger"
-    ],
+    "tier": 3,
     "origin": [
-      "phantom"
+      "Shadow",
+      "Inferno"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Kindred.png"
-  },
-  "leona": {
-    "name": "Leona",
     "class": [
-      "guardian"
+      "Ranger"
     ],
-    "origin": [
-      "noble"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Leona.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Kindred.png"
   },
-  "lissandra": {
-    "name": "Lissandra",
+  "Kog'Maw": {
+    "name": "Kog'Maw",
+    "tier": 1,
+    "origin": [
+      "Poison"
+    ],
     "class": [
-      "elementalist"
+      "Predator"
     ],
-    "origin": [
-      "glacial"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Lissandra.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/KogMaw.png"
   },
-  "lucian": {
-    "name": "Lucian",
+  "LeBlanc": {
+    "name": "LeBlanc",
+    "tier": 2,
+    "origin": [
+      "Woodland"
+    ],
     "class": [
-      "gunslinger"
+      "Assassin"
     ],
-    "origin": [
-      "noble"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Lucian.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Leblanc.png"
   },
-  "lulu": {
-    "name": "Lulu",
+  "Lux Cloud": {
+    "name": "Lux Cloud",
+    "tier": 5,
+    "origin": [
+      "Cloud",
+      "Cloud"
+    ],
     "class": [
-      "sorcerer"
-    ],
-    "origin": [
-      "yordle"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Lulu.png"
+      "Avatar"
+    ]
   },
-  "missfortune": {
-    "name": "Miss Fortune",
+  "Lux Crystal": {
+    "name": "Lux Crystal",
+    "tier": 5,
+    "origin": [
+      "Crystal",
+      "Crystal"
+    ],
     "class": [
-      "gunslinger"
-    ],
-    "origin": [
-      "pirate"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/MissFortune.png"
+      "Avatar"
+    ]
   },
-  "mordekaiser": {
-    "name": "Mordekaiser",
+  "Lux Electric": {
+    "name": "Lux Electric",
+    "tier": 5,
+    "origin": [
+      "Electric",
+      "Electric"
+    ],
     "class": [
-      "knight"
-    ],
-    "origin": [
-      "phantom"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Mordekaiser.png"
+      "Avatar"
+    ]
   },
-  "morgana": {
-    "name": "Morgana",
+  "Lux Glacial": {
+    "name": "Lux Glacial",
+    "tier": 5,
+    "origin": [
+      "Glacial",
+      "Glacial"
+    ],
     "class": [
-      "sorcerer"
-    ],
-    "origin": [
-      "demon"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Morgana.png"
+      "Avatar"
+    ]
   },
-  "nidealee": {
-    "name": "Nidalee",
+  "Lux Inferno": {
+    "name": "Lux Inferno",
+    "tier": 5,
+    "origin": [
+      "Inferno",
+      "Inferno"
+    ],
     "class": [
-      "shapeshifter"
-    ],
-    "origin": [
-      "wild"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Nidalee.png"
+      "Avatar"
+    ]
   },
-  "poppy": {
-    "name": "Poppy",
+  "Lux Light": {
+    "name": "Lux Light",
+    "tier": 5,
+    "origin": [
+      "Light",
+      "Light"
+    ],
     "class": [
-      "knight"
-    ],
-    "origin": [
-      "yordle"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Poppy.png"
+      "Avatar"
+    ]
   },
-  "pyke": {
-    "name": "Pyke",
+  "Lux Ocean": {
+    "name": "Lux Ocean",
+    "tier": 5,
+    "origin": [
+      "Ocean",
+      "Ocean"
+    ],
     "class": [
-      "assassin"
-    ],
-    "origin": [
-      "pirate"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Pyke.png"
+      "Avatar"
+    ]
   },
-  "reksai": {
+  "Lux Shadow": {
+    "name": "Lux Shadow",
+    "tier": 5,
+    "origin": [
+      "Shadow",
+      "Shadow"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  "Lux Steel": {
+    "name": "Lux Steel",
+    "tier": 5,
+    "origin": [
+      "Steel",
+      "Steel"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  "Lux Woodland": {
+    "name": "Lux Woodland",
+    "tier": 5,
+    "origin": [
+      "Woodland",
+      "Woodland"
+    ],
+    "class": [
+      "Avatar"
+    ]
+  },
+  "Malphite": {
+    "name": "Malphite",
+    "tier": 4,
+    "origin": [
+      "Mountain"
+    ],
+    "class": [
+      "Warden"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Malphite.png"
+  },
+  "Malzahar": {
+    "name": "Malzahar",
+    "tier": 2,
+    "origin": [
+      "Shadow"
+    ],
+    "class": [
+      "Summoner"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Malzahar.png"
+  },
+  "Maokai": {
+    "name": "Maokai",
+    "tier": 1,
+    "origin": [
+      "Woodland"
+    ],
+    "class": [
+      "Druid"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Maokai.png"
+  },
+  "Master Yi": {
+    "name": "Master Yi",
+    "tier": 5,
+    "origin": [
+      "Shadow"
+    ],
+    "class": [
+      "Mystic",
+      "Blademaster"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/MasterYi.png"
+  },
+  "Nami": {
+    "name": "Nami",
+    "tier": 5,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Mystic"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Nami.png"
+  },
+  "Nasus": {
+    "name": "Nasus",
+    "tier": 1,
+    "origin": [
+      "Light"
+    ],
+    "class": [
+      "Warden"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Nasus.png"
+  },
+  "Nautilus": {
+    "name": "Nautilus",
+    "tier": 3,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Warden"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Nautilus.png"
+  },
+  "Neeko": {
+    "name": "Neeko",
+    "tier": 2,
+    "origin": [
+      "Woodland"
+    ],
+    "class": [
+      "Druid"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Neeko.png"
+  },
+  "Nocturne": {
+    "name": "Nocturne",
+    "tier": 3,
+    "origin": [
+      "Steel"
+    ],
+    "class": [
+      "Assassin"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Nocturne.png"
+  },
+  "Olaf": {
+    "name": "Olaf",
+    "tier": 4,
+    "origin": [
+      "Glacial"
+    ],
+    "class": [
+      "Berserker"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Olaf.png"
+  },
+  "Ornn": {
+    "name": "Ornn",
+    "tier": 1,
+    "origin": [
+      "Electric"
+    ],
+    "class": [
+      "Warden"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Ornn.png"
+  },
+  "Qiyana": {
+    "name": "Qiyana",
+    "tier": 3,
+    "origin": [
+      "Variable"
+    ],
+    "class": [
+      "Assassin"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Qiyana.png"
+  },
+  "Rek'Sai": {
     "name": "Rek'Sai",
-    "class": [
-      "brawler"
-    ],
+    "tier": 2,
     "origin": [
-      "void"
+      "Steel"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/RekSai.png"
-  },
-  "rengar": {
-    "name": "Rengar",
     "class": [
-      "assassin"
+      "Predator"
     ],
-    "origin": [
-      "wild"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Rengar.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/RekSai.png"
   },
-  "sejuani": {
-    "name": "Sejuani",
+  "Renekton": {
+    "name": "Renekton",
+    "tier": 1,
+    "origin": [
+      "Desert"
+    ],
     "class": [
-      "knight"
+      "Berserker"
     ],
-    "origin": [
-      "glacial"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Sejuani.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Renekton.png"
   },
-  "shen": {
-    "name": "Shen",
+  "Singed": {
+    "name": "Singed",
+    "tier": 5,
+    "origin": [
+      "Poison"
+    ],
     "class": [
-      "blademaster"
+      "Alchemist"
     ],
-    "origin": [
-      "ninja"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Shen.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Singed.png"
   },
-  "shyvana": {
-    "name": "Shyvana",
+  "Sion": {
+    "name": "Sion",
+    "tier": 3,
+    "origin": [
+      "Shadow"
+    ],
     "class": [
-      "shapeshifter"
+      "Berserker"
     ],
-    "origin": [
-      "dragon"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Shyvana.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Sion.png"
   },
-  "swain": {
-    "name": "Swain",
+  "Sivir": {
+    "name": "Sivir",
+    "tier": 3,
+    "origin": [
+      "Desert"
+    ],
     "class": [
-      "shapeshifter"
+      "Blademaster"
     ],
-    "origin": [
-      "imperial",
-      "demon"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Swain.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Sivir.png"
   },
-  "tristana": {
-    "name": "Tristana",
+  "Skarner": {
+    "name": "Skarner",
+    "tier": 2,
+    "origin": [
+      "Crystal"
+    ],
     "class": [
-      "gunslinger"
+      "Predator"
     ],
-    "origin": [
-      "yordle"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Tristana.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Skarner.png"
   },
-  "twistedfate": {
-    "name": "Twisted Fate",
+  "Soraka": {
+    "name": "Soraka",
+    "tier": 3,
+    "origin": [
+      "Light"
+    ],
     "class": [
-      "sorcerer"
+      "Mystic"
     ],
-    "origin": [
-      "pirate"
-    ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/TwistedFate.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Soraka.png"
   },
-  "varus": {
+  "Syndra": {
+    "name": "Syndra",
+    "tier": 2,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Mage"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Syndra.png"
+  },
+  "Taliyah": {
+    "name": "Taliyah",
+    "tier": 1,
+    "origin": [
+      "Mountain"
+    ],
+    "class": [
+      "Mage"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Taliyah.png"
+  },
+  "Taric": {
+    "name": "Taric",
+    "tier": 5,
+    "origin": [
+      "Crystal"
+    ],
+    "class": [
+      "Warden"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Taric.png"
+  },
+  "Thresh": {
+    "name": "Thresh",
+    "tier": 2,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Warden"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Thresh.png"
+  },
+  "Twitch": {
+    "name": "Twitch",
+    "tier": 4,
+    "origin": [
+      "Poison"
+    ],
+    "class": [
+      "Ranger"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Twitch.png"
+  },
+  "Varus": {
     "name": "Varus",
-    "class": [
-      "ranger"
-    ],
+    "tier": 2,
     "origin": [
-      "demon"
+      "Inferno"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Varus.png"
+    "class": [
+      "Ranger"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Varus.png"
   },
-  "vayne": {
+  "Vayne": {
     "name": "Vayne",
-    "class": [
-      "ranger"
-    ],
+    "tier": 1,
     "origin": [
-      "noble"
+      "Light"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Vayne.png"
+    "class": [
+      "Ranger"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Vayne.png"
   },
-  "veigar": {
+  "Veigar": {
     "name": "Veigar",
-    "class": [
-      "sorcerer"
-    ],
+    "tier": 3,
     "origin": [
-      "yordle"
+      "Shadow"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Veigar.png"
+    "class": [
+      "Mage"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Veigar.png"
   },
-  "volibear": {
+  "Vladimir": {
+    "name": "Vladimir",
+    "tier": 1,
+    "origin": [
+      "Ocean"
+    ],
+    "class": [
+      "Mage"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Vladimir.png"
+  },
+  "Volibear": {
     "name": "Volibear",
-    "class": [
-      "brawler"
-    ],
+    "tier": 2,
     "origin": [
-      "glacial"
+      "Glacial",
+      "Electric"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Volibear.png"
+    "class": [
+      "Berserker"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Volibear.png"
   },
-  "warwick": {
+  "Warwick": {
     "name": "Warwick",
-    "class": [
-      "brawler"
-    ],
+    "tier": 1,
     "origin": [
-      "wild"
+      "Glacial"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Warwick.png"
+    "class": [
+      "Predator"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Warwick.png"
   },
-  "yasuo": {
+  "Yasuo": {
     "name": "Yasuo",
-    "class": [
-      "blademaster"
-    ],
+    "tier": 2,
     "origin": [
-      "exile"
+      "Cloud"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Yasuo.png"
+    "class": [
+      "Blademaster"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Yasuo.png"
   },
-  "zed": {
-    "name": "Zed",
-    "class": [
-      "assassin"
-    ],
+  "Yorick": {
+    "name": "Yorick",
+    "tier": 4,
     "origin": [
-      "ninja"
+      "Light"
     ],
-    "iconSrc": "https://ddragon.leagueoflegends.com/cdn/9.17.1/img/champion/Zed.png"
+    "class": [
+      "Summoner"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Yorick.png"
+  },
+  "Zed": {
+    "name": "Zed",
+    "tier": 5,
+    "origin": [
+      "Electric"
+    ],
+    "class": [
+      "Assassin",
+      "Summoner"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Zed.png"
+  },
+  "Zyra": {
+    "name": "Zyra",
+    "tier": 1,
+    "origin": [
+      "Inferno"
+    ],
+    "class": [
+      "Summoner"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Zyra.png"
   }
 }
