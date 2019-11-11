@@ -4,7 +4,7 @@
     },
     "Assassin": {
         "3": "+75% crit damage and +10% crit chance.",
-        "6": "+150% crit damage and +20% crit chance"
+        "6": "+150% crit damage and +20% crit chance."
     },
     "Avatar": {
         "1": "Avatar's Origin Element is counted twice for Trait bonuses."
@@ -22,8 +22,8 @@
         "2": "Druids regenerate 40 health each second."
     },
     "Mage": {
-        "3": "Mages have a 50% chance cast an additional time",
-        "6": "Mages have a 100% chance cast an additional time"
+        "3": "Mages have a 50% chance cast an additional time.",
+        "6": "Mages have a 100% chance cast an additional time."
     },
     "Mystic": {
         "2": "Allies gain 40 bonus magic resistance.",
@@ -38,12 +38,12 @@
         "6": "Rangers have a 100% chance to gain double attack speed for 3 seconds every 3 seconds."
     },
     "Summoner": {
-        "3": "Summoned units gain +40% bonus health and last longer",
-        "6": "Summoned units gain +100% bonus health and last longer"
+        "3": "Summoned units gain +40% bonus health and last longer.",
+        "6": "Summoned units gain +100% bonus health and last longer."
     },
     "Warden": {
-        "2": "Wardens gain increased +125% armor",
-        "4": "Wardens gain increased +275% armor",
-        "6": "Wardens gain increased +450% armor"
+        "2": "Wardens gain increased +125% armor.",
+        "4": "Wardens gain increased +275% armor.",
+        "6": "Wardens gain increased +450% armor."
     }
 }
