@@ -28,6 +28,7 @@ interface RVF_ForceLink {
   className?: string;
   opacity?: number;
   stroke?: HexColor;
+  pathLength?: number;
   onMouseDown?: (e: MouseEvent) => void;
   onMouseOver?: (e: MouseEvent) => void;
   onMouseOut?: (e: MouseEvent) => void;

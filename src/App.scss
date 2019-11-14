@@ -10,8 +10,27 @@
 
 .checkboxes-container {
   position: absolute;
-  left: 10px;
-  top: 10px;
+  z-index: 5;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    margin: unset;
+  }
+
+  input ~ label {
+    background-color: unset;
+    cursor: pointer;
+    padding: 2px 4px;
+    margin: 1px 0;
+  }
+
+  input:checked ~ label {
+    background-color: #CCC;
+  }
 
   .champion {
     padding-left: 10px;
@@ -19,19 +38,28 @@
     display: flex;
   }
 
+  .depth0 > div {
+    padding-right: 5px;
+  }
+
   .depth1 {
     flex-direction: column;
+    max-width: 75px;
   }
 
   .checkboxes-toggle {
     display: inline-block;
     padding: 2px;
     font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
   }
 
   .checkboxes {
     display: flex;
     flex-wrap: wrap;
+    margin: 12px 12px 0 12px;;
+    padding: 4px;
 
     .labeledinput {
       display: flex;
@@ -40,6 +68,7 @@
 
     .labeledinput > label {
       text-transform: capitalize;
+      white-space: nowrap;
     }
   }
 }
@@ -66,6 +95,7 @@ div[hidden] {
   background-color: whitesmoke;
   border: 1px solid lightgray;
   border-radius: 3px;
+  opacity: 0.9;
 
   .title {
     padding: 0 5px 2px 5px;
@@ -105,7 +135,7 @@ div[hidden] {
 /* blue pastels dark -> light */
 /* #4477b2, #5284bd, #6591c4, #779ecb, #89abd2, #9cb8d9, #aec5e0 */
 #graph {
-  transition: stroke .2s ease-in, opacity .2s ease-in;
+  transition: stroke .6s ease-in, opacity .2s ease-in;
   image.node-icon {
     height: 40px;
     width: 40px;
@@ -122,7 +152,7 @@ div[hidden] {
   text.node-label.active {
     // display: block;
     font-weight: 500;
-    opacity: 0.7;
+    opacity: 0.8;
   }
   text.node-label.highlighted,
   text.node-label.selected,
@@ -135,18 +165,20 @@ div[hidden] {
   line.graph-link {
     opacity: 0.0;
     stroke: #BBB;
-    stroke-width: 3px;
+    stroke-width: 3;
     z-index: 1;
   }
   line.graph-link.active {
-    opacity: 1;
+    opacity: 0.6;
   }
   line.graph-link.selected {
     stroke: #4477b2;
+    opacity: 1.0;
     z-index: 2;
   }
   line.graph-link.highlighted {
     stroke: #4477b2;
+    opacity: 1.0;
     z-index: 3;
   }
 

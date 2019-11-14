@@ -267,7 +267,7 @@ function renderKeysAsCheckboxes(keyToMap) {
 
   return (
     <div className="checkboxes-container">
-      <div className="checkboxes" hidden={hidden}>
+      <div className="checkboxes panel" hidden={hidden}>
         {checkboxes}
       </div>
       <button className="checkboxes-toggle panel" onClick={toggleHidden}>
