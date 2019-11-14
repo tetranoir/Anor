@@ -1,34 +1,9 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 .flex {
   display: flex;
 }
 
 .container {
-  font-size: 9px;
+  font-size: 10px;
   display: flex;
   place-items: start;
 }
@@ -40,7 +15,7 @@
 
   .champion {
     padding-left: 10px;
-    font-size: 9px;
+    font-size: 10px;
     display: flex;
   }
 
@@ -100,7 +75,7 @@ div[hidden] {
 .champion-list {
   .champion {
     padding: 0 10px;
-    font-size: 9px;
+    font-size: 10px;
 
     &:hover {
       cursor: pointer;
@@ -111,7 +86,7 @@ div[hidden] {
 
 .synergy-list {
   .synergy {
-    font-size: 9px;
+    font-size: 10px;
 
     .threshold {
       margin-right: 5px;
@@ -130,54 +105,72 @@ div[hidden] {
 /* blue pastels dark -> light */
 /* #4477b2, #5284bd, #6591c4, #779ecb, #89abd2, #9cb8d9, #aec5e0 */
 #graph {
+  transition: stroke .2s ease-in, opacity .2s ease-in;
+  image.node-icon {
+    height: 40px;
+    width: 40px;
+  }
+
   text.node-label {
-    transform: translate(-14px, 26px);
+    transform: translate(-4px, 37px);
+    text-anchor: middle;
     user-select: none;
-    display: none;
     pointer-events: none;
     z-index: 0;
+    opacity: 0;
   }
   text.node-label.active {
-    display: block;
+    // display: block;
+    font-weight: 500;
     opacity: 0.7;
   }
   text.node-label.highlighted,
+  text.node-label.selected,
   text.node-label.hovered {
-    font-weight: bold;
+    font-weight: 700;
     opacity: 1;
     z-index: 2;
   }
+
   line.graph-link {
     opacity: 0.0;
     stroke: #BBB;
+    stroke-width: 3px;
     z-index: 1;
   }
   line.graph-link.active {
     opacity: 1;
   }
   line.graph-link.selected {
-    stroke: #89abd2;
+    stroke: #4477b2;
     z-index: 2;
   }
   line.graph-link.highlighted {
     stroke: #4477b2;
     z-index: 3;
   }
+
   circle.graph-node {
     cursor: pointer;
     opacity: 0.0;
-    stroke-width: 3px;
-    fill: #BBB;
+    stroke-width: 5px;
+    r: 20px;
+    stroke: #BBB;
   }
   circle.graph-node.active {
-    opacity: 1;
+    opacity: 0.7;
   }
   circle.graph-node.selected {
-    fill: #89abd2;
-  }
-  circle.graph-node.highlighted,
-  circle.graph-node.hovered {
     stroke: #4477b2;
+    opacity: 1;
+  }
+  circle.graph-node.highlighted {
+    stroke: #4477b2;
+    opacity: 1;
+  }
+  circle.graph-node.hovered, {
+    stroke: #4477b2;
+    opacity: 1;
   }
 }
 

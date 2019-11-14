@@ -139,7 +139,6 @@ function enrichSynergy(synergy: Synergy, name: string): EnrichedSynergy {
   };
 }
 
-
 const pickReducer = (acc, val) => {
   val.selected && acc.selected.push(val);
   val.highlighted && acc.highlighted.push(val);
@@ -276,6 +275,29 @@ function renderKeysAsCheckboxes(keyToMap) {
       </button>
     </div>
   );
+}
+
+// helper component for svg
+function ChampionImages(props) {
+  const {champions} = props;
+  return champions.map(c => (
+    <pattern
+      key={c.name}
+      id={c.name.replace(/[' ]/g,'')+'-img'}
+      patternUnits="objectBoundingBox"
+      width="1"
+      height="1"
+      x="0"
+      y="0"
+    >
+      <image
+        className="node-icon"
+        href={c.icon}
+        x="0"
+        y="0"
+      />
+    </pattern>
+  ));
 }
 
 interface SynergyThreshold {
@@ -444,13 +466,18 @@ function Ariandel() {
         <ForceGraph
           highlightDependencies
           showLabels
+          zoom
+          zoomOptions={{
+            maxScale: 1,
+            minScale: 1,
+          }}
           simulationOptions={{
-            radiusMargin: 40,
-            // strength: { x: -.03, y: -.01 },
+            radiusMargin: 36,
+            // strength: { x: -.04, y: -.01 },
             // animate: true,
-            // alphaDecay: .01,
-            height: 900,
-            width: 1100,
+            alphaDecay: .003, // lower the more grouped
+            height: window.innerHeight,
+            width: window.innerWidth,
           }}
         >
           {nodes.map(forceNode => (
@@ -465,6 +492,9 @@ function Ariandel() {
               {...forceLink}
             />
           )).map(attachEvents)}
+          <defs>
+            <ChampionImages champions={champions} />
+          </defs>
         </ForceGraph>
       </div>
     </div>

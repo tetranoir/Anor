@@ -29,7 +29,7 @@
   },
   {
     "name": "Ashe",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Ashe.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Ashe_5.jpg"
   },
   {
     "name": "Aurelion Sol",
@@ -85,7 +85,7 @@
   },
   {
     "name": "Dr. Mundo",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/DrMundo.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/DrMundo_1.jpg"
   },
   {
     "name": "Draven",
@@ -229,7 +229,7 @@
   },
   {
     "name": "Kindred",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Kindred.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Kindred_1.jpg"
   },
   {
     "name": "Kled",
@@ -241,7 +241,7 @@
   },
   {
     "name": "LeBlanc",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Leblanc.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Leblanc_5.jpg"
   },
   {
     "name": "Lee Sin",
@@ -265,7 +265,47 @@
   },
   {
     "name": "Lux",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Lux.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
+  },
+  {
+    "name": "Lux Cloud",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
+  },
+  {
+    "name": "Lux Crystal",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
+  },
+  {
+    "name": "Lux Electric",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
+  },
+  {
+    "name": "Lux Glacial",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
+  },
+  {
+    "name": "Lux Inferno",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
+  },
+  {
+    "name": "Lux Light",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
+  },
+  {
+    "name": "Lux Ocean",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
+  },
+  {
+    "name": "Lux Shadow",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
+  },
+  {
+    "name": "Lux Steel",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
+  },
+  {
+    "name": "Lux Woodland",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   {
     "name": "Malphite",
@@ -301,7 +341,7 @@
   },
   {
     "name": "Nasus",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Nasus.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Nasus_11.jpg"
   },
   {
     "name": "Nautilus",
@@ -497,7 +537,7 @@
   },
   {
     "name": "Varus",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Varus.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Varus_9.jpg"
   },
   {
     "name": "Vayne",
@@ -553,7 +593,7 @@
   },
   {
     "name": "Yorick",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Yorick.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Yorick_3.jpg"
   },
   {
     "name": "Yuumi",
@@ -565,7 +605,7 @@
   },
   {
     "name": "Zed",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Zed.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Zed_1.jpg"
   },
   {
     "name": "Ziggs",
@@ -581,6 +621,6 @@
   },
   {
     "name": "Zyra",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Zyra.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Zyra_1.jpg"
   }
 ]

@@ -23,9 +23,9 @@
         "6": "Glacial units basic attacks have a 60% chance to stun their target for 1.5 seconds on-hit."
     },
     "Inferno": {
-        "3": "Inferno spells burn the ground beneath damage targets, dealing 80% of that spell's damage over 5 seconds.",
-        "6": "Inferno spells burn the ground beneath damage targets, dealing 175% of that spell's damage over 5 seconds.",
-        "9": "Inferno spells burn the ground beneath damage targets, dealing 275% of that spell's damage over 5 seconds."
+        "3": "Inferno spells burn the ground beneath damage targets, dealing 80% of the spell's damage over 5 seconds.",
+        "6": "Inferno spells burn the ground beneath damage targets, dealing 175% of the spell's damage over 5 seconds.",
+        "9": "Inferno spells burn the ground beneath damage targets, dealing 275% of the spell's damage over 5 seconds."
     },
     "Light": {
         "3": "When a Light unit dies, all other Light units gain +10% bonus attack speed and heal 25% of their maximum health.",
@@ -54,5 +54,8 @@
     },
     "Woodland": {
         "3": "At the start of combat, a random Woodland champion makes a copy of themselves (excluding items)."
+    },
+    "Variable": {
+        "1": "At the start of the game, gain the element of the board."
     }
 }

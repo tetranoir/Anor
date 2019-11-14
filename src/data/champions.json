@@ -30,7 +30,7 @@
     "class": [
       "Ranger"
     ],
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Ashe.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Ashe_5.jpg"
   },
   "Azir": {
     "name": "Azir",
@@ -85,7 +85,7 @@
     "class": [
       "Berserker"
     ],
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/DrMundo.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/DrMundo_1.jpg"
   },
   "Ezreal": {
     "name": "Ezreal",
@@ -152,7 +152,7 @@
     "class": [
       "Ranger"
     ],
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Kindred.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Kindred_1.jpg"
   },
   "Kog'Maw": {
     "name": "Kog'Maw",
@@ -174,7 +174,7 @@
     "class": [
       "Assassin"
     ],
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Leblanc.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Leblanc_5.jpg"
   },
   "Lux Cloud": {
     "name": "Lux Cloud",
@@ -185,7 +185,8 @@
     ],
     "class": [
       "Avatar"
-    ]
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   "Lux Crystal": {
     "name": "Lux Crystal",
@@ -196,7 +197,8 @@
     ],
     "class": [
       "Avatar"
-    ]
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   "Lux Electric": {
     "name": "Lux Electric",
@@ -207,7 +209,8 @@
     ],
     "class": [
       "Avatar"
-    ]
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   "Lux Glacial": {
     "name": "Lux Glacial",
@@ -218,7 +221,8 @@
     ],
     "class": [
       "Avatar"
-    ]
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   "Lux Inferno": {
     "name": "Lux Inferno",
@@ -229,7 +233,8 @@
     ],
     "class": [
       "Avatar"
-    ]
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   "Lux Light": {
     "name": "Lux Light",
@@ -240,7 +245,8 @@
     ],
     "class": [
       "Avatar"
-    ]
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   "Lux Ocean": {
     "name": "Lux Ocean",
@@ -251,7 +257,8 @@
     ],
     "class": [
       "Avatar"
-    ]
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   "Lux Shadow": {
     "name": "Lux Shadow",
@@ -262,7 +269,8 @@
     ],
     "class": [
       "Avatar"
-    ]
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   "Lux Steel": {
     "name": "Lux Steel",
@@ -273,7 +281,8 @@
     ],
     "class": [
       "Avatar"
-    ]
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   "Lux Woodland": {
     "name": "Lux Woodland",
@@ -284,7 +293,8 @@
     ],
     "class": [
       "Avatar"
-    ]
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Lux_7.jpg"
   },
   "Malphite": {
     "name": "Malphite",
@@ -351,7 +361,7 @@
     "class": [
       "Warden"
     ],
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Nasus.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Nasus_11.jpg"
   },
   "Nautilus": {
     "name": "Nautilus",
@@ -560,7 +570,7 @@
     "class": [
       "Ranger"
     ],
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Varus.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Varus_9.jpg"
   },
   "Vayne": {
     "name": "Vayne",
@@ -638,7 +648,7 @@
     "class": [
       "Summoner"
     ],
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Yorick.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Yorick_3.jpg"
   },
   "Zed": {
     "name": "Zed",
@@ -650,7 +660,7 @@
       "Assassin",
       "Summoner"
     ],
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Zed.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Zed_1.jpg"
   },
   "Zyra": {
     "name": "Zyra",
@@ -661,6 +671,6 @@
     "class": [
       "Summoner"
     ],
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Zyra.png"
+    "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Zyra_1.jpg"
   }
 }

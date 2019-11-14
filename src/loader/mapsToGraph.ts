@@ -15,7 +15,7 @@ interface RVF_ForceNode {
   labelClass?: string;
   fill?: HexColor;
   opacity?: number; // 0 - 1
-  stroke?: HexColor;
+  stroke?: HexColor|string;
   strokeWidth?: number; // in pixels
   onMouseDown?: (e: MouseEvent) => void;
   onMouseOver?: (e: MouseEvent) => void;
@@ -41,7 +41,7 @@ interface RVF_Link {
   target: string;
   value?: number;
 }
-type Identifiable<T extends string, U = {}> = Record<T, string> & U;
+type Identifiable<S extends string, T = {}> = Record<S, string> & T & {icon: string};
 /**
  * @param id       parameter that exists in T
  * @param objs     List of objects
@@ -51,7 +51,7 @@ type Identifiable<T extends string, U = {}> = Record<T, string> & U;
  * @param linkPRops Function that extracts properties from 2 T objects
  */
 type mapToReactVisForce =
-  <S extends string, T, U extends Identifiable<S, T>>(
+  <S extends string, T, U extends Identifiable<S, T>> (
     id: S,
     objs: U[],
     maps,
@@ -59,6 +59,7 @@ type mapToReactVisForce =
     linkProps: (a: T, b: T) => object,
   ) => { nodes: RVF_ForceNode[], links: RVF_ForceLink[] };
 export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps, linkProps) => {
+  // creates nodes
   const nodes: RVF_ForceNode[] = objs.map(o => {
     const props = nodeProps(o);
     const rvfNode = {
@@ -68,10 +69,14 @@ export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps
       },
       className: cx('graph-node', props),
       labelClass: cx('node-label', props),
+      fill: `url(#${o[id].replace(/[' ]/g,'')}-img)`,
+      // fill: `url(${o.icon})`,
+      // fill: 'url(#myGradient)',
     };
     return rvfNode;
   });
 
+ // creates links
   const hist = {}; // (hist)ory of links made
   // the extra arrays are to influence draw order
   const links: RVF_ForceLink[] = [];
