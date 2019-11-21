@@ -1,3 +1,5 @@
+// Data replicas in js
+
 // object keys properties
 export const keys: SynergyType[] = ['class', 'origin'];
 
@@ -14,7 +16,7 @@ export interface Champion {
   origin: string[];
   name: string;
   cost: number;
-  iconSrc: string;
+  icon: string;
 }
 
 export const isChampion = o => {

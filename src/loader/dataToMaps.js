@@ -1,13 +1,13 @@
-const keys = ['class', 'origin'];
 // maps of json objs by key
-export function jsonToMaps(jsonObjs) {
-  return jsonObjs.reduce((maps, json) => {
+// todo rename to group by key
+export function jsonToMaps(id, keys, jsonObjs) {
+  return jsonObjs.reduce((maps, obj) => {
     keys.forEach(key => {
-      json[key].forEach(val => {
+      [].concat(obj[key]).forEach(val => {
         if (!maps[key][val]) {
           maps[key][val] = {};
         }
-        maps[key][val][json.name] = json;
+        maps[key][val][obj[id]] = obj;
       });
     });
     return maps;

@@ -1,5 +1,6 @@
 import * as R from 'ramda';
 
+// State handling in app
 interface StateVars {
   active: boolean;
   selected: boolean;
@@ -9,7 +10,6 @@ interface StateVars {
 }
 // Stateful properites of for interactable objects
 export interface State extends StateVars {
-  render: () => void;
   setActive: (boolean) => void;
   setSelected: (boolean) => void;
   setGrouped: (boolean) => void;
@@ -33,3 +33,16 @@ export const mergeStateVars = (a: StateVars, b: StateVars): StateVars => ({
   highlighted: a.highlighted && b.highlighted,
   hovered: a.hovered && b.hovered,
 });
+
+// Synergy handling in app
+export type Threshold = [number, string];
+
+export interface SynergyThreshold {
+  name: string;
+  threshes: Threshold[];
+}
+
+// Adds stuff to synergy to make it easier to use
+export interface SynergyEnrichment extends SynergyThreshold {
+  getThresholdStr: (n: number) => Threshold | null;
+}

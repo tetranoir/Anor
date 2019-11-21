@@ -14,11 +14,19 @@ import {
   keys, isChampion, Champion, id, Synergy,
   SynergyMap, SynergyTypeMap, SynergyType
 } from './knowledge/modeldata';
-import { State, pickStateVars, mergeStateVars } from './knowledge/modelapp';
+import {
+  State, pickStateVars, mergeStateVars,
+  SynergyThreshold, Threshold, SynergyEnrichment
+} from './knowledge/modelapp';
 
 // loaders
 import { mapToReactD3Graph, mapToVxNetwork, mapToReactVisForce } from './loader/mapsToGraph';
 import { jsonToMaps } from './loader/dataToMaps';
+
+// components
+import { ChampionList } from './components/ChampionList';
+import { SynergyList } from './components/SynergyList';
+import { ChampionImages } from './components/ChampionImages';
 
 // styles
 import './App.scss';
@@ -32,7 +40,8 @@ import * as synergyModule from './data/synergies.json';
 declare global {
   interface Window {
     champions: any;
-    keyToMap: any;
+    keyToMap: any; // todo rename to relationToMap
+    tierToMap: any;
     // valToKey: any;
     idToChampion: any;
     useChampion: any;
@@ -45,34 +54,19 @@ declare global {
 var R = ramda;
 window.R = ramda;
 
+
+type EnrichedSynergy = Synergy & SynergyEnrichment;
 type ChampionState = State & Champion;
 
 function useChampion(champion: Champion) {
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(true); // todo reverse boolean
   const [selected, setSelected] = useState(false);
   const [grouped, setGrouped] = useState(false);
   const [highlighted, setHighlighted] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  // use setActive from closure
-  function onChange(e) {
-    setActive(e.target.checked);
-  }
-
-  // TODO move out of useChampion
-  const render = (
-    <LabeledCheckbox
-      key={champion.name}
-      label={champion.name}
-      checked={active}
-      onChange={onChange}
-      className="champion"
-    />
-  );
-
   return {
     ...champion,
-    render,
     active,
     selected,
     grouped,
@@ -86,17 +80,6 @@ function useChampion(champion: Champion) {
   };
 }
 
-// Adds stuff to synergy to make it easier to use
-type Threshold = [number, string];
-interface ThresholdMap {
-  [threshold: number]: string;
-}
-
-interface SynergyEnrichment extends SynergyThreshold {
-  getThresholdStr: (n: number) => Threshold | null;
-}
-type EnrichedSynergy = Synergy & SynergyEnrichment;
-
 // DATA
 const championData = Object.values((championModule as any).default) as Champion[];
 const synergyData = (synergyModule as any).default as SynergyTypeMap<Synergy>;
@@ -104,6 +87,11 @@ const synergyData = (synergyModule as any).default as SynergyTypeMap<Synergy>;
 const keyToSynergy: SynergyTypeMap<EnrichedSynergy> =
   R.mapObjIndexed(R.mapObjIndexed(enrichSynergy), synergyData)
 window.keyToSynergy = keyToSynergy;
+
+
+interface ThresholdMap {
+  [threshold: number]: string;
+}
 
 function synergyThreshold(
   posThreshMap: ThresholdMap, exactThreshMap: ThresholdMap, count: number
@@ -150,20 +138,19 @@ function setChampionData(data) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const champions: ChampionState[] = data.map(c => useChampion(c));
   const idToChampion: { [id:string]: ChampionState } = objFromAry(id, champions);
-  const keyToMap = jsonToMaps(champions);
+  const keyToMap = jsonToMaps(id, keys, champions);
+  const tierToMap = jsonToMaps(id, ['tier'], champions);
 
-  const emptyPicks = {
-    selected: [],
-    highlighted: [],
-    hovered: [],
-  };
+  // gathers selected, highlighted, hovered
+  const emptyPicks = { selected: [], highlighted: [], hovered: [] };
   const picks = reduceToPicks(emptyPicks, champions);
 
   window.champions = champions;
   window.idToChampion = idToChampion;
   window.keyToMap = keyToMap;
+  window.tierToMap = tierToMap;
 
-  return { keyToMap, idToChampion, champions, ...picks };
+  return { keyToMap, tierToMap, idToChampion, champions, ...picks };
 }
 
 function useConfig(graphConfig) {
@@ -226,7 +213,16 @@ function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
     if (isLeaf(v)) {
       // acc.render.push(renderObjAsCheckbox(v));
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      acc.render.push(v.render);
+      // acc.render.push(v.render);
+      acc.render.push(
+        <LabeledCheckbox
+          key={v.name}
+          label={v.name}
+          checked={v.active}
+          onChange={e => v.setActive(e.target.checked)}
+          className="champion"
+        />
+      );
       acc.checked = acc.checked && v.active;
     } else {
       const { render, checked } = renderMapAsCheckboxes(k, map[name], depth+1);
@@ -277,33 +273,6 @@ function renderKeysAsCheckboxes(keyToMap) {
   );
 }
 
-// helper component for svg
-function ChampionImages(props) {
-  const {champions} = props;
-  return champions.map(c => (
-    <pattern
-      key={c.name}
-      id={c.name.replace(/[' ]/g,'')+'-img'}
-      patternUnits="objectBoundingBox"
-      width="1"
-      height="1"
-      x="0"
-      y="0"
-    >
-      <image
-        className="node-icon"
-        href={c.icon}
-        x="0"
-        y="0"
-      />
-    </pattern>
-  ));
-}
-
-interface SynergyThreshold {
-  name: string;
-  threshes: Threshold[];
-}
 const filterNull = R.filter(R.identity);
 // Evaluates the thresholds that arise from a set of champions
 function evalChampionThresholds(champions: Champion[]): SynergyThreshold[] {
@@ -323,71 +292,8 @@ function extractSynergyThresholds(champion: Champion): SynergyThreshold[] {
   const keySynPaths = R.uniq(R.unnest(R.map(([k,vs]) => R.map(v => [k, v], vs), keySyns)))
   return keySynPaths.map(path => R.path(path, keyToSynergy));
 }
-interface SynergyListProps {
-  title: string;
-  className?: string;
-  synThreshes: SynergyThreshold[];
-}
-function SynergyList(props: SynergyListProps) {
-  const {synThreshes, title, className} = props;
-  const renderThresholds = synThreshes.map(({name, threshes}) => (
-    <div key={name} className="synergy">
-      <div className="name">{name}</div>
-      {threshes.map(([count, threshStr]) => (
-        <div key={threshStr} className="flex">
-          <div className="threshold">{Math.abs(count)}</div>
-          <div className="synergy-detail">{threshStr}</div>
-        </div>
-      ))}
-    </div>
-  ));
 
-  return (
-    <div className={cx('synergy-list', className)}>
-      <div className="title">{title}</div>
-      <div className="synergies">{renderThresholds}</div>
-    </div>
-  );
-}
-
-interface ChampionListProps {
-  title: string;
-  className?: string;
-  champions: Champion[];
-  onClick?: (championName: string) => void;
-}
-// Component that shows list of champions
-function ChampionList(props: ChampionListProps) {
-  const {title, className, champions, onClick} = props;
-
-  function handleOnClick(event: React.MouseEvent<HTMLDivElement>) {
-    const target = event.target as HTMLDivElement;
-    const championId = target.textContent;
-    onClick && onClick(championId);
-  }
-
-  const renderChampions = champions.map(c => (
-    <div key={c.name} className="champion" onClick={handleOnClick}>
-      {c.name}
-    </div>
-  ));
-  return (
-    <div className={cx('champion-list', className)}>
-      <div className="title">{title} ({champions.length})</div>
-      <div className="champions">{renderChampions}</div>
-    </div>
-  )
-}
-
-function attachEvents(child) {
-  return cloneElement(child, {
-    onMouseDown: () => console.log(`clicked <${child.type.name} />`, child),
-    onMouseOver: () => console.log(`hovered <${child.type.name} />`),
-    onMouseOut: () => console.log(`blurred <${child.type.name} />`),
-  });
-}
-
-function linkRules(a: State, b: State): Partial<State> {
+function linkDisplayRules(a: State, b: State): Partial<State> {
   return {
     active: a.active && b.active,
     selected: a.selected && b.selected,
@@ -401,8 +307,9 @@ function Ariandel() {
   const start = Date.now();
   // const [config, ConfigEditor] = useConfig(graphConfig);
 
-  const { champions, keyToMap, idToChampion, selected, highlighted, hovered }
+  const { champions, keyToMap, tierToMap, idToChampion, selected, highlighted, hovered }
     = setChampionData(championData);
+  const [hoveredChampion] = hovered;
 
   function toggleSelectChampion(id: string) {
     const champion = idToChampion[id];
@@ -434,11 +341,12 @@ function Ariandel() {
 
   // const graph = mapToReactD3Graph(id, champions, idToChampion, Object.values(keyToMap));
   // const graph = mapToVxNetwork();
-  const {nodes, links} = mapToReactVisForce(id, champions, Object.values(keyToMap), pickStateVars, linkRules);
+  const {nodes, links} = mapToReactVisForce(id, champions, Object.values(keyToMap), pickStateVars, linkDisplayRules);
   console.log('ARIANDEL RENDER', Date.now() - start);
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
       {renderKeysAsCheckboxes(keyToMap)}
+      {renderKeysAsCheckboxes(tierToMap)}
       <div className="right-container">
         <ChampionList
           className="panel selected-champions"
@@ -456,11 +364,11 @@ function Ariandel() {
           title="Neighbors"
           champions={highlighted}
         />
-        {hovered[0] && <SynergyList
+         <SynergyList
           className="panel hovered-synergies"
-          title={hovered[0][id]}
-          synThreshes={extractSynergyThresholds(hovered[0])}
-        />}
+          title={hoveredChampion ? hoveredChampion[id] : 'No Champion'}
+          synThreshes={extractSynergyThresholds(hoveredChampion || [])}
+        />
       </div>
       <div id="graph">
         <ForceGraph
@@ -491,7 +399,7 @@ function Ariandel() {
               key={`${forceLink.link.source}=>${forceLink.link.target}`}
               {...forceLink}
             />
-          )).map(attachEvents)}
+          ))}
           <defs>
             <ChampionImages champions={champions} />
           </defs>
