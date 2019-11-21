@@ -147,12 +147,11 @@ div[hidden] {
     user-select: none;
     pointer-events: none;
     z-index: 0;
-    opacity: 0;
-  }
-  text.node-label.active {
-    // display: block;
-    font-weight: 500;
     opacity: 0.8;
+    font-weight: 500;
+  }
+  text.node-label.filtered {
+    opacity: 0;
   }
   text.node-label.highlighted,
   text.node-label.selected,
@@ -163,13 +162,13 @@ div[hidden] {
   }
 
   line.graph-link {
-    opacity: 0.0;
+    opacity: 0.6;
     stroke: #BBB;
     stroke-width: 3;
     z-index: 1;
   }
-  line.graph-link.active {
-    opacity: 0.6;
+  line.graph-link.filtered {
+    opacity: 0.0;
   }
   line.graph-link.selected {
     stroke: #4477b2;
@@ -184,13 +183,13 @@ div[hidden] {
 
   circle.graph-node {
     cursor: pointer;
-    opacity: 0.0;
+    opacity: 0.7;
     stroke-width: 5px;
     r: 20px;
     stroke: #BBB;
   }
-  circle.graph-node.active {
-    opacity: 0.7;
+  circle.graph-node.filtered {
+    opacity: 0.0;
   }
   circle.graph-node.selected {
     stroke: #4477b2;

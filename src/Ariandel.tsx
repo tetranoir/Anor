@@ -16,7 +16,8 @@ import {
 } from './knowledge/modeldata';
 import {
   State, pickStateVars, mergeStateVars,
-  SynergyThreshold, Threshold, SynergyEnrichment
+  SynergyThreshold, Threshold, SynergyEnrichment,
+  useAppState,
 } from './knowledge/modelapp';
 
 // loaders
@@ -57,28 +58,6 @@ window.R = ramda;
 
 type EnrichedSynergy = Synergy & SynergyEnrichment;
 type ChampionState = State & Champion;
-
-function useChampion(champion: Champion) {
-  const [active, setActive] = useState(true); // todo reverse boolean
-  const [selected, setSelected] = useState(false);
-  const [grouped, setGrouped] = useState(false);
-  const [highlighted, setHighlighted] = useState(false);
-  const [hovered, setHovered] = useState(false);
-
-  return {
-    ...champion,
-    active,
-    selected,
-    grouped,
-    highlighted,
-    hovered,
-    setActive,
-    setSelected,
-    setGrouped,
-    setHighlighted,
-    setHovered,
-  };
-}
 
 // DATA
 const championData = Object.values((championModule as any).default) as Champion[];
@@ -136,7 +115,7 @@ const pickReducer = (acc, val) => {
 const reduceToPicks = R.reduce(pickReducer);
 function setChampionData(data) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const champions: ChampionState[] = data.map(c => useChampion(c));
+  const champions: ChampionState[] = data.map(c => useAppState(c));
   const idToChampion: { [id:string]: ChampionState } = objFromAry(id, champions);
   const keyToMap = jsonToMaps(id, keys, champions);
   const tierToMap = jsonToMaps(id, ['tier'], champions);
@@ -206,7 +185,7 @@ interface RenderMapAsCheckboxes {
 function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
   function mapCheckboxOnChange(e) {
     const { value, checked } = e.target;
-    walkLeaves(champion => champion.setActive(checked), isLeaf, map[value]);
+    walkLeaves(champion => champion.setFiltered(checked), isLeaf, map[value]);
   }
 
   const { render, checked } = Object.entries(map[name]).reduce((acc, [k, v]) => {
@@ -218,12 +197,12 @@ function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
         <LabeledCheckbox
           key={v.name}
           label={v.name}
-          checked={v.active}
-          onChange={e => v.setActive(e.target.checked)}
+          checked={!v.filtered}
+          onChange={e => v.setFiltered(e.target.checked)}
           className="champion"
         />
       );
-      acc.checked = acc.checked && v.active;
+      acc.checked = acc.checked && !v.filtered;
     } else {
       const { render, checked } = renderMapAsCheckboxes(k, map[name], depth+1);
       acc.render.push(render);
@@ -295,7 +274,7 @@ function extractSynergyThresholds(champion: Champion): SynergyThreshold[] {
 
 function linkDisplayRules(a: State, b: State): Partial<State> {
   return {
-    active: a.active && b.active,
+    filtered: a.filtered || b.filtered,
     selected: a.selected && b.selected,
     grouped: a.grouped && b.grouped,
     highlighted: (a.highlighted && b.hovered) || (a.hovered && b.highlighted),
