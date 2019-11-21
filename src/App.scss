@@ -1,15 +1,10 @@
+button:focus {outline:0;}
+
 .flex {
   display: flex;
 }
 
-.container {
-  font-size: 10px;
-  display: flex;
-  place-items: start;
-}
-
-.checkboxes-container {
-  position: absolute;
+.checkboxes {
   z-index: 5;
 
   input {
@@ -38,28 +33,48 @@
     display: flex;
   }
 
+  .depth0 {
+    padding: 10px 5px;
+  }
+
   .depth0 > div {
     padding-right: 5px;
   }
 
   .depth1 {
     flex-direction: column;
-    max-width: 75px;
+    // max-width: 90px;
+  }
+
+  .checkboxes-container {
+    font-size: 10px;
+    display: flex;
+    place-items: start;
+  }
+
+  .checkboxes-container:not([hidden]) {
+    border-bottom-left-radius: 0;
+  }
+
+  .checkboxes-container:not([hidden]) ~ .checkboxes-toggle {
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 
   .checkboxes-toggle {
     display: inline-block;
     padding: 2px;
     font-size: 16px;
-    margin: 10px;
     cursor: pointer;
+    margin-top: -1px;
   }
 
   .checkboxes {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 12px 12px 0 12px;;
-    padding: 4px;
+    // display: flex;
+    // flex-wrap: wrap;
+    // margin: 12px 12px 0 12px;;
+    // padding: 4px;
 
     .labeledinput {
       display: flex;
@@ -82,8 +97,21 @@ div[hidden] {
   right: 10px;
   top: 10px;
   display: flex;
-  flex-direction: column;
   width: 150px;
+  flex-direction: column;
+
+  & > div {
+    margin-bottom: 10px;
+  }
+}
+
+.left-container {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
 
   & > div {
     margin-bottom: 10px;
@@ -150,9 +178,6 @@ div[hidden] {
     opacity: 0.8;
     font-weight: 500;
   }
-  text.node-label.filtered {
-    opacity: 0;
-  }
   text.node-label.highlighted,
   text.node-label.selected,
   text.node-label.hovered {
@@ -160,15 +185,15 @@ div[hidden] {
     opacity: 1;
     z-index: 2;
   }
+  text.node-label.filtered {
+    opacity: 0;
+  }
 
   line.graph-link {
     opacity: 0.6;
     stroke: #BBB;
     stroke-width: 3;
     z-index: 1;
-  }
-  line.graph-link.filtered {
-    opacity: 0.0;
   }
   line.graph-link.selected {
     stroke: #4477b2;
@@ -180,6 +205,9 @@ div[hidden] {
     opacity: 1.0;
     z-index: 3;
   }
+  line.graph-link.filtered {
+    opacity: 0.0;
+  }
 
   circle.graph-node {
     cursor: pointer;
@@ -187,9 +215,6 @@ div[hidden] {
     stroke-width: 5px;
     r: 20px;
     stroke: #BBB;
-  }
-  circle.graph-node.filtered {
-    opacity: 0.0;
   }
   circle.graph-node.selected {
     stroke: #4477b2;
@@ -202,6 +227,10 @@ div[hidden] {
   circle.graph-node.hovered, {
     stroke: #4477b2;
     opacity: 1;
+  }
+  circle.graph-node.filtered {
+    opacity: 0.0;
+    cursor: unset;
   }
 }
 

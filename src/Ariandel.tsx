@@ -49,6 +49,7 @@ declare global {
     synergies: any;
     keyToSynergy: any;
     selected: any;
+    nodes: any;
     R: any
   }
 }
@@ -185,7 +186,7 @@ interface RenderMapAsCheckboxes {
 function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
   function mapCheckboxOnChange(e) {
     const { value, checked } = e.target;
-    walkLeaves(champion => champion.setFiltered(checked), isLeaf, map[value]);
+    walkLeaves(champion => champion.setFiltered(!checked), isLeaf, map[value]);
   }
 
   const { render, checked } = Object.entries(map[name]).reduce((acc, [k, v]) => {
@@ -198,7 +199,7 @@ function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
           key={v.name}
           label={v.name}
           checked={!v.filtered}
-          onChange={e => v.setFiltered(e.target.checked)}
+          onChange={e => v.setFiltered(!e.target.checked)}
           className="champion"
         />
       );
@@ -218,7 +219,7 @@ function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
         label={name}
         checked={checked}
         onChange={mapCheckboxOnChange}
-        className={['container', `depth${depth}`].join(' ')}
+        className={['checkboxes-container', `depth${depth}`].join(' ')}
       >
         {render}
       </LabeledCheckbox>
@@ -228,7 +229,7 @@ function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
 }
 
 // creates check boxes with objects at leaves, based on a maps of props vals -> objs
-function renderKeysAsCheckboxes(keyToMap) {
+function renderKeysAsCheckboxes(keyToMap, name='filters') {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [hidden, setHidden] = useState(true);
 
@@ -241,12 +242,12 @@ function renderKeysAsCheckboxes(keyToMap) {
   });
 
   return (
-    <div className="checkboxes-container">
-      <div className="checkboxes panel" hidden={hidden}>
+    <div className="checkboxes">
+      <div className="checkboxes-container panel" hidden={hidden}>
         {checkboxes}
       </div>
       <button className="checkboxes-toggle panel" onClick={toggleHidden}>
-        Filters
+        {name}
       </button>
     </div>
   );
@@ -292,6 +293,7 @@ function Ariandel() {
 
   function toggleSelectChampion(id: string) {
     const champion = idToChampion[id];
+    if (champion.filtered) return;
     // eslint-disable-next-line react-hooks/rules-of-hooks
     champion.setSelected(!champion.selected);
   }
@@ -306,6 +308,7 @@ function Ariandel() {
 
   function setChampionHighlight(id: string, bool: boolean) {
     const champion: ChampionState = idToChampion[id];
+    if (champion.filtered) return;
     relatedChampions(champion).forEach(c => c.setHighlighted(bool));
     champion.setHovered(bool);
   }
@@ -318,14 +321,17 @@ function Ariandel() {
     });
   }
 
-  // const graph = mapToReactD3Graph(id, champions, idToChampion, Object.values(keyToMap));
-  // const graph = mapToVxNetwork();
   const {nodes, links} = mapToReactVisForce(id, champions, Object.values(keyToMap), pickStateVars, linkDisplayRules);
+  window.nodes = nodes;
   console.log('ARIANDEL RENDER', Date.now() - start);
+  // TODO turn left/right-container to be real presentation components
   return (
     <div className="app" style={{height: '100vh', width: '100vw'}}>
-      {renderKeysAsCheckboxes(keyToMap)}
-      {renderKeysAsCheckboxes(tierToMap)}
+      <div className="left-container">
+        {renderKeysAsCheckboxes(tierToMap, 'tier')}
+        {renderKeysAsCheckboxes(R.pick(['origin'], keyToMap), 'origin')}
+        {renderKeysAsCheckboxes(R.pick(['class'], keyToMap), 'class')}
+      </div>
       <div className="right-container">
         <ChampionList
           className="panel selected-champions"
