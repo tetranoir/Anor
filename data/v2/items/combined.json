@@ -1,0 +1,246 @@
+[
+    {
+        "name": "Deathblade",
+        "recipe": ["B.F. Sword", "B.F. Sword"],
+        "effect": "On kill or assist, gain +15 attack."
+    },
+    {
+        "name": "Giant Slayer",
+        "recipe": ["B.F. Sword", "Recurve Bow"],
+        "effect": "Basic attacks deal 8% of the target's current health as physical damage."
+    },
+    {
+        "name": "Hextech Gunblade",
+        "short": "gunblade",
+        "recipe": ["B.F. Sword", "Needlessly Large Rod"],
+        "effect": "Basic Attacks and spells heal for 25% of damage dealt."
+    },
+    {
+        "name": "Spear of Shojin",
+        "short": "shojin",
+        "recipe": ["B.F. Sword", "Tear of the Goddess"],
+        "effect": "After casting a spell, basic attacks restore 18% of maximum mana."
+    },
+    {
+        "name": "Guardian Angel",
+        "short": "ga",
+        "recipe": ["B.F. Sword", "Chain Vest"],
+        "effect": "When the wearer dies, revive with up to 400 health after a 2 second delay once per combat."
+    },
+    {
+        "name": "Bloodthirster",
+        "short": "bt",
+        "recipe": ["B.F. Sword", "Negatron Cloak"],
+        "effect": "Basic attacks heal for 40% of damage dealt."
+    },
+    {
+        "name": "Zeke's Herald",
+        "short": "zekes",
+        "recipe": ["B.F. Sword", "Recurve Bow"],
+        "effect": "When combat begins, the wearer and all allies within 2 hexes in the same row gain +20% attack speed."
+    },
+    {
+        "name": "Youmuu's Ghostblade",
+        "short": "ghostblade",
+        "recipe": ["B.F. Sword", "Spatula"],
+        "effect": "Wearer is also an Assassin."
+    },
+    {
+        "name": "Infinity Edge",
+        "short": "ie",
+        "recipe": ["B.F. Sword", "Sparring Gloves"],
+        "effect": "+125% critical strike damage."
+    },
+    {
+        "name": "Rapid Firecannon",
+        "short": "rfc",
+        "recipe": ["Recurve Bow", "Recurve Bow"],
+        "effect": "+100% Attack Range."
+    },
+    {
+        "name": "Guinsoo's Rageblade",
+        "short": "rageblade",
+        "recipe": ["Recurve Bow", "Needlessly Large Rod"],
+        "effect": "On basic attack, gain +4% bonus attack speed for the rest of combat."
+    },
+    {
+        "name": "Statikk Shiv",
+        "short": "shiv",
+        "recipe": ["Recurve Bow", "Tear of the Goddess"],
+        "effect": "On every third basic attack, deal 100 magical damage to 3 enemies."
+    },
+    {
+        "name": "Phantom Dancer",
+        "short": "pd",
+        "recipe": ["Recurve Bow", "Chain Vest"],
+        "effect": "Dodge all critical strikes."
+    },
+    {
+        "name": "Runaan's Hurricane",
+        "recipe": ["Recurve Bow", "Negatron Cloak"],
+        "effect": "Basic attacks fire an additional missile at another nearby enemy, dealing 60% of the wearer's attack damage and applying on-hit effects."
+    },
+    {
+        "name": "Titanic Hydra",
+        "short": "hydra",
+        "recipe": ["Recurve Bow", "Sparring Gloves"],
+        "effect": "Basic attacks deal an additional 3% of the wearer's maximum health as magic damage to the target and adjacent enemies behind them."
+    },
+    {
+        "name": "Blade of the Ruined King",
+        "short": "botrk",
+        "recipe": ["Recurve Bow", "Spatula"],
+        "effect": "Wearer is also a Blademaster."
+    },
+    {
+        "name": "Repeating Crossbow",
+        "short": "crossbow",
+        "recipe": ["Recurve Bow", "Sparring Gloves"],
+        "effect": "When the wearer dies, Repeating Crossbow is re-equipped to a new ally. Each time Repeating Crossbow is re-equipped, it grants a stacking +30% attack speed and +30% critical Strike chance for the remainder of combat."
+    },
+    {
+        "name": "Rabadon's Deathcap",
+        "short": "deathcap",
+        "recipe": ["Needlessly Large Rod", "Needlessly Large Rod"],
+        "effect": "The wearer's spell power is +75% more effective."
+    },
+    {
+        "name": "Luden's Echo",
+        "short": "ludens",
+        "recipe": ["Needlessly Large Rod", "Tear of the Goddess"],
+        "effect": "The wearer's spells deal 150 magic damage to the first target hit and up to 3 nearby enemies."
+    },
+    {
+        "name": "Locket of the Iron Solari",
+        "short": "locket",
+        "recipe": ["Needlessly Large Rod", "Chain Vest"],
+        "effect": "When combat begins, the wearer and all allies within 2 hexes in the same row gain a shield that blocks 300 damage for 8 seconds."
+    },
+    {
+        "name": "Ionic Spark",
+        "recipe": ["Needlessly Large Rod", "Negatron Cloak"],
+        "effect": "Whenever an enemy casts a spell, the wearer deals 100 true damage to the caster."
+    },
+    {
+        "name": "Morellonomicon",
+        "short": "morellos",
+        "recipe": ["Needlessly Large Rod", "Giant's Belt"],
+        "effect": "When the wearer deals damage with their spells, they burn the target, dealing 20% of the target's maximum health as true damage and preventing 80% of healing over 10 seconds. Unique."
+    },
+    {
+        "name": "Inferno's Cinder",
+        "recipe": ["Needlessly Large Rod", "Spatula"],
+        "effect": "Wearer is also an Inferno."
+    },
+    {
+        "name": "Jeweled Guantlet",
+        "recipe": ["Needlessly Large Rod", "Sparring Gloves"],
+        "effect": "The wearer's spells can critically strike."
+    },
+    {
+        "name": "Seraph's Embrace",
+        "short": "seraphs",
+        "recipe": ["Tear of the Goddess", "Tear of the Goddess"],
+        "effect": "Gain 20 Mana after casting a spell."
+    },
+    {
+        "name": "Frozen Heart",
+        "recipe": ["Tear of the Goddess", "Chain Vest"],
+        "effect": "Reduces the Attack Speed of adjacent enemies by 25%."
+    },
+    {
+        "name": "Hush",
+        "recipe": ["Tear of the Goddess", "Negatron Cloak"],
+        "effect": "Basic Attacks have a 33% chance to silence the target, preventing the them from gaining mana for 4 seconds."
+    },
+    {
+        "name": "Redemption",
+        "recipe": ["Tear of the Goddess", "Giant's Belt"],
+        "effect": "When the wearer falls below 30% health, nearby allies are healed for 1200 Health after a 2.5 second delay. This effect can trigger once per combat."
+    },
+    {
+        "name": "Mages Cap",
+        "recipe": ["Tear of the Goddess", "Spatual"],
+        "effect": "Wearer is also a Mage."
+    },
+    {
+        "name": "Hand of Justice",
+        "recipe": ["Tear of the Goddess", "Sparring Gloves"],
+        "effect": "At the beginning of each planning phase, the wearer gains one of the following: Basic attacks and spells deal +50.0% Damage, Basic attacks heal 50.0 Health on-hit"
+    },
+    {
+        "name": "Thornmail",
+        "recipe": ["Chain Vest", "Chain Vest"],
+        "effect": "When the wearer is hit by a Basic Attack, they reflect 100% of the mitigated damage as magic damage."
+    },
+    {
+        "name": "Sword Breaker",
+        "recipe": ["Chain Vest", "Negatron Cloak"],
+        "effect": "Basic Attacks have a 33% chance to disarm the target for 3 seconds, preventing that enemy from Basic Attacking."
+    },
+    {
+        "name": "Red Buff",
+        "recipe": ["Chain Vest", "Giant's Belt"],
+        "effect": "Basic Attacks burn the target, dealing 20% of the target's Maximum Health as true damage over 10 seconds and preventing 80% of healing for the duration of the burn."
+    },
+    {
+        "name": "Warden's Mail",
+        "recipe": ["Chain Vest", "Spatula"],
+        "effect": "Wearer is also a Warden."
+    },
+    {
+        "name": "Iceborn Guantlet",
+        "recipe": ["Chain Vest", "Sparring Gloves"],
+        "effect": "When the wearer dodges, they create a zone of ice. Enemies inside the zone have their Attack Speed reduced by 25%."
+    },
+    {
+        "name": "Dragon's Claw",
+        "recipe": ["Negatron Cloak", "Negatron Cloak"],
+        "effect": "Wearer gains 50% resistance to magic damage."
+    },
+    {
+        "name": "Zephyr",
+        "recipe": ["Negatron Cloak", "Giant's Belt"],
+        "effect": "When combat begins, the wearer summons a whirlwind on the opposite side of the arena that removes the closest enemy from combat for 6 seconds."
+    },
+    {
+        "name": "Talisman of Light",
+        "recipe": ["Negatron Cloak", "Spatula"],
+        "effect": "Wearer is also a Light."
+    },
+    {
+        "name": "Quicksilver",
+        "recipe": ["Negatron Cloak", "Sparring Gloves"],
+        "effect": "The wearer gains a shield that prevents the next crowd control effect from applying. This shield refreshes after 3 seconds."
+    },
+    {
+        "name": "Warmog's Armor",
+        "recipe": ["Giant's Belt", "Giant's Belt"],
+        "effect": "The wearer regenerates 6% of their missing Health per second."
+    },
+    {
+        "name": "Frozen Mallet",
+        "recipe": ["Giant's Belt", "Spatula"],
+        "effect": "Wearer is also Glacial."
+    },
+    {
+        "name": "Trap Claw",
+        "recipe": ["Giant's Belt", "Sparring Gloves"],
+        "effect": "Grants a shield that blocks the first enemy spell that hits them. The enemy that breaks the shield is stunned for 4 seconds."
+    },
+    {
+        "name": "Force of Nature",
+        "recipe": ["Spatula", "Spatula"],
+        "effect": "The wearer's team gains +1 maximum team size."
+    },
+    {
+        "name": "Berserker's Axe",
+        "recipe": ["Spatula", "Sparring Gloves"],
+        "effect": "Wearer is also a Berserker."
+    },
+    {
+        "name": "Thief's Gloves",
+        "recipe": ["Sparring Gloves", "Sparring Gloves"],
+        "effect": "At the beginning of each planning phase, the wearer equips 2 temporary items. Temporary items increase in power based on your player level."
+    }
+]
