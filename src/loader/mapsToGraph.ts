@@ -13,7 +13,7 @@ interface RVF_ForceNode {
   r?: number;
   className?: string;
   labelClass?: string;
-  fill?: HexColor;
+  fill?: HexColor|string;
   opacity?: number; // 0 - 1
   stroke?: HexColor|string;
   strokeWidth?: number; // in pixels

@@ -1,6 +1,8 @@
 import * as R from 'ramda';
 import { useState } from 'react';
 
+import { Item } from './modeldata';
+
 // State handling in app
 interface StateVars {
   filtered: boolean;
@@ -71,4 +73,9 @@ export interface SynergyThreshold {
 // Adds stuff to synergy to make it easier to use
 export interface SynergyEnrichment extends SynergyThreshold {
   getThresholdStr: (n: number) => Threshold | null;
+}
+
+export interface ItemEnrichment<T extends Item> {
+  usedIn: T[]; // the items this item is in recipes for
+  madeFrom: T[]; // the items this item is made from
 }

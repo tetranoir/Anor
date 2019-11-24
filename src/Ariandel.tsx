@@ -11,12 +11,14 @@ import * as ramda from 'ramda';
 import { objFromAry } from './util';
 import { graphConfig } from './config';
 import {
-  keys, isChampion, Champion, id, Synergy,
-  SynergyMap, SynergyTypeMap, SynergyType
+  keys, isChampion, Champion, id,
+  Synergy, SynergyMap, SynergyTypeMap, SynergyType,
+  Item
 } from './knowledge/modeldata';
 import {
   State, pickStateVars, mergeStateVars,
   SynergyThreshold, Threshold, SynergyEnrichment,
+  ItemEnrichment,
   useAppState,
 } from './knowledge/modelapp';
 
@@ -36,6 +38,7 @@ import './App.scss';
 // TODO: maybe consolidate into 1 data import?
 import * as championModule from './data/champions.json';
 import * as synergyModule from './data/synergies.json';
+import * as itemModule from './data/items.json';
 
 
 declare global {
@@ -45,6 +48,7 @@ declare global {
     tierToMap: any;
     // valToKey: any;
     idToChampion: any;
+    idToItem: any;
     useChampion: any;
     synergies: any;
     keyToSynergy: any;
@@ -58,16 +62,50 @@ window.R = ramda;
 
 
 type EnrichedSynergy = Synergy & SynergyEnrichment;
+type EnrichedItem = Item & ItemEnrichment<EnrichedItem>;
 type ChampionState = State & Champion;
+
+interface ItemMap {
+  [id: string]: Item;
+}
+interface EnrichedItemMap {
+  [id: string]: EnrichedItem;
+}
+interface EnrichedItemsMap {
+  [id: string]: EnrichedItemsMap;
+}
 
 // DATA
 const championData = Object.values((championModule as any).default) as Champion[];
 const synergyData = (synergyModule as any).default as SynergyTypeMap<Synergy>;
+const itemData = (itemModule as any).default as ItemMap;
 
-const keyToSynergy: SynergyTypeMap<EnrichedSynergy> =
-  R.mapObjIndexed(R.mapObjIndexed(enrichSynergy), synergyData)
+// synergy maps
+const keyToSynergy: SynergyTypeMap<EnrichedSynergy> = R.mapObjIndexed(
+  R.mapObjIndexed(enrichSynergy),
+  synergyData,
+);
 window.keyToSynergy = keyToSynergy;
 
+// item maps creation, should be "atomic"
+const idToItem: EnrichedItemMap = R.mapObjIndexed(prepItem, itemData);
+window.idToItem = idToItem;
+const items = Object.values(idToItem);
+const basicItems = items.filter(item => !item.recipe);
+const gridAxisNodes: GridNode[] = basicItems.map(item => ({id: item[id]}));
+R.mapObjIndexed(stimulateItem, idToItem);
+
+// Create "empty" enriched item from item
+function prepItem(item: Item, name: string): EnrichedItem {
+  return { ...item, usedIn: [], madeFrom: [] };
+}
+// Mutate enriched item to add its specifications
+function stimulateItem(item: EnrichedItem, unused: string, idToItem: EnrichedItemMap) {
+  if (!item.recipe) return;
+  const uniqRecipe = R.uniq(item.recipe);
+  item.madeFrom = uniqRecipe.map(itemName => idToItem[itemName]);
+  item.madeFrom.forEach(m => m.usedIn = [...m.usedIn, item]);
+}
 
 interface ThresholdMap {
   [threshold: number]: string;
@@ -283,6 +321,131 @@ function linkDisplayRules(a: State, b: State): Partial<State> {
   };
 }
 
+interface GridNode {
+  id: string;
+  show?: string|number|SVGElement;
+}
+interface GridChartProps {
+  id?: string;
+  className?: string;
+  height?: number|string;
+  width?: number|string;
+  x: GridNode[];
+  y: GridNode[];
+  // operator: <T extends GridNode, U extends GridNode, V extends GridNode>(x: T, y: U) => V;
+  operator: any;
+  vertSpace?: number; // doesn't support % yet
+  horiSpace?: number; // doesn't support % yet
+  vertGutter?: number;
+  horiGutter?: number;
+  topX?: boolean;
+  bottomX?: boolean;
+  leftY?: boolean;
+  rightY?: boolean;
+  showLabels?: boolean;
+  labelHeight?: number;
+  labelClass?: string;
+}
+// TODO move (x, y) to children
+function GridChart(props: GridChartProps) {
+  const {
+    id,
+    className,
+    height = 600,
+    width = 800,
+    x,
+    y,
+    operator,
+    showLabels = false,
+    labelHeight = 10,
+    labelClass,
+    vertSpace = 40,
+    horiSpace = 50,
+    vertGutter = labelHeight,
+    horiGutter = vertGutter,
+    topX = true,
+    bottomX = false,
+    leftY = true,
+    rightY = false,
+  } = props;
+
+  const horiOuter = horiSpace + horiGutter;
+  const vertOuter = vertSpace + vertGutter;
+
+  const xAxisNodes = (yPos) => x.map((node, i) => (
+    <rect
+      key={node.id + '_x'}
+      x={(i + 1) * horiOuter}
+      y={yPos}
+      width={horiSpace}
+      height={vertSpace}
+      {...node}
+    />
+  ));
+
+  const xAxisLabels = (yPos) => x.map((node, i) => (
+    <text
+      key={node.id + '_x_label'}
+      x={(i + 1) * horiOuter}
+      y={yPos}
+      className={labelClass}
+    >
+      {node.id}
+    </text>
+  ));
+
+  const yAxisNodes = (xPos) => y.map((node, i) => (
+    <rect
+      key={node.id + '_y'}
+      y={(i + 1) * vertOuter}
+      x={xPos}
+      width={horiSpace}
+      height={vertSpace}
+      {...node}
+    />
+  ));
+
+  const yAxisLabels = (xPos) => x.map((node, i) => (
+    <text
+      key={node.id + '_x_label'}
+      y={(i + 2) * vertOuter}
+      x={xPos}
+      className={labelClass}
+    >
+      {node.id}
+    </text>
+  ));
+
+  return (
+    <svg height={height} width={width} id={id} className={className}>
+      {topX &&
+        <g className="top_x-axis__nodes">{xAxisNodes(0)}</g>
+      }
+      {topX && showLabels &&
+        <g className="top_x-axis__labels">{xAxisLabels(vertOuter)}</g>
+      }
+      {bottomX &&
+        <g className="bottom_x-axis__nodes">{xAxisNodes(y.length * vertOuter)}</g>
+      }
+      {bottomX && showLabels &&
+        <g className="top_x-axis__labels">{xAxisLabels((y.length + 1) * vertOuter)}</g>
+      }
+      {leftY &&
+        <g className="left_y-axis__nodes">{yAxisNodes(0)}</g>
+      }
+      {leftY && showLabels &&
+        <g className="top_x-axis__labels">{yAxisLabels(0)}</g>
+      }
+      {rightY &&
+        <g className="right_y-axis__nodes">{yAxisNodes(x.length * horiOuter)}</g>
+      }
+      {rightY && showLabels &&
+        <g className="top_x-axis__labels">{yAxisLabels((x.length + 1) * horiOuter)}</g>
+      }
+    </svg>
+  );
+}
+
 function Ariandel() {
   const start = Date.now();
   // const [config, ConfigEditor] = useConfig(graphConfig);
@@ -355,9 +518,22 @@ function Ariandel() {
           synThreshes={extractSynergyThresholds(hoveredChampion || [])}
         />
       </div>
+      <div id="item-grid">
+        <GridChart
+          x={gridAxisNodes}
+          y={gridAxisNodes}
+          height={window.innerHeight}
+          width={window.innerWidth}
+          horiSpace={120}
+          vertSpace={60}
+          operator
+          showLabels
+          labelClass={"grid-labels"}
+        />
+      </div>
       <div id="graph">
         <ForceGraph
-          highlightDependencies
+          // highlightDependencies
           showLabels
           zoom
           zoomOptions={{

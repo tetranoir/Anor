@@ -160,7 +160,7 @@
     },
     {
         "name": "Mages Cap",
-        "recipe": ["Tear of the Goddess", "Spatual"],
+        "recipe": ["Tear of the Goddess", "Spatula"],
         "effect": "Wearer is also a Mage."
     },
     {

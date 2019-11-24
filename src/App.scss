@@ -234,6 +234,12 @@ div[hidden] {
   }
 }
 
+#item-grid {
+  text.grid-labels {
+    font-size: 12px;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
