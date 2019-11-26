@@ -1,8 +1,13 @@
 // third party
-import React, { useState, useEffect, useLayoutEffect, useMemo, cloneElement } from 'react';
+import React, {
+  useState, useEffect, useLayoutEffect, useMemo, cloneElement
+} from 'react';
+import Modal from 'react-modal';
 // import { Graph } from 'react-d3-graph';
 // import { Graph, DefaultLink, DefaultNode } from '@vx/network';
-import { InteractiveForceGraph, ForceGraphNode, ForceGraphLink, ForceGraph } from 'react-vis-force';
+import {
+  InteractiveForceGraph, ForceGraphNode, ForceGraphLink,ForceGraph
+} from 'react-vis-force';
 // import { scaleCategory20 } from 'd3-scale';
 import cx from 'classnames/bind';
 import * as ramda from 'ramda';
@@ -23,7 +28,9 @@ import {
 } from './knowledge/modelapp';
 
 // loaders
-import { mapToReactD3Graph, mapToVxNetwork, mapToReactVisForce } from './loader/mapsToGraph';
+import {
+  mapToReactD3Graph, mapToVxNetwork, mapToReactVisForce
+} from './loader/mapsToGraph';
 import { jsonToMaps } from './loader/dataToMaps';
 
 // components
@@ -54,6 +61,9 @@ declare global {
     keyToSynergy: any;
     selected: any;
     nodes: any;
+    combineItems: any;
+    recipeToNonBasicItem: any;
+    idToResultsGridNode: any;
     R: any
   }
 }
@@ -92,8 +102,21 @@ const idToItem: EnrichedItemMap = R.mapObjIndexed(prepItem, itemData);
 window.idToItem = idToItem;
 const items = Object.values(idToItem);
 const basicItems = items.filter(item => !item.recipe);
-const gridAxisNodes: GridNode[] = basicItems.map(item => ({id: item[id]}));
-R.mapObjIndexed(stimulateItem, idToItem);
+const nonBasicItems = items.filter(item => item.recipe);
+const idToNonBasicItem  = objFromAry(id, nonBasicItems);
+const recipeToNonBasicItem = R.mergeWith(
+  R.merge,
+  R.mapObjIndexed(
+    R.reduceBy(R.merge, {}, item => item.recipe[1]),
+    R.groupBy(item => item.recipe[0], nonBasicItems),
+  ),
+  R.mapObjIndexed(
+    R.reduceBy(R.merge, {}, item => item.recipe[0]),
+    R.groupBy(item => item.recipe[1], nonBasicItems),
+  ),
+);
+window.recipeToNonBasicItem = recipeToNonBasicItem;
+R.mapObjIndexed(stimulateItem, idToItem); // Fills in enriched items
 
 // Create "empty" enriched item from item
 function prepItem(item: Item, name: string): EnrichedItem {
@@ -102,10 +125,27 @@ function prepItem(item: Item, name: string): EnrichedItem {
 // Mutate enriched item to add its specifications
 function stimulateItem(item: EnrichedItem, unused: string, idToItem: EnrichedItemMap) {
   if (!item.recipe) return;
-  const uniqRecipe = R.uniq(item.recipe);
-  item.madeFrom = uniqRecipe.map(itemName => idToItem[itemName]);
+  item.madeFrom = item.recipe.map(itemName => idToItem[itemName]);
   item.madeFrom.forEach(m => m.usedIn = [...m.usedIn, item]);
 }
+
+function makeGridNodeFromItem(item): GridNode {
+  if (item[id].length > 9 && item.short) {
+    return {id: item[id], label: item.short};
+  }
+  return {id: item[id]};
+}
+interface GridNodeMap {
+  [id: string]: GridNode;
+}
+const gridAxisNodes: GridNode[] = basicItems.map(makeGridNodeFromItem);
+const idToResultsGridNode: GridNodeMap =
+  R.mapObjIndexed(makeGridNodeFromItem, idToNonBasicItem);
+window.idToResultsGridNode = idToResultsGridNode;
+function combineItems(itemA: GridNode, itemB: GridNode) {
+  return idToResultsGridNode[recipeToNonBasicItem[itemA.id][itemB.id][id]];
+}
+window.combineItems = combineItems;
 
 interface ThresholdMap {
   [threshold: number]: string;
@@ -266,6 +306,55 @@ function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
   };
 }
 
+function ItemReferenceModal() {
+  const [open, setOpen] = React.useState(false);
+
+  function openModal() {
+    setOpen(true);
+  }
+  function closeModal() {
+    setOpen(false);
+  }
+
+  const style = {
+    content : {
+      // top: 'unset',
+      left: '50%',
+      right: 'unset',
+      bottom: 'unset',
+      padding: 16,
+      background: '#DDD',
+      transform: 'translate(-50%, 0)',
+    }
+  };
+
+  return (
+    <div className="reference-modal">
+      <button className="panel" onClick={openModal}>Item Reference</button>
+      <Modal
+        isOpen={open}
+        onRequestClose={closeModal}
+        style={style}
+        ariaHideApp={false}
+      >
+        <div id="item-grid">
+          <GridChart
+            x={gridAxisNodes}
+            y={gridAxisNodes}
+            vertSpace={40}
+            horiSpace={100}
+            vertGutter={12}
+            horiGutter={10}
+            operator={combineItems}
+            showLabels
+            labelClass={"grid-labels"}
+          />
+        </div>
+      </Modal>
+    </div>
+  )
+}
+
 // creates check boxes with objects at leaves, based on a maps of props vals -> objs
 function renderKeysAsCheckboxes(keyToMap, name='filters') {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -323,7 +412,7 @@ function linkDisplayRules(a: State, b: State): Partial<State> {
 
 interface GridNode {
   id: string;
-  show?: string|number|SVGElement;
+  label?: string;
 }
 interface GridChartProps {
   id?: string;
@@ -332,8 +421,7 @@ interface GridChartProps {
   width?: number|string;
   x: GridNode[];
   y: GridNode[];
-  // operator: <T extends GridNode, U extends GridNode, V extends GridNode>(x: T, y: U) => V;
-  operator: any;
+  operator: (x: GridNode, y: GridNode) => GridNode|undefined;
   vertSpace?: number; // doesn't support % yet
   horiSpace?: number; // doesn't support % yet
   vertGutter?: number;
@@ -351,8 +439,6 @@ function GridChart(props: GridChartProps) {
   const {
     id,
     className,
-    height = 600,
-    width = 800,
     x,
     y,
     operator,
@@ -367,6 +453,11 @@ function GridChart(props: GridChartProps) {
     bottomX = false,
     leftY = true,
     rightY = false,
+  } = props;
+
+  const {
+    height = (y.length + 1) * (vertSpace + vertGutter) - (showLabels ? 0 : vertGutter),
+    width = (x.length + 1) * (horiSpace + horiGutter) - horiGutter,
   } = props;
 
   const horiOuter = horiSpace + horiGutter;
@@ -387,18 +478,18 @@ function GridChart(props: GridChartProps) {
     <text
       key={node.id + '_x_label'}
       x={(i + 1) * horiOuter}
-      y={yPos}
+      y={yPos - 2}
       className={labelClass}
     >
-      {node.id}
+      {node.label || node.id}
     </text>
   ));
 
   const yAxisNodes = (xPos) => y.map((node, i) => (
     <rect
       key={node.id + '_y'}
-      y={(i + 1) * vertOuter}
       x={xPos}
+      y={(i + 1) * vertOuter}
       width={horiSpace}
       height={vertSpace}
       {...node}
@@ -408,13 +499,39 @@ function GridChart(props: GridChartProps) {
   const yAxisLabels = (xPos) => x.map((node, i) => (
     <text
       key={node.id + '_x_label'}
-      y={(i + 2) * vertOuter}
       x={xPos}
+      y={(i + 2) * vertOuter - 2}
       className={labelClass}
     >
-      {node.id}
+      {node.label || node.id}
     </text>
   ));
+
+  const results = y.map(
+    (yNode, j) => x.map(
+      (xNode, i) => {
+        const rNode = operator(xNode, yNode);
+        return [
+          <rect
+            key={`${rNode.id}_${i}_${j}`}
+            x={(i + 1) * horiOuter}
+            y={(j + 1) * vertOuter}
+            width={horiSpace}
+            height={vertSpace}
+            {...rNode}
+          />,
+          <text
+            key={`${rNode.id}_${i}_${j}__label`}
+            x={(i + 1) * horiOuter}
+            y={(j + 2) * vertOuter - 2}
+            className={labelClass}
+          >
+            {rNode.label || rNode.id}
+          </text>
+        ];
+      },
+    ),
+  );
 
   return (
     <svg height={height} width={width} id={id} className={className}>
@@ -442,6 +559,7 @@ function GridChart(props: GridChartProps) {
       {rightY && showLabels &&
         <g className="top_x-axis__labels">{yAxisLabels((x.length + 1) * horiOuter)}</g>
       }
+      <g className="results__nodes">{results}</g>
     </svg>
   );
 }
@@ -450,8 +568,9 @@ function Ariandel() {
   const start = Date.now();
   // const [config, ConfigEditor] = useConfig(graphConfig);
 
-  const { champions, keyToMap, tierToMap, idToChampion, selected, highlighted, hovered }
-    = setChampionData(championData);
+  const {
+    champions, keyToMap, tierToMap, idToChampion, selected, highlighted, hovered
+  } = setChampionData(championData);
   const [hoveredChampion] = hovered;
 
   function toggleSelectChampion(id: string) {
@@ -484,7 +603,8 @@ function Ariandel() {
     });
   }
 
-  const {nodes, links} = mapToReactVisForce(id, champions, Object.values(keyToMap), pickStateVars, linkDisplayRules);
+  const {nodes, links} = mapToReactVisForce(
+      id, champions, Object.values(keyToMap), pickStateVars, linkDisplayRules);
   window.nodes = nodes;
   console.log('ARIANDEL RENDER', Date.now() - start);
   // TODO turn left/right-container to be real presentation components
@@ -518,18 +638,8 @@ function Ariandel() {
           synThreshes={extractSynergyThresholds(hoveredChampion || [])}
         />
       </div>
-      <div id="item-grid">
-        <GridChart
-          x={gridAxisNodes}
-          y={gridAxisNodes}
-          height={window.innerHeight}
-          width={window.innerWidth}
-          horiSpace={120}
-          vertSpace={60}
-          operator
-          showLabels
-          labelClass={"grid-labels"}
-        />
+      <div className="top-container">
+        <ItemReferenceModal />
       </div>
       <div id="graph">
         <ForceGraph

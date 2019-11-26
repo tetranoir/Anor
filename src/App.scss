@@ -118,6 +118,12 @@ div[hidden] {
   }
 }
 
+.top-container {
+  position: absolute;
+  top: 10px;
+  right: 50%;
+}
+
 .panel {
   padding: 0 0 5px 0;
   background-color: whitesmoke;
@@ -159,6 +165,15 @@ div[hidden] {
       padding: 0 10px;
     }
   }
+}
+
+.reference-modal {
+  button {
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 5px;
+  }
+
 }
 /* blue pastels dark -> light */
 /* #4477b2, #5284bd, #6591c4, #779ecb, #89abd2, #9cb8d9, #aec5e0 */
@@ -237,6 +252,7 @@ div[hidden] {
 #item-grid {
   text.grid-labels {
     font-size: 12px;
+    text-transform: capitalize;
   }
 }
 

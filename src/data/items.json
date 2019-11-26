@@ -101,7 +101,7 @@
     "short": "zekes",
     "recipe": [
       "B.F. Sword",
-      "Recurve Bow"
+      "Giant's Belt"
     ],
     "effect": "When combat begins, the wearer and all allies within 2 hexes in the same row gain +20% attack speed."
   },
@@ -161,6 +161,7 @@
   },
   "Runaan's Hurricane": {
     "name": "Runaan's Hurricane",
+    "short": "hurricane",
     "recipe": [
       "Recurve Bow",
       "Negatron Cloak"
@@ -172,7 +173,7 @@
     "short": "hydra",
     "recipe": [
       "Recurve Bow",
-      "Sparring Gloves"
+      "Giant's Belt"
     ],
     "effect": "Basic attacks deal an additional 3% of the wearer's maximum health as magic damage to the target and adjacent enemies behind them."
   },
@@ -313,6 +314,7 @@
   },
   "Sword Breaker": {
     "name": "Sword Breaker",
+    "short": "disarm",
     "recipe": [
       "Chain Vest",
       "Negatron Cloak"
@@ -337,6 +339,7 @@
   },
   "Iceborn Guantlet": {
     "name": "Iceborn Guantlet",
+    "short": "gauntlet",
     "recipe": [
       "Chain Vest",
       "Sparring Gloves"
@@ -361,6 +364,7 @@
   },
   "Talisman of Light": {
     "name": "Talisman of Light",
+    "short": "talisman",
     "recipe": [
       "Negatron Cloak",
       "Spatula"
@@ -377,6 +381,7 @@
   },
   "Warmog's Armor": {
     "name": "Warmog's Armor",
+    "short": "warmogs",
     "recipe": [
       "Giant's Belt",
       "Giant's Belt"
@@ -401,6 +406,7 @@
   },
   "Force of Nature": {
     "name": "Force of Nature",
+    "short": "fon",
     "recipe": [
       "Spatula",
       "Spatula"
@@ -417,6 +423,7 @@
   },
   "Thief's Gloves": {
     "name": "Thief's Gloves",
+    "short": "gloves",
     "recipe": [
       "Sparring Gloves",
       "Sparring Gloves"
