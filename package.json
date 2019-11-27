@@ -2,6 +2,7 @@
   "name": "anor",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://tetranoir.github.io/anor",
   "dependencies": {
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.2",
@@ -11,6 +12,7 @@
     "classnames": "^2.2.6",
     "d3": "^5.9.7",
     "d3-scale": "^3.1.0",
+    "gh-pages": "^2.1.1",
     "node-sass": "^4.12.0",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
@@ -26,7 +28,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "data": "node src/knowledge/aggregatedata_v2.js"
+    "data": "node src/knowledge/aggregatedata_v2.js",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
