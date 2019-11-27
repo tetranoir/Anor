@@ -1,7 +1,6 @@
 {
   "name": "anor",
   "version": "0.1.0",
-  "private": true,
   "homepage":"https://tetranoir.github.io/anor",
   "dependencies": {
     "@types/jest": "^24.0.18",
