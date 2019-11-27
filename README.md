@@ -4,4 +4,4 @@ Graph for TFT
 
 ## Demo
 
-[https://tetranoir.github.io/arno](https://tetranoir.github.io/arno)
+[https://tetranoir.github.io/anor](https://tetranoir.github.io/anor)
