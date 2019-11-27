@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/anor/static/css/main.65f51141.chunk.css",
-    "main.js": "/anor/static/js/main.53cf48a2.chunk.js",
-    "main.js.map": "/anor/static/js/main.53cf48a2.chunk.js.map",
+    "main.css": "/anor/static/css/main.9cd29b1e.chunk.css",
+    "main.js": "/anor/static/js/main.ae900281.chunk.js",
+    "main.js.map": "/anor/static/js/main.ae900281.chunk.js.map",
     "runtime~main.js": "/anor/static/js/runtime~main.e1f3c5bf.js",
     "runtime~main.js.map": "/anor/static/js/runtime~main.e1f3c5bf.js.map",
     "static/js/2.7e4d02c3.chunk.js": "/anor/static/js/2.7e4d02c3.chunk.js",
     "static/js/2.7e4d02c3.chunk.js.map": "/anor/static/js/2.7e4d02c3.chunk.js.map",
     "index.html": "/anor/index.html",
-    "precache-manifest.45bc91bf98a7981ce605dc7cd08cf064.js": "/anor/precache-manifest.45bc91bf98a7981ce605dc7cd08cf064.js",
+    "precache-manifest.48b190d3af36861979e5e4f286b391db.js": "/anor/precache-manifest.48b190d3af36861979e5e4f286b391db.js",
     "service-worker.js": "/anor/service-worker.js",
-    "static/css/main.65f51141.chunk.css.map": "/anor/static/css/main.65f51141.chunk.css.map"
+    "static/css/main.9cd29b1e.chunk.css.map": "/anor/static/css/main.9cd29b1e.chunk.css.map"
   }
 }
