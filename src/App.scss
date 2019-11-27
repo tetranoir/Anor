@@ -175,8 +175,14 @@ div[hidden] {
   }
 
 }
+/* https://paletton.com/#uid=53C0u0kl1Wx1x+IcEXDsUWkWEVB */
 /* blue pastels dark -> light */
-/* #4477b2, #5284bd, #6591c4, #779ecb, #89abd2, #9cb8d9, #aec5e0 */
+/* #036FF0, #2985F2, #60A3F3 */
+/* purple pastels dark -> light */
+/* #1E04F2, #4935F4, #7869F4 */
+$primary-dark: #4935F4;
+$secondary-dark: #036FF0;
+$secondary-med: #2985F2;
 #graph {
   transition: stroke .6s ease-in, opacity .2s ease-in;
   image.node-icon {
@@ -210,15 +216,15 @@ div[hidden] {
     stroke-width: 3;
     z-index: 1;
   }
-  line.graph-link.selected {
-    stroke: #4477b2;
-    opacity: 1.0;
-    z-index: 2;
-  }
   line.graph-link.highlighted {
-    stroke: #4477b2;
+    stroke: $secondary-dark;
     opacity: 1.0;
     z-index: 3;
+  }
+  line.graph-link.selected {
+    stroke: $primary-dark;
+    opacity: 1.0;
+    z-index: 2;
   }
   line.graph-link.filtered {
     opacity: 0.0;
@@ -231,16 +237,16 @@ div[hidden] {
     r: 20px;
     stroke: #BBB;
   }
-  circle.graph-node.selected {
-    stroke: #4477b2;
+  circle.graph-node.highlighted {
+    stroke: $secondary-dark;
     opacity: 1;
   }
-  circle.graph-node.highlighted {
-    stroke: #4477b2;
+  circle.graph-node.selected {
+    stroke: $primary-dark;
     opacity: 1;
   }
   circle.graph-node.hovered, {
-    stroke: #4477b2;
+    stroke: $secondary-med;
     opacity: 1;
   }
   circle.graph-node.filtered {

@@ -135,6 +135,7 @@
     },
     {
         "name": "Jeweled Guantlet",
+        "short": "gauntlet",
         "recipe": ["Needlessly Large Rod", "Sparring Gloves"],
         "effect": "The wearer's spells can critically strike."
     },

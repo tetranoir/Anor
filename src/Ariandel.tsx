@@ -37,6 +37,7 @@ import { jsonToMaps } from './loader/dataToMaps';
 import { ChampionList } from './components/ChampionList';
 import { SynergyList } from './components/SynergyList';
 import { ChampionImages } from './components/ChampionImages';
+import { GridNode, GridChartSvg, GridChartHtml } from './components/GridChart';
 
 // styles
 import './App.scss';
@@ -129,11 +130,14 @@ function stimulateItem(item: EnrichedItem, unused: string, idToItem: EnrichedIte
   item.madeFrom.forEach(m => m.usedIn = [...m.usedIn, item]);
 }
 
-function makeGridNodeFromItem(item): GridNode {
-  if (item[id].length > 9 && item.short) {
-    return {id: item[id], label: item.short};
+// LOADS ITEM TO GRIDCHART
+function makeGridNodeFromItem(item: Item): GridNode {
+  const {[id]: name, short, effect, icon} = item;
+
+  if (name.length > 9 && short) {
+    return {id: name, label: short, data: effect};
   }
-  return {id: item[id]};
+  return {id: name, data: effect};
 }
 interface GridNodeMap {
   [id: string]: GridNode;
@@ -317,16 +321,66 @@ function ItemReferenceModal() {
   }
 
   const style = {
-    content : {
+    content: {
       // top: 'unset',
       left: '50%',
       right: 'unset',
       bottom: 'unset',
       padding: 16,
-      background: '#DDD',
+      background: '#AAA',
       transform: 'translate(-50%, 0)',
+      border: '2px solid #EEE'
     }
   };
+
+  const rectStyle = {
+    stroke: '#EEE',
+    strokeWidth: 2,
+    fillOpacity: 0,
+    rx: 5,
+    ry: 5,
+  };
+
+  const textStyle = {
+    fill: '#EEE',
+  };
+
+  // const renderChart = (
+  //   <GridChartSvg
+  //     x={gridAxisNodes}
+  //     y={gridAxisNodes}
+  //     vertSpace={40}
+  //     horiSpace={100}
+  //     vertGutter={16}
+  //     horiGutter={10}
+  //     operator={combineItems}
+  //     showLabels
+  //     labelClass={"grid-labels"}
+  //     rectStyle={rectStyle}
+  //     textStyle={textStyle}
+  //   />
+  // );
+  const nodeStyle = {
+    border: '2px solid #EEE',
+    borderRadius: 5,
+    background: `rgba(255, 255, 255, 0)`,
+  }
+
+  // 46, 100
+  const renderChart = (
+    <GridChartHtml
+      x={gridAxisNodes}
+      y={gridAxisNodes}
+      vertSpace={60}
+      horiSpace={150}
+      vertGutter={16}
+      horiGutter={10}
+      operator={combineItems}
+      showLabels
+      labelClass={"grid-labels"}
+      nodeStyle={nodeStyle}
+    />
+  );
 
   return (
     <div className="reference-modal">
@@ -338,17 +392,7 @@ function ItemReferenceModal() {
         ariaHideApp={false}
       >
         <div id="item-grid">
-          <GridChart
-            x={gridAxisNodes}
-            y={gridAxisNodes}
-            vertSpace={40}
-            horiSpace={100}
-            vertGutter={12}
-            horiGutter={10}
-            operator={combineItems}
-            showLabels
-            labelClass={"grid-labels"}
-          />
+          {renderChart}
         </div>
       </Modal>
     </div>
@@ -408,160 +452,6 @@ function linkDisplayRules(a: State, b: State): Partial<State> {
     highlighted: (a.highlighted && b.hovered) || (a.hovered && b.highlighted),
     hovered: false,
   };
-}
-
-interface GridNode {
-  id: string;
-  label?: string;
-}
-interface GridChartProps {
-  id?: string;
-  className?: string;
-  height?: number|string;
-  width?: number|string;
-  x: GridNode[];
-  y: GridNode[];
-  operator: (x: GridNode, y: GridNode) => GridNode|undefined;
-  vertSpace?: number; // doesn't support % yet
-  horiSpace?: number; // doesn't support % yet
-  vertGutter?: number;
-  horiGutter?: number;
-  topX?: boolean;
-  bottomX?: boolean;
-  leftY?: boolean;
-  rightY?: boolean;
-  showLabels?: boolean;
-  labelHeight?: number;
-  labelClass?: string;
-}
-// TODO move (x, y) to children
-function GridChart(props: GridChartProps) {
-  const {
-    id,
-    className,
-    x,
-    y,
-    operator,
-    showLabels = false,
-    labelHeight = 10,
-    labelClass,
-    vertSpace = 40,
-    horiSpace = 50,
-    vertGutter = labelHeight,
-    horiGutter = vertGutter,
-    topX = true,
-    bottomX = false,
-    leftY = true,
-    rightY = false,
-  } = props;
-
-  const {
-    height = (y.length + 1) * (vertSpace + vertGutter) - (showLabels ? 0 : vertGutter),
-    width = (x.length + 1) * (horiSpace + horiGutter) - horiGutter,
-  } = props;
-
-  const horiOuter = horiSpace + horiGutter;
-  const vertOuter = vertSpace + vertGutter;
-
-  const xAxisNodes = (yPos) => x.map((node, i) => (
-    <rect
-      key={node.id + '_x'}
-      x={(i + 1) * horiOuter}
-      y={yPos}
-      width={horiSpace}
-      height={vertSpace}
-      {...node}
-    />
-  ));
-
-  const xAxisLabels = (yPos) => x.map((node, i) => (
-    <text
-      key={node.id + '_x_label'}
-      x={(i + 1) * horiOuter}
-      y={yPos - 2}
-      className={labelClass}
-    >
-      {node.label || node.id}
-    </text>
-  ));
-
-  const yAxisNodes = (xPos) => y.map((node, i) => (
-    <rect
-      key={node.id + '_y'}
-      x={xPos}
-      y={(i + 1) * vertOuter}
-      width={horiSpace}
-      height={vertSpace}
-      {...node}
-    />
-  ));
-
-  const yAxisLabels = (xPos) => x.map((node, i) => (
-    <text
-      key={node.id + '_x_label'}
-      x={xPos}
-      y={(i + 2) * vertOuter - 2}
-      className={labelClass}
-    >
-      {node.label || node.id}
-    </text>
-  ));
-
-  const results = y.map(
-    (yNode, j) => x.map(
-      (xNode, i) => {
-        const rNode = operator(xNode, yNode);
-        return [
-          <rect
-            key={`${rNode.id}_${i}_${j}`}
-            x={(i + 1) * horiOuter}
-            y={(j + 1) * vertOuter}
-            width={horiSpace}
-            height={vertSpace}
-            {...rNode}
-          />,
-          <text
-            key={`${rNode.id}_${i}_${j}__label`}
-            x={(i + 1) * horiOuter}
-            y={(j + 2) * vertOuter - 2}
-            className={labelClass}
-          >
-            {rNode.label || rNode.id}
-          </text>
-        ];
-      },
-    ),
-  );
-
-  return (
-    <svg height={height} width={width} id={id} className={className}>
-      {topX &&
-        <g className="top_x-axis__nodes">{xAxisNodes(0)}</g>
-      }
-      {topX && showLabels &&
-        <g className="top_x-axis__labels">{xAxisLabels(vertOuter)}</g>
-      }
-      {bottomX &&
-        <g className="bottom_x-axis__nodes">{xAxisNodes(y.length * vertOuter)}</g>
-      }
-      {bottomX && showLabels &&
-        <g className="top_x-axis__labels">{xAxisLabels((y.length + 1) * vertOuter)}</g>
-      }
-      {leftY &&
-        <g className="left_y-axis__nodes">{yAxisNodes(0)}</g>
-      }
-      {leftY && showLabels &&
-        <g className="top_x-axis__labels">{yAxisLabels(0)}</g>
-      }
-      {rightY &&
-        <g className="right_y-axis__nodes">{yAxisNodes(x.length * horiOuter)}</g>
-      }
-      {rightY && showLabels &&
-        <g className="top_x-axis__labels">{yAxisLabels((x.length + 1) * horiOuter)}</g>
-      }
-      <g className="results__nodes">{results}</g>
-    </svg>
-  );
 }
 
 function Ariandel() {

@@ -6,7 +6,6 @@
   },
   "Chain Vest": {
     "name": "Chain Vest",
-    "short": "vest",
     "effect": "+25 armor"
   },
   "Giant's Belt": {
@@ -249,6 +248,7 @@
   },
   "Jeweled Guantlet": {
     "name": "Jeweled Guantlet",
+    "short": "gauntlet",
     "recipe": [
       "Needlessly Large Rod",
       "Sparring Gloves"
