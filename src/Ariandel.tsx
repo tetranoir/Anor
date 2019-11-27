@@ -494,6 +494,8 @@ function Ariandel() {
           title="Synergies"
           synThreshes={evalChampionThresholds(selected)}
         />
+      </div>
+      <div className="right-container offset1">
         <ChampionList
           className="panel highlighted-champions"
           title="Neighbors"

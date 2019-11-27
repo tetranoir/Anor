@@ -109,6 +109,10 @@ div[hidden] {
   & > div {
     margin-bottom: 10px;
   }
+
+  &.offset1 {
+    right: 170px;
+  }
 }
 
 .left-container {

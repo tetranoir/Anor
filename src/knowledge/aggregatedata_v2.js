@@ -87,7 +87,7 @@ function aggregateChampions(championPath, externalPath, targetFilePath, name) {
   });
 }
 
-function aggregateItems(itemsSourcePath, targetFilePath, name) {
+function aggregateItems(itemsSourcePath, externalPath, targetFilePath, name) {
   const itemFiles = fs.readdirSync(itemsSourcePath);
   let items = []
   itemFiles.forEach(filePath => {
@@ -99,8 +99,23 @@ function aggregateItems(itemsSourcePath, targetFilePath, name) {
     }
   });
 
+  const externalFiles = fs.readdirSync(externalPath);
+  let externals = [];
+  externalFiles.forEach(filePath => {
+    try {
+      const file = fs.readFileSync(p.join(externalPath, filePath));
+      externals = externals.concat(JSON.parse(file));
+    } catch(e) {
+      console.log(filePath, e);
+    }
+  });
+
   // maybe: potential to fill in unknown values with defaults
-  const itemMap = arrayToObject(items, o => o[key]);
+  const externalMap = arrayToObject(externals, o => o[key]);
+  const itemMap = arrayToObject(items.map(m => ({
+    ...m,
+    ...externalMap[m[key]],
+  })), o => o[key]);
 
   fs.writeFile(targetFilePath, JSON.stringify(itemMap, null, 2), err => {
     if (err) {
@@ -112,5 +127,15 @@ function aggregateItems(itemsSourcePath, targetFilePath, name) {
 }
 
 aggregateSynergies(p.join(source, 'synergies'), p.join(target, 'synergies.json'), 'synergies');
-aggregateChampions(p.join(source, 'champions'), p.join(source, 'external'), p.join(target, 'champions.json'), 'champions');
-aggregateItems(p.join(source, 'items'), p.join(target, 'items.json'), 'items');
+aggregateChampions(
+  p.join(source, 'champions'),
+  p.join(source, 'external'),
+  p.join(target, 'champions.json'),
+  'champions'
+);
+aggregateItems(
+  p.join(source, 'items'),
+  p.join(source, 'external'),
+  p.join(target, 'items.json'),
+  'items'
+);

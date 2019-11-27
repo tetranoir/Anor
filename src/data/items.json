@@ -2,21 +2,25 @@
   "B.F. Sword": {
     "name": "B.F. Sword",
     "short": "bf",
-    "effect": "+15 attack damage"
+    "effect": "+15 attack damage",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/1038.png"
   },
   "Chain Vest": {
     "name": "Chain Vest",
-    "effect": "+25 armor"
+    "effect": "+25 armor",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/1031.png"
   },
   "Giant's Belt": {
     "name": "Giant's Belt",
     "short": "belt",
-    "effect": "+200 health"
+    "effect": "+200 health",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/1011.png"
   },
   "Needlessly Large Rod": {
     "name": "Needlessly Large Rod",
     "short": "rod",
-    "effect": "+20% spell damage"
+    "effect": "+20% spell damage",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/1058.png"
   },
   "Negatron Cloak": {
     "name": "Negatron Cloak",
@@ -84,7 +88,8 @@
       "B.F. Sword",
       "Chain Vest"
     ],
-    "effect": "When the wearer dies, revive with up to 400 health after a 2 second delay once per combat."
+    "effect": "When the wearer dies, revive with up to 400 health after a 2 second delay once per combat.",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3026.png"
   },
   "Bloodthirster": {
     "name": "Bloodthirster",
@@ -394,7 +399,8 @@
       "Giant's Belt",
       "Spatula"
     ],
-    "effect": "Wearer is also Glacial."
+    "effect": "Wearer is also Glacial.",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3022.png"
   },
   "Trap Claw": {
     "name": "Trap Claw",
