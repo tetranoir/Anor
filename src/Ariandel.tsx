@@ -41,6 +41,7 @@ import { GridNode, GridChartSvg, GridChartHtml } from './components/GridChart';
 
 // styles
 import './App.scss';
+import './components/GridChart.scss';
 
 // data
 // TODO: maybe consolidate into 1 data import?
@@ -322,51 +323,22 @@ function ItemReferenceModal() {
 
   const style = {
     content: {
-      // top: 'unset',
       left: '50%',
       right: 'unset',
       bottom: 'unset',
-      padding: 16,
-      background: '#AAA',
+      padding: 'unset',
       transform: 'translate(-50%, 0)',
-      border: '2px solid #EEE'
+      border: 'unset',
     }
   };
 
-  const rectStyle = {
-    stroke: '#EEE',
-    strokeWidth: 2,
-    fillOpacity: 0,
-    rx: 5,
-    ry: 5,
-  };
-
-  const textStyle = {
-    fill: '#EEE',
-  };
-
-  // const renderChart = (
-  //   <GridChartSvg
-  //     x={gridAxisNodes}
-  //     y={gridAxisNodes}
-  //     vertSpace={40}
-  //     horiSpace={100}
-  //     vertGutter={16}
-  //     horiGutter={10}
-  //     operator={combineItems}
-  //     showLabels
-  //     labelClass={"grid-labels"}
-  //     rectStyle={rectStyle}
-  //     textStyle={textStyle}
-  //   />
-  // );
   const nodeStyle = {
-    border: '2px solid #EEE',
-    borderRadius: 5,
-    background: `rgba(255, 255, 255, 0)`,
-  }
+    // border: '2px solid #EEE',
+    // background: '#AAA',
+  };
+  const chartStyle = {
+  };
 
-  // 46, 100
   const renderChart = (
     <GridChartHtml
       x={gridAxisNodes}
@@ -379,6 +351,7 @@ function ItemReferenceModal() {
       showLabels
       labelClass={"grid-labels"}
       nodeStyle={nodeStyle}
+      chartStyle={chartStyle}
     />
   );
 

@@ -1,0 +1,36 @@
+.grid-chart {
+  display: grid;
+  font-size: 10px;
+  background: #AAA;
+  padding: 20px 20px 30px 20px;
+  border: 2px solid #EEE;
+
+  .grid-node {
+    border: 1px solid #DDD;
+    position: relative;
+    border-radius: 5px;
+    background: #CCC;
+    min-height: 100%;
+
+    .node-label {
+      position: absolute;
+      left: 0;
+      text-transform: capitalize;
+      font-size: 12px;
+    }
+    .node-data {
+      overflow: scroll;
+      padding: 3px;
+      height: 100%;
+    }
+
+    .node-data:hover {
+      overflow: unset;
+    }
+
+    &:hover {
+      height: fit-content;
+      z-index: 1;
+    }
+  }
+}

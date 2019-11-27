@@ -1,4 +1,5 @@
 import React, {cloneElement} from 'react';
+import cx from 'classnames/bind';
 
 export interface GridNode {
   id: string;
@@ -31,6 +32,7 @@ interface GridChartProps {
 interface GridChartHtmlProps extends GridChartProps {
   nodeStyle?: React.CSSProperties;
   labelStyle?: React.CSSProperties;
+  chartStyle?: React.CSSProperties;
 }
 
 export function GridChartHtml(props: GridChartHtmlProps) {
@@ -52,35 +54,36 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     rightY = false,
     nodeStyle = {},
     labelStyle = {},
+    chartStyle = {},
     textVertMargin = -16, // for alignment of line height
     renderGridNode,
   } = props;
 
   const baseLabelStyle = {
-    position: 'absolute',
     bottom: textVertMargin,
-    left: 0,
-    textTransform: 'capitalize',
-    fontSize: 12,
     ...labelStyle,
   } as React.CSSProperties;
 
   const baseNodestyle = {
-    border: '1px solid black',
-    padding: 3,
-    position: 'relative',
     ...nodeStyle,
   } as React.CSSProperties;
 
-  const nodeDataStyle = {
-    overflow: 'scroll',
-    height: '100%',
+  const baseChartStyle = {
+    gridAutoColumns: horiSpace,
+    gridAutoRows: vertSpace,
+    gridColumnGap: horiGutter,
+    gridRowGap: vertGutter,
+    ...chartStyle,
   } as React.CSSProperties;
 
   const renderLabel = (node: GridNode) => (
-    <span className={labelClass} style={baseLabelStyle}>
+    <span className={cx('node-label', labelClass)} style={baseLabelStyle}>
       {node.label || node.id}
     </span>
+  );
+
+  const renderData = (node: GridNode) => (
+     node.data && <div className="node-data">{node.data}</div>
   );
 
   const xAxisNodes = (rowPos) => x.map((node, i) => {
@@ -89,10 +92,10 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     return (
       <div
         key={node.id + '_x'}
-        className="x_axis__node"
+        className="grid-node x-axis-node"
         style={{gridColumn, gridRow, ...baseNodestyle}}
       >
-        {node.element || <div style={nodeDataStyle}>{node.data}</div>}
+        {node.element || renderData(node)}
         {showLabels && renderLabel(node)}
       </div>
     );
@@ -104,10 +107,10 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     return (
       <div
         key={node.id + '_Y'}
-        className="y_axis__node"
+        className="grid-node y-axis-node"
         style={{gridColumn, gridRow, ...baseNodestyle}}
       >
-        {node.element || <div style={nodeDataStyle}>{node.data}</div>}
+        {node.element || renderData(node)}
         {showLabels && renderLabel(node)}
       </div>
     );
@@ -118,29 +121,18 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     return (
       <div
         key={`${rNode.id}_${i}_${j}`}
-        className="result__node"
+        className="grid-node result-node"
         style={baseNodestyle}
       >
-        {rNode.element || <div style={nodeDataStyle}>{rNode.data}</div>}
+        {rNode.element || renderData(rNode)}
         {showLabels && renderLabel(rNode)}
       </div>
     );
   }));
 
-  const chartStyle = {
-    display: 'grid',
-    gridAutoColumns: horiSpace,
-    gridAutoRows: vertSpace,
-    gridColumnGap: horiGutter,
-    gridRowGap: vertGutter,
-    fontSize: 10,
-    color: '#EEE',
-    marginBottom: vertGutter,
-  };
-
   return (
-    <div id={id} className={className} style={chartStyle}>
-      <div className="axis_corner__node" style={{gridColumn: '1 / 2', gridRow: '1 / 2'}} />
+    <div id={id} className={cx('grid-chart', className)} style={baseChartStyle}>
+      <div className="axis-corner-node" style={{gridColumn: '1 / 2', gridRow: '1 / 2'}} />
       {topX && xAxisNodes(1)}
       {bottomX && xAxisNodes(y.length)}
       {leftY && yAxisNodes(1)}
@@ -150,12 +142,41 @@ export function GridChartHtml(props: GridChartHtmlProps) {
   );
 }
 
+
+/* Example */
+// const rectStyle = {
+//   stroke: '#EEE',
+//   strokeWidth: 2,
+//   fillOpacity: 0,
+//   rx: 5,
+//   ry: 5,
+// };
+
+// const textStyle = {
+//   fill: '#EEE',
+// };
+
+// const renderChart = (
+//   <GridChartSvg
+//     x={gridAxisNodes}
+//     y={gridAxisNodes}
+//     vertSpace={40}
+//     horiSpace={100}
+//     vertGutter={16}
+//     horiGutter={10}
+//     operator={combineItems}
+//     showLabels
+//     labelClass={"grid-labels"}
+//     rectStyle={rectStyle}
+//     textStyle={textStyle}
+//   />
+// );
 interface GridChartSvgProps extends GridChartProps {
   rectStyle?: React.SVGAttributes<SVGRectElement>;
   textStyle?: React.SVGAttributes<SVGTextElement>;
 }
 /**
- * Cant use SVG because there is no way to do text wrap/flow in SVG
+ * Cant use SVG because SVG sucks
  */
 export function GridChartSvg(props: GridChartSvgProps) {
   const {
