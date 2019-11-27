@@ -1,8 +1,8 @@
 .grid-chart {
   display: grid;
-  font-size: 12px;
+  font-size: 10px;
   background: #777;
-  padding: 20px 20px 30px 20px;
+  padding: 12px 20px 30px 20px;
   border: 2px solid #EEE;
   color: #EEE;
 
@@ -10,19 +10,26 @@
     border: 1px solid #CCC;
     position: relative;
     border-radius: 5px;
+    border-bottom-left-radius: 0;
     background: #888;
     min-height: 100%;
     height: 100%;
-    transition-delay: .3s;
-    transition: height .3s ease-in-out;
+    transition-delay: .2s;
+    transition: height .2s ease-in-out;
 
     .node-label {
       position: absolute;
       left: -1px;
-      border: 1px solid transparent;
+      bottom: -16px;
       text-transform: capitalize;
-      font-size: 14px;
-      padding: 0px 5px 3px 5px;
+      font-size: 12px;
+      padding: 0px 5px 0px 5px;
+
+      background: inherit;
+      border: 1px solid #CCC;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-top: none;
     }
     .node-data {
       overflow: hidden;
@@ -39,17 +46,8 @@
       /*height: fit-content;*/
       height: 230%; /* makes transition work */
       z-index: 1;
-      border-bottom-left-radius: 0;
       background: #666;
       color: #FFF;
-
-      .node-label {
-        background: inherit;
-        border: 1px solid #CCC;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        border-top: none;
-      }
     }
   }
 

@@ -97,7 +97,7 @@
         "name": "Repeating Crossbow",
         "short": "crossbow",
         "recipe": ["Recurve Bow", "Sparring Gloves"],
-        "effect": "When the wearer dies, Repeating Crossbow is re-equipped to a new ally. Each time Repeating Crossbow is re-equipped, it grants a stacking +30% attack speed and +30% critical Strike chance for the remainder of combat."
+        "effect": "Repeating Crossbow is re-equipped to a new ally when the wearer dies, granting a stacking +30% attack speed and +30% critical chance this combat."
     },
     {
         "name": "Rabadon's Deathcap",
@@ -126,7 +126,7 @@
         "name": "Morellonomicon",
         "short": "morellos",
         "recipe": ["Needlessly Large Rod", "Giant's Belt"],
-        "effect": "When the wearer deals damage with their spells, they burn the target, dealing 20% of the target's maximum health as true damage and preventing 80% of healing over 10 seconds. Unique."
+        "effect": "When spell damage burns the target for 20% of the target's maximum health and prevents 80% of healing over 10 seconds. Unique."
     },
     {
         "name": "Inferno's Cinder",
@@ -134,8 +134,7 @@
         "effect": "Wearer is also an Inferno."
     },
     {
-        "name": "Jeweled Guantlet",
-        "short": "gauntlet",
+        "name": "Jeweled Gauntlet",
         "recipe": ["Needlessly Large Rod", "Sparring Gloves"],
         "effect": "The wearer's spells can critically strike."
     },
@@ -158,7 +157,7 @@
     {
         "name": "Redemption",
         "recipe": ["Tear of the Goddess", "Giant's Belt"],
-        "effect": "When the wearer falls below 30% health, nearby allies are healed for 1200 Health after a 2.5 second delay. This effect can trigger once per combat."
+        "effect": "When the wearer falls below 30% health, nearby allies are healed for 1200 Health after a 2.5 second delay. Once per combat."
     },
     {
         "name": "Mages Cap",
@@ -168,7 +167,7 @@
     {
         "name": "Hand of Justice",
         "recipe": ["Tear of the Goddess", "Sparring Gloves"],
-        "effect": "At the beginning of each planning phase, the wearer gains one of the following: Basic attacks and spells deal +50.0% Damage, Basic attacks heal 50.0 Health on-hit"
+        "effect": "At the beginning of each planning phase, gain: basic attacks and spells deal +50% damage OR basic attacks heal 50 Health on-hit."
     },
     {
         "name": "Thornmail",
@@ -184,7 +183,7 @@
     {
         "name": "Red Buff",
         "recipe": ["Chain Vest", "Giant's Belt"],
-        "effect": "Basic Attacks burn the target, dealing 20% of the target's Maximum Health as true damage over 10 seconds and preventing 80% of healing for the duration of the burn."
+        "effect": "Basic Attacks burn the target, dealing 20% of the target's maximum Health over 10 seconds and preventing 80% of healing."
     },
     {
         "name": "Warden's Mail",
@@ -192,7 +191,7 @@
         "effect": "Wearer is also a Warden."
     },
     {
-        "name": "Iceborn Guantlet",
+        "name": "Iceborn Gauntlet",
         "short": "gauntlet",
         "recipe": ["Chain Vest", "Sparring Gloves"],
         "effect": "When the wearer dodges, they create a zone of ice. Enemies inside the zone have their Attack Speed reduced by 25%."

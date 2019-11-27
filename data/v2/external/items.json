@@ -26,5 +26,193 @@
   {
     "name": "Guardian Angel",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3026.png"
+  },
+  {
+    "name": "Infinity Edge",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3031.png"
+  },
+  {
+    "name": "Repeating Crossbow",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3036.png"
+  },
+  {
+    "name": "Seraph's Embrace",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3040.png"
+  },
+  {
+    "name": "Phantom Dancer",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3046.png"
+  },
+  {
+    "name": "Berserker's Axe",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3071.png"
+  },
+  {
+    "name": "Tear of the Goddess",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3070.png"
+  },
+  {
+    "name": "Bloodthirster",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3072.png"
+  },
+  {
+    "name": "Thornmail",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3035.png"
+  },
+  {
+    "name": "Runaan's Hurricane",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3085.png"
+  },
+  {
+    "name": "Statikk Shiv",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3087.png"
+  },
+  {
+    "name": "Rabadon's Deathcap",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3089.png"
+  },
+  {
+    "name": "Mages Cap",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3090.png"
+  },
+  {
+    "name": "Rapid Firecannon",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3094.png"
+  },
+  {
+    "name": "Redemption",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3107.png"
+  },
+  {
+    "name": "Frozen Heart",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3110.png"
+  },
+  {
+    "name": "Guinsoo's Rageblade",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3124.png"
+  },
+  {
+    "name": "Youmuu's Ghostblade",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3142.png"
+  },
+  {
+    "name": "Hextech Gunblade",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3146.png"
+  },
+  {
+    "name": "Blade of the Ruined King",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3153.png"
+  },
+  {
+    "name": "Spear of Shojin",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3161.png"
+  },
+  {
+    "name": "Morellonomicon",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3165.png"
+  },
+  {
+    "name": "Zephyr",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3172.png"
+  },
+  {
+    "name": "Locket of the Iron Solari",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3190.png"
+  },
+  {
+    "name": "Luden's Echo",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3285.png"
+  },
+  {
+    "name": "Talisman of Light",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3306.png"
+  },
+  {
+    "name": "Titanic Hydra",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3748.png"
+  },
+  {
+    "name": "Inferno's Cinder",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3751.png"
+  },
+  {
+    "name": "Recurve Bow",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/1043.png"
+  },
+  {
+    "name": "Sparring Gloves",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/b/b4/Sparring_Gloves_item.png/revision/latest?cb=20190925184400"
+  },
+  {
+    "name": "Negatron Cloak",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/1057.png"
+  },
+  {
+    "name": "Warden's Mail",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3082.png"
+  },
+  {
+    "name": "Warmog's Armor",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3083.png"
+  },
+  {
+    "name": "Force of Nature",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/4401.png"
+  },
+  {
+    "name": "Jeweled Gauntlet",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/c/c7/Jeweled_Gauntlet_item.png/revision/latest?cb=20190925184315"
+  },
+  {
+    "name": "Trap Claw",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/6/60/Trap_Claw_item.png/revision/latest?cb=20190925184434"
+  },
+  {
+    "name": "Hush",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/6/66/Hush_item.png/revision/latest?cb=20190925184254"
+  },
+  {
+    "name": "Spatula",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/profileicon/786.png"
+  },
+  {
+    "name": "Hand of Justice",
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/profileicon/1628.png"
+  },
+  {
+    "name": "Quicksilver",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/d/d1/Quicksilver_item.png/revision/latest?cb=20190925184346"
+  },
+  {
+    "name": "Dragon's Claw",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/f/fd/Dragon%27s_Claw_item.png/revision/latest?cb=20190925184236"
+  },
+  {
+    "name": "Sword Breaker",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e8/Sword_Breaker_item.png/revision/latest?cb=20190925184411"
+  },
+  {
+    "name": "Thief's Gloves",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e4/Thief%27s_Gloves_item.png/revision/latest?cb=20190925184416"
+  },
+  {
+    "name": "Zeke's Herald",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/5/54/Zeke%27s_Herald_item.png/revision/latest?cb=20171223022057"
+  },
+  {
+    "name": "Red Buff",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e7/Red_BramblebackSquare.png/revision/latest/scale-to-width-down/64?cb=20140620025406"
+  },
+  {
+    "name": "Ionic Spark",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9c/Ionic_Spark_item.png/revision/latest?cb=20171223001148"
+  },
+  {
+    "name": "Deathblade",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/5/57/Deathblade_item.png/revision/latest?cb=20190925184213"
+  },
+  {
+    "name": "Giant Slayer",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/2/21/Giant_Slayer_item.png/revision/latest?cb=20171221183216"
   }
 ]

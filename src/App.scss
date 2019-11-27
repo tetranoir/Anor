@@ -268,7 +268,16 @@ $secondary-med: #2985F2;
 }
 
 #item-grid {
-
+  .node-data img {
+    float: left;
+    height: 46px;
+    margin-right: 4px;
+    margin-top: 2px;
+    margin-bottom: 0;
+  }
+  .grid-node:hover {
+    height: 180%;
+  }
 }
 
 @keyframes App-logo-spin {

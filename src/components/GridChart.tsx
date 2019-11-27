@@ -3,7 +3,7 @@ import cx from 'classnames/bind';
 
 export interface GridNode {
   id: string;
-  element?: SVGElement;
+  element?: React.ReactElement;
   data?: string;
   label?: string;
 }
@@ -55,12 +55,12 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     nodeStyle = {},
     labelStyle = {},
     chartStyle = {},
-    textVertMargin = -21, // for alignment of line height
+    textVertMargin = -16, // for alignment of line height
     renderGridNode,
   } = props;
 
   const baseLabelStyle = {
-    bottom: textVertMargin,
+    // bottom: textVertMargin,
     ...labelStyle,
   } as React.CSSProperties;
 

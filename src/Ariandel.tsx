@@ -141,10 +141,23 @@ function stimulateItem(item: EnrichedItem, unused: string, idToItem: EnrichedIte
 function makeGridNodeFromItem(item: Item): GridNode {
   const {[id]: name, short, effect, icon} = item;
 
+  const node: GridNode = {id: name, data: effect};
+
   if (name.length > 9 && short) {
-    return {id: name, label: short, data: effect};
+    node.label = short;
   }
-  return {id: name, data: effect};
+
+  // todo abstract node-data creation to gridchart
+  if (icon) {
+    node.element = (
+      <div className="node-data">
+        <img src={icon} />
+        {node.data}
+      </div>
+    );
+  }
+
+  return node;
 }
 interface GridNodeMap {
   [id: string]: GridNode;
@@ -329,6 +342,7 @@ function ItemReferenceModal() {
 
   const style = {
     content: {
+      top: '16px',
       left: '50%',
       right: 'unset',
       bottom: 'unset',
@@ -349,7 +363,7 @@ function ItemReferenceModal() {
       y={gridAxisNodes}
       vertSpace={64}
       horiSpace={150}
-      vertGutter={18}
+      vertGutter={22}
       horiGutter={10}
       operator={combineItems}
       showLabels
