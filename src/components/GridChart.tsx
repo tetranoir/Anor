@@ -49,13 +49,13 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     vertGutter = 10,
     horiGutter = vertGutter,
     topX = true,
-    bottomX = false,
+    bottomX = false, // doesnt work right now
     leftY = true,
-    rightY = false,
+    rightY = false, // doesnt work right now
     nodeStyle = {},
     labelStyle = {},
     chartStyle = {},
-    textVertMargin = -16, // for alignment of line height
+    textVertMargin = -21, // for alignment of line height
     renderGridNode,
   } = props;
 
@@ -132,10 +132,10 @@ export function GridChartHtml(props: GridChartHtmlProps) {
 
   return (
     <div id={id} className={cx('grid-chart', className)} style={baseChartStyle}>
-      <div className="axis-corner-node" style={{gridColumn: '1 / 2', gridRow: '1 / 2'}} />
+      {topX && leftY && <div style={{gridColumn: '1 / 2', gridRow: '1 / 2'}} />}
       {topX && xAxisNodes(1)}
-      {bottomX && xAxisNodes(y.length)}
       {leftY && yAxisNodes(1)}
+      {bottomX && xAxisNodes(y.length)}
       {rightY && yAxisNodes(x.length)}
       {resultsNodes}
     </div>

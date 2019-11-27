@@ -1,5 +1,9 @@
 button:focus {outline:0;}
 
+.ReactModal__Overlay {
+  z-index: 9;
+}
+
 .flex {
   display: flex;
 }
@@ -53,13 +57,13 @@ button:focus {outline:0;}
   }
 
   .checkboxes-container:not([hidden]) {
-    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
   }
 
-  .checkboxes-container:not([hidden]) ~ .checkboxes-toggle {
-    border-top: none;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+  &[is="active"] .checkboxes-toggle {
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .checkboxes-toggle {
@@ -67,7 +71,9 @@ button:focus {outline:0;}
     padding: 2px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: -1px;
+    margin-bottom: -1px;
+    position: relative;
+    z-index: 1;
   }
 
   .checkboxes {
@@ -177,9 +183,9 @@ div[hidden] {
 }
 /* https://paletton.com/#uid=53C0u0kl1Wx1x+IcEXDsUWkWEVB */
 /* blue pastels dark -> light */
-/* #036FF0, #2985F2, #60A3F3 */
+/* #036FF0   #2985F2   #60A3F3   #9DC5F6 */
 /* purple pastels dark -> light */
-/* #1E04F2, #4935F4, #7869F4 */
+/* #1E04F2   #4935F4   #7869F4   */
 $primary-dark: #4935F4;
 $secondary-dark: #036FF0;
 $secondary-med: #2985F2;
@@ -202,9 +208,11 @@ $secondary-med: #2985F2;
   text.node-label.highlighted,
   text.node-label.selected,
   text.node-label.hovered {
-    font-weight: 700;
     opacity: 1;
     z-index: 2;
+    stroke-width: 0.8px;
+    stroke: #EEE;
+    font-weight: 900;
   }
   text.node-label.filtered {
     opacity: 0;
@@ -256,10 +264,7 @@ $secondary-med: #2985F2;
 }
 
 #item-grid {
-  text.grid-labels {
-    font-size: 12px;
-    text-transform: capitalize;
-  }
+
 }
 
 @keyframes App-logo-spin {

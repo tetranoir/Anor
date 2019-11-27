@@ -69,6 +69,12 @@ declare global {
     R: any
   }
 }
+declare module 'react' {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    // extends React's HTMLAttributes
+    active?: string|boolean|number;
+  }
+}
 var R = ramda;
 window.R = ramda;
 
@@ -333,8 +339,6 @@ function ItemReferenceModal() {
   };
 
   const nodeStyle = {
-    // border: '2px solid #EEE',
-    // background: '#AAA',
   };
   const chartStyle = {
   };
@@ -343,9 +347,9 @@ function ItemReferenceModal() {
     <GridChartHtml
       x={gridAxisNodes}
       y={gridAxisNodes}
-      vertSpace={60}
+      vertSpace={64}
       horiSpace={150}
-      vertGutter={16}
+      vertGutter={18}
       horiGutter={10}
       operator={combineItems}
       showLabels
@@ -386,13 +390,13 @@ function renderKeysAsCheckboxes(keyToMap, name='filters') {
   });
 
   return (
-    <div className="checkboxes">
-      <div className="checkboxes-container panel" hidden={hidden}>
-        {checkboxes}
-      </div>
+    <div className="checkboxes" is={!hidden ? 'active' : null}>
       <button className="checkboxes-toggle panel" onClick={toggleHidden}>
         {name}
       </button>
+      <div className="checkboxes-container panel" hidden={hidden}>
+        {checkboxes}
+      </div>
     </div>
   );
 }
