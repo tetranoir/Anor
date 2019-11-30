@@ -1,4 +1,4 @@
-import React, {cloneElement} from 'react';
+import React, {useState, cloneElement} from 'react';
 import cx from 'classnames/bind';
 
 export interface GridNode {
@@ -28,13 +28,11 @@ interface GridChartProps {
   textVertMargin?: number;
   renderGridNode?: (n: GridNode) => React.ReactElement;
 }
-
 interface GridChartHtmlProps extends GridChartProps {
   nodeStyle?: React.CSSProperties;
   labelStyle?: React.CSSProperties;
   chartStyle?: React.CSSProperties;
 }
-
 export function GridChartHtml(props: GridChartHtmlProps) {
   const {
     id,
@@ -59,15 +57,6 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     renderGridNode,
   } = props;
 
-  const baseLabelStyle = {
-    // bottom: textVertMargin,
-    ...labelStyle,
-  } as React.CSSProperties;
-
-  const baseNodestyle = {
-    ...nodeStyle,
-  } as React.CSSProperties;
-
   const baseChartStyle = {
     gridAutoColumns: horiSpace,
     gridAutoRows: vertSpace,
@@ -77,13 +66,13 @@ export function GridChartHtml(props: GridChartHtmlProps) {
   } as React.CSSProperties;
 
   const renderLabel = (node: GridNode) => (
-    <span className={cx('node-label', labelClass)} style={baseLabelStyle}>
+    <span className={cx('node-label', labelClass)} style={labelStyle}>
       {node.label || node.id}
     </span>
   );
 
   const renderData = (node: GridNode) => (
-     node.data && <div className="node-data">{node.data}</div>
+     <div className="node-data">{node.data ? node.data : ''}</div>
   );
 
   const xAxisNodes = (rowPos) => x.map((node, i) => {
@@ -93,7 +82,7 @@ export function GridChartHtml(props: GridChartHtmlProps) {
       <div
         key={node.id + '_x'}
         className="grid-node x-axis-node"
-        style={{gridColumn, gridRow, ...baseNodestyle}}
+        style={{gridColumn, gridRow, ...nodeStyle}}
       >
         {node.element || renderData(node)}
         {showLabels && renderLabel(node)}
@@ -108,7 +97,7 @@ export function GridChartHtml(props: GridChartHtmlProps) {
       <div
         key={node.id + '_Y'}
         className="grid-node y-axis-node"
-        style={{gridColumn, gridRow, ...baseNodestyle}}
+        style={{gridColumn, gridRow, ...nodeStyle}}
       >
         {node.element || renderData(node)}
         {showLabels && renderLabel(node)}
@@ -122,7 +111,7 @@ export function GridChartHtml(props: GridChartHtmlProps) {
       <div
         key={`${rNode.id}_${i}_${j}`}
         className="grid-node result-node"
-        style={baseNodestyle}
+        style={nodeStyle}
       >
         {rNode.element || renderData(rNode)}
         {showLabels && renderLabel(rNode)}

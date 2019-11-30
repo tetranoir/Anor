@@ -1,7 +1,50 @@
 import * as R from 'ramda';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 
 import { Item } from './modeldata';
+
+/* Used as global singleton */
+const urlParams = new URLSearchParams(window.location.search);
+/**
+ * Only pulls from url state once, on load. But will continue to update url.
+ * This is an optimzation requirement.
+ */
+function useUrlState(name, Type, defaultValue) {
+  let hasLoaded = false;
+
+  const [value, setValue] = useState(
+    urlParams.has(name) ? Type.deserialize(urlParams.get(name)) : defaultValue
+  );
+
+  useEffect(() => {
+    if (!hasLoaded) return;
+
+    if (value === defaultValue) {
+      urlParams.delete(name);
+    } else {
+      urlParams.set(name, Type.serialize(value));
+    }
+    window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
+  }, [value]);
+
+  hasLoaded = true;
+
+  return [value, setValue];
+}
+
+function booleanVal(v: string) {
+  return v === 'true';
+}
+const BooleanVal = {
+  deserialize(v: string): boolean {
+    return v === '1';
+  },
+  serialize(v: boolean): string {
+    return v ? '1' : '0';
+  },
+};
+
+
 
 // State handling in app
 interface StateVars {
@@ -21,12 +64,17 @@ interface StateSets {
 // Stateful properites of for interactable objects
 export type State = StateVars & StateSets;
 // Attaches State functionality to object
-export function useAppState<T>(t: T): State & T {
+export function useAppState<T>(t: T, id: string): State & T {
   const [filtered, setFiltered] = useState(false);
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useUrlState(id, BooleanVal, false);
+  // const [selected, setSelected] = useQueryParam(id.replace(/[' ]/g,''), BooleanParam);
   const [grouped, setGrouped] = useState(false);
   const [highlighted, setHighlighted] = useState(false);
   const [hovered, setHovered] = useState(false);
+
+  // useEffect(() => {
+  //   setSelectedQ(selected);
+  // }, [selected]);
 
   return {
     ...t,
@@ -78,4 +126,8 @@ export interface SynergyEnrichment extends SynergyThreshold {
 export interface ItemEnrichment<T extends Item> {
   usedIn: T[]; // the items this item is in recipes for
   madeFrom: T[]; // the items this item is made from
+}
+
+export interface ChampionEnrichment {
+  short: string; // short name, lowercase using only \w characters
 }

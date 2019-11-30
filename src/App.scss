@@ -1,5 +1,13 @@
 button:focus {outline:0;}
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 .ReactModal__Overlay {
   z-index: 9;
 }
@@ -233,8 +241,8 @@ $secondary-med: #2985F2;
   }
 
   line.graph-link {
-    opacity: 0.6;
-    stroke: #BBB;
+    opacity: 0.1;
+    stroke: #000;
     stroke-width: 3;
     z-index: 1;
   }
@@ -304,7 +312,7 @@ $secondary-med: #2985F2;
     border-radius: 8px;
   }
   .grid-node:hover {
-    height: 180%;
+    // height: 180%;
   }
 }
 

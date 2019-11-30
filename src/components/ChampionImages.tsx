@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Champion } from '../knowledge/modeldata';
+import { encodeStr } from '../loader/mapsToGraph';
 
 interface ChampionImagesProps {
   champions: Champion[];
@@ -14,7 +15,7 @@ export function ChampionImages(props: ChampionImagesProps) {
       {champions.map(c => (
         <pattern
           key={c.name}
-          id={c.name.replace(/[' ]/g,'')+'-img'}
+          id={encodeStr(c.name)+'-img'}
           patternUnits="objectBoundingBox"
           width="1"
           height="1"

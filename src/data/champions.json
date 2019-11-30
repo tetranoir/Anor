@@ -172,7 +172,8 @@
       "Woodland"
     ],
     "class": [
-      "Assassin"
+      "Assassin",
+      "Mage"
     ],
     "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Leblanc_5.jpg"
   },

@@ -2,6 +2,7 @@
 import React, {
   useState, useEffect, useLayoutEffect, useMemo, cloneElement
 } from 'react';
+import { useQueryParam, NumberParam, StringParam, BooleanParam } from 'use-query-params';
 import Modal from 'react-modal';
 // import { Graph } from 'react-d3-graph';
 // import { Graph, DefaultLink, DefaultNode } from '@vx/network';
@@ -27,7 +28,7 @@ import {
 import {
   State, pickStateVars, mergeStateVars,
   SynergyThreshold, Threshold, SynergyEnrichment,
-  ItemEnrichment,
+  ItemEnrichment, ChampionEnrichment,
   useAppState,
 } from './knowledge/modelapp';
 
@@ -98,7 +99,7 @@ window.d3 = d3;
 
 type EnrichedSynergy = Synergy & SynergyEnrichment;
 type EnrichedItem = Item & ItemEnrichment<EnrichedItem>;
-type ChampionState = State & Champion;
+type ChampionState = State & Champion & ChampionEnrichment;
 
 const centralityModes: CentralityMode[] = ['eccentricity', 'degree', 'closeness', 'betweenness'];
 const graphColors = d3.scaleSequential(d3.interpolateTurbo);
@@ -114,9 +115,14 @@ interface EnrichedItemsMap {
 }
 
 // DATA
-const championData = Object.values((championModule as any).default) as Champion[];
+const rawChampionData = Object.values((championModule as any).default) as Champion[];
 const synergyData = (synergyModule as any).default as SynergyTypeMap<Synergy>;
 const itemData = (itemModule as any).default as ItemMap;
+
+const championData: (Champion & ChampionEnrichment)[] = rawChampionData.map(c => ({
+  ...c,
+  short: c[id].replace(/[\W]/g,'').toLowerCase(),
+}));
 
 // synergy maps
 const keyToSynergy: SynergyTypeMap<EnrichedSynergy> = R.mapObjIndexed(
@@ -239,7 +245,7 @@ const pickReducer = (acc, val) => {
 const reduceToPicks = R.reduce(pickReducer);
 function setChampionData(data) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const champions: ChampionState[] = data.map(c => useAppState(c));
+  const champions: ChampionState[] = data.map(c => useAppState(c, c.short));
   const idToChampion: { [id:string]: ChampionState } = objFromAry(id, champions);
   const keyToMap = jsonToMaps(id, keys, champions);
   const tierToMap = jsonToMaps(id, ['tier'], champions);
@@ -353,7 +359,12 @@ function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
 }
 
 // ITEM MODAL
-function ItemReferenceModal() {
+interface ItemReferenceModalProps {
+  basicItems: GridNode[];
+  combineItems: (a: GridNode, b: GridNode) => GridNode;
+}
+function ItemReferenceModal(props: ItemReferenceModalProps) {
+  const {basicItems, combineItems} = props;
   const [open, setOpen] = React.useState(false);
 
   function openModal() {
@@ -382,10 +393,10 @@ function ItemReferenceModal() {
 
   const renderChart = (
     <GridChartHtml
-      x={gridAxisNodes}
-      y={gridAxisNodes}
-      vertSpace={64}
-      horiSpace={150}
+      x={basicItems}
+      y={basicItems}
+      vertSpace={Math.floor(window.innerHeight * .95 / (basicItems.length + 1)) - 22}
+      horiSpace={Math.floor(window.innerWidth * .95 / (basicItems.length + 1)) - 10}
       vertGutter={22}
       horiGutter={10}
       operator={combineItems}
@@ -650,7 +661,10 @@ function Ariandel() {
         />
       </div>
       <div className="top-container">
-        <ItemReferenceModal />
+        <ItemReferenceModal
+          basicItems={gridAxisNodes}
+          combineItems={combineItems}
+        />
       </div>
       <div id="graph" className={cx({analyze: S.isJust(maybeAnalyzedNodes)})}>
         <ForceGraph

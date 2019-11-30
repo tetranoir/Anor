@@ -15,6 +15,9 @@ export const mapReactVisForceToNGraph = (fLinks: RVF_ForceLink[], graph = NGraph
   return graph;
 }
 
+export function encodeStr(s: string) {
+  return s.replace(/[\W]/g,'');
+}
 
 /// EXPORT to react-vis-force
 type HexColor = string;
@@ -84,7 +87,7 @@ export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps
       },
       className: cx('graph-node', props),
       labelClass: cx('node-label', props),
-      fill: `url(#${o[id].replace(/[' ]/g,'')}-img)`,
+      fill: `url(#${encodeStr(o[id])}-img)`,
       // fill: `url(${o.icon})`,
       // fill: 'url(#myGradient)',
     };
@@ -124,9 +127,10 @@ export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps
 
           // TODO, shouldnt expose highlight and selected
           const __unsafe_lProps = lProps as any;
-          const linksPtr =
-            __unsafe_lProps.highlighted ? hLinks :
-              __unsafe_lProps.selected ? sLinks : links;
+          // const linksPtr =
+          //   __unsafe_lProps.highlighted ? hLinks :
+          //     __unsafe_lProps.selected ? sLinks : links;
+          const linksPtr = links;
 
           linksPtr.push(rvfLink);
           hist[source][target] = rvfLink; // record link
