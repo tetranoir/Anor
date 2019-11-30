@@ -21,13 +21,15 @@ Graph for TFT (teamfight tactics)
 
 
 ## Todo
- * add synergy icons
- * surface centrality values
- * centrality color legend
- * centrality tooltip help to explain what each thing does
- * dark mode
- * select/mark items
- * add support for synergy aliases (to allow setting variable to something else)
- * add support for synergy cheating (to mimic spat items)
- * some champion icons could better reflect in game skins
- * fix terrible css (define primary, secondary, dark primary, dark secondary)
+ * Url state
+ * Update item attributes/synergy bonuses to most recent patch
+ * Add synergy icons
+ * Surface centrality values
+ * Centrality color legend
+ * Centrality tooltip help to explain what each thing does
+ * Dark mode
+ * Select/mark items
+ * Add support for synergy aliases (to allow setting variable to something else)
+ * Add support for synergy cheating (to mimic spat items)
+ * Some champion icons could better reflect in game skins
+ * Fix terrible css (define primary, secondary, dark primary, dark secondary)
