@@ -1,4 +1,4 @@
-# Anor
+# TFT Graph
 
 Graph for TFT (teamfight tactics)
 
