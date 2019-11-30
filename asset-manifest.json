@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/anor/static/css/main.a215bcc6.chunk.css",
+    "main.css": "/anor/static/css/main.08efdcc0.chunk.css",
     "main.js": "/anor/static/js/main.1a32f556.chunk.js",
     "main.js.map": "/anor/static/js/main.1a32f556.chunk.js.map",
     "runtime~main.js": "/anor/static/js/runtime~main.e1f3c5bf.js",
@@ -8,8 +8,8 @@
     "static/js/2.3da7fcb0.chunk.js": "/anor/static/js/2.3da7fcb0.chunk.js",
     "static/js/2.3da7fcb0.chunk.js.map": "/anor/static/js/2.3da7fcb0.chunk.js.map",
     "index.html": "/anor/index.html",
-    "precache-manifest.c3e2c123d4d25e006bcc9c5165281135.js": "/anor/precache-manifest.c3e2c123d4d25e006bcc9c5165281135.js",
+    "precache-manifest.7462c916a4921b23fdaaf1471cff284f.js": "/anor/precache-manifest.7462c916a4921b23fdaaf1471cff284f.js",
     "service-worker.js": "/anor/service-worker.js",
-    "static/css/main.a215bcc6.chunk.css.map": "/anor/static/css/main.a215bcc6.chunk.css.map"
+    "static/css/main.08efdcc0.chunk.css.map": "/anor/static/css/main.08efdcc0.chunk.css.map"
   }
 }
