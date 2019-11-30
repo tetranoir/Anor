@@ -35,7 +35,7 @@ button:focus {outline:0;}
   }
 
   input:checked ~ label {
-    background-color: #CCC;
+    background-color: #BBB;
   }
 
   .champion {
@@ -203,7 +203,7 @@ $secondary-dark: #036FF0;
 $secondary-med: #2985F2;
 #graph {
   transition: stroke .3s ease-in, opacity .2s ease-in;
-  background-color: #EEE;
+  background-color: #EEEEEE;
 
   image.node-icon {
     height: 40px;
