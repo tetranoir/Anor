@@ -607,7 +607,8 @@ function Ariandel() {
     attachNodeEvents,
   ), S.fromMaybe(nodes)(maybeAnalyzedNodes));
 
-  console.log('ARIANDEL RENDER', Date.now() - start);
+  // Benchmarking
+  process.env.NODE_ENV === 'production' && log('ARIANDEL RENDER', Date.now() - start);
   // TODO turn left/right-container to be real presentation components
   return (
     <div className="app">
