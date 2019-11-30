@@ -1,7 +1,7 @@
 {
   "name": "anor",
   "version": "0.1.0",
-  "homepage":"https://tetranoir.github.io/anor",
+  "homepage": "https://tetranoir.github.io/anor",
   "dependencies": {
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.2",
@@ -10,8 +10,11 @@
     "@vx/network": "0.0.190",
     "classnames": "^2.2.6",
     "d3": "^5.9.7",
-    "d3-scale": "^3.1.0",
+    "d3-scale": "^3.2.1",
+    "d3-scale-chromatic": "^1.5.0",
     "gh-pages": "^2.1.1",
+    "ngraph.centrality": "^2.0.0",
+    "ngraph.graph": "^19.0.0",
     "node-sass": "^4.12.0",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
@@ -20,6 +23,7 @@
     "react-modal": "^3.11.1",
     "react-scripts": "3.0.1",
     "react-vis-force": "^0.3.1",
+    "sanctuary": "^2.0.1",
     "typescript": "^3.7.2"
   },
   "scripts": {

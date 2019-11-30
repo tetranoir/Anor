@@ -10,7 +10,11 @@ import {
 } from 'react-vis-force';
 // import { scaleCategory20 } from 'd3-scale';
 import cx from 'classnames/bind';
-import * as ramda from 'ramda';
+import * as R from 'ramda';
+import * as S from 'sanctuary';
+import * as Centrality from 'ngraph.centrality';
+import * as NGraph from 'ngraph.graph';
+import * as d3 from 'd3';
 
 // fundamentals
 import { objFromAry } from './util';
@@ -18,7 +22,7 @@ import { graphConfig } from './config';
 import {
   keys, isChampion, Champion, id,
   Synergy, SynergyMap, SynergyTypeMap, SynergyType,
-  Item
+  Item,
 } from './knowledge/modeldata';
 import {
   State, pickStateVars, mergeStateVars,
@@ -29,7 +33,8 @@ import {
 
 // loaders
 import {
-  mapToReactD3Graph, mapToVxNetwork, mapToReactVisForce
+  mapToReactD3Graph, mapToVxNetwork, mapToReactVisForce,
+  mapReactVisForceToNGraph,
 } from './loader/mapsToGraph';
 import { jsonToMaps } from './loader/dataToMaps';
 
@@ -38,6 +43,9 @@ import { ChampionList } from './components/ChampionList';
 import { SynergyList } from './components/SynergyList';
 import { ChampionImages } from './components/ChampionImages';
 import { GridNode, GridChartSvg, GridChartHtml } from './components/GridChart';
+
+// utility types
+import { NGraphGraph, CentralityMode } from './types/ngraph';
 
 // styles
 import './App.scss';
@@ -63,10 +71,18 @@ declare global {
     keyToSynergy: any;
     selected: any;
     nodes: any;
+    links: any;
     combineItems: any;
     recipeToNonBasicItem: any;
     idToResultsGridNode: any;
-    R: any
+    Centrality: any;
+    NGraph: any;
+    ngraph: any;
+    R: any;
+    S: any;
+    d3: any;
+    domainColors: any;
+    analysis: any;
   }
 }
 declare module 'react' {
@@ -75,13 +91,17 @@ declare module 'react' {
     active?: string|boolean|number;
   }
 }
-var R = ramda;
-window.R = ramda;
+window.R = R;
+window.S = S;
+window.d3 = d3;
 
 
 type EnrichedSynergy = Synergy & SynergyEnrichment;
 type EnrichedItem = Item & ItemEnrichment<EnrichedItem>;
 type ChampionState = State & Champion;
+
+const centralityModes: CentralityMode[] = ['eccentricity', 'degree', 'closeness', 'betweenness'];
+const graphColors = d3.scaleSequential(d3.interpolateTurbo);
 
 interface ItemMap {
   [id: string]: Item;
@@ -209,6 +229,7 @@ function enrichSynergy(synergy: Synergy, name: string): EnrichedSynergy {
   };
 }
 
+// CHAMPION DATA
 const pickReducer = (acc, val) => {
   val.selected && acc.selected.push(val);
   val.highlighted && acc.highlighted.push(val);
@@ -246,6 +267,7 @@ function useConfig(graphConfig) {
   return [config, ConfigEditor];
 }
 
+// CHECKBOX FUNCTIONS
 // all keys must exist to be considered a leaf
 function isLeaf(obj): obj is ChampionState {
   return isChampion(obj);
@@ -330,6 +352,7 @@ function renderMapAsCheckboxes(name, map, depth=0): RenderMapAsCheckboxes {
   };
 }
 
+// ITEM MODAL
 function ItemReferenceModal() {
   const [open, setOpen] = React.useState(false);
 
@@ -445,6 +468,82 @@ function linkDisplayRules(a: State, b: State): Partial<State> {
   };
 }
 
+interface ExclusiveOptionsProps {
+  className?: string;
+  title: string;
+  options: string[];
+  selected: string;
+  onClick: (op: string) => void;
+}
+function ExclusiveOptions(props: ExclusiveOptionsProps) {
+   const {options, title, onClick, className, selected} = props;
+
+  const renderOptions = options.map(op => (
+    <div
+      key={op}
+      className={cx('option', {selected: op === selected})}
+      onClick={() => onClick(op)}
+    >
+      {op}
+    </div>
+  ));
+
+  return (
+    <div className={cx('exclusive-options', className)}>
+      <div className="title">{title}</div>
+      <div className="options">{renderOptions}</div>
+    </div>
+  )
+}
+
+interface NodeAnalysis {
+  [node: string]: number;
+}
+function applyCentrality<T extends {id: string}>(
+  links, nodes: T[], mode: CentralityMode,
+): T[] {
+  const graph = mapReactVisForceToNGraph(links); // todo: add filter to links
+  window.ngraph = graph;
+  if (mode === 'eccentricity') {
+    const analysis: NodeAnalysis = Centrality.eccentricity(graph);
+    const aValues = Object.values(analysis);
+    const max = Math.max(...aValues);
+    const min = Math.min(...aValues);
+    const domainColors = graphColors.domain([max, min]); // lower the better
+    window.domainColors = domainColors;
+    window.analysis = analysis;
+    return nodes.map(n => R.merge(n, {style: {stroke: domainColors(analysis[n.id])}}));
+  } else if (mode === 'degree') {
+    const analysis: NodeAnalysis = Centrality.degree(graph);
+    const aValues = Object.values(analysis);
+    const max = Math.max(...aValues);
+    const min = Math.min(...aValues);
+    const domainColors = graphColors.domain([min, max]); // higher the better
+    window.domainColors = domainColors;
+    window.analysis = analysis;
+    return nodes.map(n => R.merge(n, {style: {stroke: domainColors(analysis[n.id])}}));
+  } else if (mode === 'closeness') {
+    const analysis: NodeAnalysis = Centrality.closeness(graph);
+    const aValues = Object.values(analysis);
+    const max = Math.max(...aValues);
+    const min = Math.min(...aValues);
+    const domainColors = graphColors.domain([min, max]); // higher the better
+    window.domainColors = domainColors;
+    window.analysis = analysis;
+    return nodes.map(n => R.merge(n, {style: {stroke: domainColors(analysis[n.id])}}));
+  } else if (mode === 'betweenness') {
+    const analysis: NodeAnalysis = Centrality.betweenness(graph);
+    const aValues = Object.values(analysis);
+    const max = Math.max(...aValues);
+    const min = Math.min(...aValues);
+    const domainColors = graphColors.domain([max, min]); // higher the better
+    window.domainColors = domainColors;
+    window.analysis = analysis;
+    return nodes.map(n => R.merge(n, {style: {stroke: domainColors(analysis[n.id])}}));
+  }
+  return nodes; // todo: throw?
+}
+
 function Ariandel() {
   const start = Date.now();
   // const [config, ConfigEditor] = useConfig(graphConfig);
@@ -454,11 +553,24 @@ function Ariandel() {
   } = setChampionData(championData);
   const [hoveredChampion] = hovered;
 
+  const [centralityMode, setCentralityMode] = useState<CentralityMode|null>(null);
+
   function toggleSelectChampion(id: string) {
     const champion = idToChampion[id];
-    if (champion.filtered) return;
+    if (champion.filtered) {
+      champion.setSelected(false);
+      return;
+    };
     // eslint-disable-next-line react-hooks/rules-of-hooks
     champion.setSelected(!champion.selected);
+  }
+
+  function setOrToggleCentrality(op: CentralityMode) {
+    if (op === centralityMode) {
+      setCentralityMode(null);
+    } else {
+      setCentralityMode(op);
+    }
   }
 
   function relatedChampions(sourceC: ChampionState): ChampionState[] {
@@ -485,16 +597,31 @@ function Ariandel() {
   }
 
   const {nodes, links} = mapToReactVisForce(
-      id, champions, Object.values(keyToMap), pickStateVars, linkDisplayRules);
+    id, champions, Object.values(keyToMap), pickStateVars, linkDisplayRules);
   window.nodes = nodes;
+  window.links = links;
+  const maybeMode = centralityMode ? S.Just(centralityMode) : S.Maybe.Nothing;
+  const maybeAnalyzedNodes = R.map(mode => applyCentrality(links, nodes, mode), maybeMode);
+  const renderedNodes = R.map(R.pipe(
+    forceNode => (<ForceGraphNode key={forceNode.node.id} {...forceNode} />),
+    attachNodeEvents,
+  ), S.fromMaybe(nodes)(maybeAnalyzedNodes));
+
   console.log('ARIANDEL RENDER', Date.now() - start);
   // TODO turn left/right-container to be real presentation components
   return (
-    <div className="app" style={{height: '100vh', width: '100vw'}}>
+    <div className="app">
       <div className="left-container">
         {renderKeysAsCheckboxes(tierToMap, 'tier')}
         {renderKeysAsCheckboxes(R.pick(['origin'], keyToMap), 'origin')}
         {renderKeysAsCheckboxes(R.pick(['class'], keyToMap), 'class')}
+        <ExclusiveOptions
+          className="panel"
+          title="apply centrality"
+          options={centralityModes}
+          selected={centralityMode}
+          onClick={setOrToggleCentrality}
+        />
       </div>
       <div className="right-container">
         <ChampionList
@@ -524,7 +651,7 @@ function Ariandel() {
       <div className="top-container">
         <ItemReferenceModal />
       </div>
-      <div id="graph">
+      <div id="graph" className={cx({analyze: S.isJust(maybeAnalyzedNodes)})}>
         <ForceGraph
           // highlightDependencies
           showLabels
@@ -542,12 +669,7 @@ function Ariandel() {
             width: window.innerWidth,
           }}
         >
-          {nodes.map(forceNode => (
-            <ForceGraphNode
-              key={forceNode.node.id}
-              {...forceNode}
-            />
-          )).map(attachNodeEvents)}
+          {renderedNodes}
           {links.map(forceLink => (
             <ForceGraphLink
               key={`${forceLink.link.source}=>${forceLink.link.target}`}

@@ -1,12 +1,25 @@
 import cx from 'classnames/bind';
 import * as R from 'ramda';
+import * as ngraph from 'ngraph.graph';
+
+import { NGraphGraph } from '../types/ngraph';
 
 // if false, then hide. if true, then filter
 const hideFilter = false;
 
+const NGraph = ngraph as unknown as () => NGraphGraph;
+
+/// EXPORT from react-vis-force to ngraph
+export const mapReactVisForceToNGraph = (fLinks: RVF_ForceLink[], graph = NGraph()) => {
+  fLinks.forEach(fLink => graph.addLink(fLink.link.source, fLink.link.target));
+  return graph;
+}
+
+
 /// EXPORT to react-vis-force
 type HexColor = string;
 interface RVF_ForceNode {
+  id: string;
   node: RVF_Node;
   cx?: number;
   cy?: number;
@@ -64,6 +77,7 @@ export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps
   const nodes: RVF_ForceNode[] = objs.map(o => {
     const props = nodeProps(o);
     const rvfNode = {
+      id: o[id],
       node: {
         id: o[id],
         radius: 12,

@@ -8,6 +8,13 @@ button:focus {outline:0;}
   display: flex;
 }
 
+.app {
+  height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+  font-family: helvetica;
+}
+
 .checkboxes {
   z-index: 5;
 
@@ -136,10 +143,11 @@ div[hidden] {
 
 .panel {
   padding: 0 0 5px 0;
-  background-color: whitesmoke;
-  border: 1px solid lightgray;
+  background-color: #DDD;
+  border: 1px solid #777;
   border-radius: 3px;
   opacity: 0.9;
+  color: #222;
 
   .title {
     padding: 0 5px 2px 5px;
@@ -153,7 +161,7 @@ div[hidden] {
 
     &:hover {
       cursor: pointer;
-      background-color: lightgray;
+      background-color: #BBB;
     }
   }
 }
@@ -194,7 +202,9 @@ $primary-dark: #4935F4;
 $secondary-dark: #036FF0;
 $secondary-med: #2985F2;
 #graph {
-  transition: stroke .6s ease-in, opacity .2s ease-in;
+  transition: stroke .3s ease-in, opacity .2s ease-in;
+  background-color: #EEE;
+
   image.node-icon {
     height: 40px;
     width: 40px;
@@ -215,7 +225,7 @@ $secondary-med: #2985F2;
     opacity: 1;
     z-index: 2;
     stroke-width: 0.8px;
-    stroke: #EEE;
+    stroke: #BBB;
     font-weight: 900;
   }
   text.node-label.filtered {
@@ -267,6 +277,22 @@ $secondary-med: #2985F2;
   }
 }
 
+/* graph accents for analyze mode*/
+#graph.analyze {
+  line.graph-link.selected,
+  line.graph-link.highlighted {
+    stroke: #333;
+  }
+
+  circle.graph-node {
+    opacity: 0.9;
+  }
+  circle.graph-node.filtered {
+    opacity: 0.0;
+    cursor: unset;
+  }
+}
+
 #item-grid {
   .node-data img {
     float: left;
@@ -274,9 +300,29 @@ $secondary-med: #2985F2;
     margin-right: 4px;
     margin-top: 2px;
     margin-bottom: 0;
+    border: transparent;
+    border-radius: 8px;
   }
   .grid-node:hover {
     height: 180%;
+  }
+}
+
+.exclusive-options {
+  .options {
+    font-size: 10px;
+    cursor: pointer;
+
+    .option {
+      padding: 0 10px;
+      &:hover {
+        background-color: #BBB;
+      }
+      &.selected {
+        background-color: #BBB;
+        font-weight: bold;
+      }
+    }
   }
 }
 
