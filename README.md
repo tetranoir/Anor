@@ -30,3 +30,4 @@ Graph for TFT (teamfight tactics)
  * add support for synergy aliases (to allow setting variable to something else)
  * add support for synergy cheating (to mimic spat items)
  * some champion icons could better reflect in game skins
+ * fix terrible css (define primary, secondary, dark primary, dark secondary)
