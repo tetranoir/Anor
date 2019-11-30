@@ -6,21 +6,21 @@ Graph for TFT (teamfight tactics)
 
 [https://tetranoir.github.io/anor](https://tetranoir.github.io/anor)
 
-### Features
+## Features
  * Graph of champions (or any objects really) linked by their class and origin synergies
-     * libraries: d3, react-vis-force
+     * **Libraries:** d3, react-vis-force
  * Neighbor highlighting
  * Selection with summary attributes
  * Filtering
-     * on: tier,
+     * **On:** tier, origin, synergy
  * Graph centrality analysis
-     * centrality algos: eccentricity, degree, closeness, betweenness
-     * libraies: ngraph, d3-color
+     * Centrality algos: eccentricity, degree, closeness, betweenness
+     * **Libraries:** ngraph, d3-color
  * Item reference
-     * Grid graph visualization (discrete axis graph visualization)
+     * Grid graph visualization (a discrete axial graph visualization)
 
 
-### Todo
+## Todo
  * add synergy icons
  * surface centrality values
  * centrality color legend
