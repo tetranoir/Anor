@@ -12,7 +12,7 @@ Graph for TFT (teamfight tactics)
  * Neighbor highlighting
  * Selection with summary attributes
  * Filtering
-     * **On:** tier, origin, synergy
+     * Filters on: tier, origin, synergy
  * Graph centrality analysis
      * Centrality algos: eccentricity, degree, closeness, betweenness
      * **Libraries:** ngraph, d3-color
@@ -21,7 +21,7 @@ Graph for TFT (teamfight tactics)
 
 
 ## Todo
- * Url state
+ [x] Url state
  * Update item attributes/synergy bonuses to most recent patch
  * Add synergy icons
  * Surface centrality values
