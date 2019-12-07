@@ -163,7 +163,7 @@
   },
   {
     "name": "Lux Cloud",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Cloud", "Cloud"
     ],
@@ -173,7 +173,7 @@
   },
   {
     "name": "Lux Crystal",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Crystal", "Crystal"
     ],
@@ -183,7 +183,7 @@
   },
   {
     "name": "Lux Electric",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Electric", "Electric"
     ],
@@ -193,7 +193,7 @@
   },
   {
     "name": "Lux Glacial",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Glacial", "Glacial"
     ],
@@ -203,7 +203,7 @@
   },
   {
     "name": "Lux Inferno",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Inferno", "Inferno"
     ],
@@ -213,7 +213,7 @@
   },
   {
     "name": "Lux Light",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Light", "Light"
     ],
@@ -223,7 +223,7 @@
   },
   {
     "name": "Lux Ocean",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Ocean", "Ocean"
     ],
@@ -233,7 +233,7 @@
   },
   {
     "name": "Lux Shadow",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Shadow", "Shadow"
     ],
@@ -243,7 +243,7 @@
   },
   {
     "name": "Lux Steel",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Steel", "Steel"
     ],
@@ -253,7 +253,7 @@
   },
   {
     "name": "Lux Woodland",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Woodland", "Woodland"
     ],

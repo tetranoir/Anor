@@ -120,7 +120,7 @@
     {
         "name": "Ionic Spark",
         "recipe": ["Needlessly Large Rod", "Negatron Cloak"],
-        "effect": "Whenever an enemy casts a spell, the wearer deals 100 true damage to the caster."
+        "effect": "When an enemy casts a spell, the wearer deals 100 true damage to the caster."
     },
     {
         "name": "Morellonomicon",

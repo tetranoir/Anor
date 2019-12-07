@@ -1,4 +1,5 @@
 import React, {useState, cloneElement} from 'react';
+import * as R from 'ramda';
 import cx from 'classnames/bind';
 
 export interface GridNode {
@@ -65,6 +66,8 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     ...chartStyle,
   } as React.CSSProperties;
 
+  const [[selectedX, selectedY], setSelectedXY] = useState([-1, -1]);
+
   const renderLabel = (node: GridNode) => (
     <span className={cx('node-label', labelClass)} style={labelStyle}>
       {node.label || node.id}
@@ -81,8 +84,11 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     return (
       <div
         key={node.id + '_x'}
-        className="grid-node x-axis-node"
+        className={cx("grid-node x-axis-node",
+          { 'selected-x': selectedX === i },
+        )}
         style={{gridColumn, gridRow, ...nodeStyle}}
+        onClick={() => setSelectedXY([i, -1])}
       >
         {node.element || renderData(node)}
         {showLabels && renderLabel(node)}
@@ -96,8 +102,11 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     return (
       <div
         key={node.id + '_Y'}
-        className="grid-node y-axis-node"
+        className={cx("grid-node y-axis-node",
+          { 'selected-y': selectedY === j },
+        )}
         style={{gridColumn, gridRow, ...nodeStyle}}
+        onClick={() => setSelectedXY([-1, j])}
       >
         {node.element || renderData(node)}
         {showLabels && renderLabel(node)}
@@ -105,19 +114,30 @@ export function GridChartHtml(props: GridChartHtmlProps) {
     );
   });
 
-  const resultsNodes = y.flatMap((yNode, j) => x.map((xNode, i) => {
-    const rNode = operator(xNode, yNode);
+  const resultsNodes = y.map((yNode, j) => {
+    const xResults = x.map((xNode, i) => {
+      const rNode = operator(xNode, yNode);
+      return (
+        <div
+          key={`${rNode.id}_${i}_${j}`}
+          className={cx("grid-node result-node",
+            { 'selected-x': selectedX === i },
+            { 'selected-y': selectedY === j },
+          )}
+          style={nodeStyle}
+          onClick={() => setSelectedXY([i, j])}
+        >
+          {rNode.element || renderData(rNode)}
+          {showLabels && renderLabel(rNode)}
+        </div>
+      );
+    });
     return (
-      <div
-        key={`${rNode.id}_${i}_${j}`}
-        className="grid-node result-node"
-        style={nodeStyle}
-      >
-        {rNode.element || renderData(rNode)}
-        {showLabels && renderLabel(rNode)}
+      <div className="grid-node-row" key={`${yNode.id}_row_${j}`}>
+        {xResults}
       </div>
     );
-  }));
+  });
 
   return (
     <div id={id} className={cx('grid-chart', className)} style={baseChartStyle}>
