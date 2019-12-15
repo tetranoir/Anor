@@ -603,5 +603,35 @@
     "class": [
       "Summoner"
     ]
+  },
+  {
+    "name": "Senna",
+    "tier": 2,
+    "origin": [
+      "Shadow"
+    ],
+    "class": [
+      "Soulbound"
+    ]
+  },
+  {
+    "name": "Lucian",
+    "tier": 4,
+    "origin": [
+      "Light"
+    ],
+    "class": [
+      "Soulbound"
+    ]
+  },
+  {
+    "name": "Ammumu",
+    "tier": 5,
+    "origin": [
+      "Inferno"
+    ],
+    "class": [
+      "Warden"
+    ]
   }
 ]

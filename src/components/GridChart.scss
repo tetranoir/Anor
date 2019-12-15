@@ -1,7 +1,7 @@
 $passive: #555;
 $passive-adj: #666;
 $passive-bold: #444;
-$passive-compl: #999;
+$passive-compl: #AAA;
 
 $emphasis: #EEE;
 $emphasis-adj: #CCC;
@@ -82,9 +82,9 @@ $emphasis-compl: #111;
 
     &:hover {
       height: fit-content;
-      max-height: 300%;
+      max-height: 600%;
       z-index: 1;
-      background: $emphasis-adj;
+      background: $emphasis-bold;
       color: $emphasis-compl;
     }
   }

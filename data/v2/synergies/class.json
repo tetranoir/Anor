@@ -11,7 +11,7 @@
     },
     "Berserker": {
         "3": "Berserkers have a 45% chance to hit units in cone in front of them and apply on-hit effects.",
-        "6": "Berserkers have a 100% chance to hit units in cone in front of them and apply on-hit effects."
+        "6": "Berserkers hit units in cone in front of them, apply on-hit effects, and have +25 attack damage."
     },
     "Blademaster": {
         "2": "40% chance to trigger 1 additional attack against their target.",
@@ -33,13 +33,13 @@
         "3": "Predators instantly kill enemies they damage who are below 25% health."
     },
     "Ranger": {
-        "2": "Rangers have a 30% chance to gain double attack speed for 3 seconds every 3 seconds.",
-        "4": "Rangers have a 60% chance to gain double attack speed for 3 seconds every 3 seconds.",
-        "6": "Rangers have a 100% chance to gain double attack speed for 3 seconds every 3 seconds."
+        "2": "Rangers have a 35% chance to gain x2 attack speed for 3 seconds every 3 seconds.",
+        "4": "Rangers have a 80% chance to gain x2 attack speed for 3 seconds every 3 seconds.",
+        "6": "Rangers have a 100% chance to gain x2.5 attack speed for 3 seconds every 3 seconds."
     },
     "Summoner": {
-        "3": "Summoned units gain +40% bonus health and last longer.",
-        "6": "Summoned units gain +100% bonus health and last longer."
+        "3": "Summoned units gain +30% bonus health and last longer.",
+        "6": "Summoned units gain +120% bonus health and last longer."
     },
     "Warden": {
         "2": "Wardens gain increased +125% armor.",

@@ -43,7 +43,7 @@ import { jsonToMaps } from './loader/dataToMaps';
 import { ChampionList } from './components/ChampionList';
 import { SynergyList } from './components/SynergyList';
 import { ChampionImages } from './components/ChampionImages';
-import { GridNode, GridChartSvg, GridChartHtml } from './components/GridChart';
+import { GridNode, GridChartHtml } from './components/GridChart';
 
 // utility types
 import { NGraphGraph, CentralityMode } from './types/ngraph';

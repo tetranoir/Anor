@@ -67,7 +67,7 @@
       "B.F. Sword",
       "Recurve Bow"
     ],
-    "effect": "Basic attacks deal 8% of the target's current health as physical damage.",
+    "effect": "Basic attacks deal 9% of the target's current health as physical damage.",
     "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/2/21/Giant_Slayer_item.png/revision/latest?cb=20171221183216"
   },
   "Hextech Gunblade": {
@@ -177,7 +177,7 @@
       "Recurve Bow",
       "Chain Vest"
     ],
-    "effect": "Dodge all critical strikes.",
+    "effect": "Negates the bonus damage from critical strikes.",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3046.png"
   },
   "Runaan's Hurricane": {
@@ -217,7 +217,7 @@
       "Recurve Bow",
       "Sparring Gloves"
     ],
-    "effect": "Repeating Crossbow is re-equipped to a new ally when the wearer dies, granting a stacking +30% attack speed and +30% critical chance this combat.",
+    "effect": "This item is re-equipped to a new ally when the wearer dies, granting a stacking +30% attack speed and +30% critical chance this combat.",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3036.png"
   },
   "Rabadon's Deathcap": {
@@ -256,7 +256,7 @@
       "Needlessly Large Rod",
       "Negatron Cloak"
     ],
-    "effect": "Whenever an enemy casts a spell, the wearer deals 100 true damage to the caster.",
+    "effect": "When an enemy casts a spell, the wearer deals 100 true damage to the caster.",
     "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9c/Ionic_Spark_item.png/revision/latest?cb=20171223001148"
   },
   "Morellonomicon": {
@@ -339,7 +339,7 @@
       "Tear of the Goddess",
       "Sparring Gloves"
     ],
-    "effect": "At the beginning of each planning phase, gain: basic attacks and spells deal +50% damage OR basic attacks heal 50 Health on-hit.",
+    "effect": "At the start of each planning phase, gain: basic attacks and spells deal +50% damage OR basic attacks heal 50 Health on-hit.",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/profileicon/1628.png"
   },
   "Thornmail": {
@@ -358,7 +358,7 @@
       "Chain Vest",
       "Negatron Cloak"
     ],
-    "effect": "Basic Attacks have a 33% chance to disarm the target for 3 seconds, preventing that enemy from Basic Attacking.",
+    "effect": "Basic attacks have a 33% chance to disarm the target for 3 seconds, preventing that enemy from Basic Attacking.",
     "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e8/Sword_Breaker_item.png/revision/latest?cb=20190925184411"
   },
   "Red Buff": {
@@ -367,7 +367,7 @@
       "Chain Vest",
       "Giant's Belt"
     ],
-    "effect": "Basic Attacks burn the target, dealing 20% of the target's maximum Health over 10 seconds and preventing 80% of healing.",
+    "effect": "Basic attacks burn the target, dealing 20% of the target's maximum Health over 10 seconds and preventing 80% of healing.",
     "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e7/Red_BramblebackSquare.png/revision/latest/scale-to-width-down/64?cb=20140620025406"
   },
   "Warden's Mail": {
@@ -433,7 +433,7 @@
       "Giant's Belt",
       "Giant's Belt"
     ],
-    "effect": "The wearer regenerates 6% of their missing Health per second.",
+    "effect": "The wearer regens 6% of their missing Health per second.",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3083.png"
   },
   "Frozen Mallet": {
@@ -480,7 +480,7 @@
       "Sparring Gloves",
       "Sparring Gloves"
     ],
-    "effect": "At the beginning of each planning phase, the wearer equips 2 temporary items. Temporary items increase in power based on your player level.",
+    "effect": "At the start of each planning phase, the wearer equips 2 temporary items. Temporary items increase in power based on your player level.",
     "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e4/Thief%27s_Gloves_item.png/revision/latest?cb=20190925184416"
   }
 }

@@ -1,8 +1,8 @@
 {
     "Cloud": {
-        "2": "All allies have a 15% chance to dodge enemy basic attacks.",
-        "3": "All allies have a 20% chance to dodge enemy basic attacks.",
-        "4": "All allies have a 30% chance to dodge enemy basic attacks."
+        "2": "All allies have a 20% chance to dodge enemy basic attacks.",
+        "3": "All allies have a 25% chance to dodge enemy basic attacks.",
+        "4": "All allies have a 35% chance to dodge enemy basic attacks."
     },
     "Crystal": {
         "2": "Crystal units take a maximum of 100 damange from a single attack or ability hit.",
@@ -13,8 +13,8 @@
         "4": "Reduce each enemy's armor by 90%."
     },
     "Electric": {
-        "2": "Electric units shock nearby enemies for 70 damage whenever they deal or receive a critical strike.",
-        "3": "Electric units shock nearby enemies for 250 damage whenever they deal or receive a critical strike.",
+        "2": "Electric units shock nearby enemies for 100 damage whenever they deal or receive a critical strike.",
+        "3": "Electric units shock nearby enemies for 300 damage whenever they deal or receive a critical strike.",
         "4": "Electric units shock nearby enemies for 500 damage whenever they deal or receive a critical strike."
     },
     "Glacial": {
@@ -23,14 +23,14 @@
         "6": "Glacial units basic attacks have a 60% chance to stun their target for 1.5 seconds on-hit."
     },
     "Inferno": {
-        "3": "Inferno spells burn the ground beneath damage targets, dealing 80% of the spell's damage over 5 seconds.",
-        "6": "Inferno spells burn the ground beneath damage targets, dealing 175% of the spell's damage over 5 seconds.",
-        "9": "Inferno spells burn the ground beneath damage targets, dealing 275% of the spell's damage over 5 seconds."
+        "3": "Inferno spells and crits burn 1 hex beneath damage targets, dealing 70% of the spell's damage over 4 seconds.",
+        "6": "Inferno spells and crits burn 3 hexes beneath damage targets, dealing 120% of the spell's damage over 4 seconds.",
+        "9": "Inferno spells and crits burn 5 hexes beneath damage targets, dealing 180% of the spell's damage over 4 seconds."
     },
     "Light": {
-        "3": "When a Light unit dies, all other Light units gain +10% bonus attack speed and heal 25% of their maximum health.",
-        "6": "When a Light unit dies, all other Light units gain +20% bonus attack speed and heal 25% of their maximum health.",
-        "9": "When a Light unit dies, all other Light units gain +35% bonus attack speed and heal 25% of their maximum health."
+        "3": "When a Light unit dies, all other Light units gain +15% attack speed and heal 25% of the dead unit's maximum health.",
+        "6": "When a Light unit dies, all other Light units gain +25% attack speed and heal 25% of the dead unit's maximum health.",
+        "9": "When a Light unit dies, all other Light units gain +35% attack speed and heal 25% of the dead unit's maximum health."
     },
     "Mountain": {
         "2": "At the start of combat, a random ally gains a 1500 health stoneshield."
@@ -38,14 +38,14 @@
     "Ocean": {
         "2": "All allies restore +15 mana every 4 seconds.",
         "4": "All allies restore +30 mana every 4 seconds.",
-        "6": "All allies restore +50 mana every 4 seconds."
+        "6": "All allies restore +60 mana every 4 seconds."
     },
     "Poison": {
         "3": "Poison units apply Neurotoxin when they deal damage, increasing the mana cost of the target's spell by 50%."
     },
     "Shadow": {
-        "2": "Shadow units deal +50% increased damage for 5 seconds at combat start, refreshed on self takedown.",
-        "4": "Shadow units deal +100% increased damage for 5 seconds at combat start, refreshed on any Shadow unit takedown."
+        "3": "Shadow units deal +70% increased damage for 4 seconds at combat start, refreshed on self takedown.",
+        "6": "Shadow units deal +140% increased damage for 4 seconds at combat start, refreshed on any Shadow unit takedown."
     },
     "Steel": {
         "2": "Steel units gain damage immunity for a 2 seconds when they are reduced below 50% health.",

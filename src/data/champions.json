@@ -179,7 +179,7 @@
   },
   "Lux Cloud": {
     "name": "Lux Cloud",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Cloud",
       "Cloud"
@@ -191,7 +191,7 @@
   },
   "Lux Crystal": {
     "name": "Lux Crystal",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Crystal",
       "Crystal"
@@ -203,7 +203,7 @@
   },
   "Lux Electric": {
     "name": "Lux Electric",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Electric",
       "Electric"
@@ -215,7 +215,7 @@
   },
   "Lux Glacial": {
     "name": "Lux Glacial",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Glacial",
       "Glacial"
@@ -227,7 +227,7 @@
   },
   "Lux Inferno": {
     "name": "Lux Inferno",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Inferno",
       "Inferno"
@@ -239,7 +239,7 @@
   },
   "Lux Light": {
     "name": "Lux Light",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Light",
       "Light"
@@ -251,7 +251,7 @@
   },
   "Lux Ocean": {
     "name": "Lux Ocean",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Ocean",
       "Ocean"
@@ -263,7 +263,7 @@
   },
   "Lux Shadow": {
     "name": "Lux Shadow",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Shadow",
       "Shadow"
@@ -275,7 +275,7 @@
   },
   "Lux Steel": {
     "name": "Lux Steel",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Steel",
       "Steel"
@@ -287,7 +287,7 @@
   },
   "Lux Woodland": {
     "name": "Lux Woodland",
-    "tier": 5,
+    "tier": 7,
     "origin": [
       "Woodland",
       "Woodland"
@@ -673,5 +673,37 @@
       "Summoner"
     ],
     "icon": "https://ddragon.leagueoflegends.com/cdn/img/champion/tiles/Zyra_1.jpg"
+  },
+  "Senna": {
+    "name": "Senna",
+    "tier": 2,
+    "origin": [
+      "Shadow"
+    ],
+    "class": [
+      "Soulbound"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Senna.png"
+  },
+  "Lucian": {
+    "name": "Lucian",
+    "tier": 4,
+    "origin": [
+      "Light"
+    ],
+    "class": [
+      "Soulbound"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Lucian.png"
+  },
+  "Ammumu": {
+    "name": "Ammumu",
+    "tier": 5,
+    "origin": [
+      "Inferno"
+    ],
+    "class": [
+      "Warden"
+    ]
   }
 }

@@ -7,7 +7,7 @@
     {
         "name": "Giant Slayer",
         "recipe": ["B.F. Sword", "Recurve Bow"],
-        "effect": "Basic attacks deal 8% of the target's current health as physical damage."
+        "effect": "Basic attacks deal 9% of the target's current health as physical damage."
     },
     {
         "name": "Hextech Gunblade",
@@ -73,7 +73,7 @@
         "name": "Phantom Dancer",
         "short": "pd",
         "recipe": ["Recurve Bow", "Chain Vest"],
-        "effect": "Dodge all critical strikes."
+        "effect": "Negates the bonus damage from critical strikes."
     },
     {
         "name": "Runaan's Hurricane",
@@ -97,7 +97,7 @@
         "name": "Repeating Crossbow",
         "short": "crossbow",
         "recipe": ["Recurve Bow", "Sparring Gloves"],
-        "effect": "Repeating Crossbow is re-equipped to a new ally when the wearer dies, granting a stacking +30% attack speed and +30% critical chance this combat."
+        "effect": "This item is re-equipped to a new ally when the wearer dies, granting a stacking +30% attack speed and +30% critical chance this combat."
     },
     {
         "name": "Rabadon's Deathcap",
@@ -167,7 +167,7 @@
     {
         "name": "Hand of Justice",
         "recipe": ["Tear of the Goddess", "Sparring Gloves"],
-        "effect": "At the beginning of each planning phase, gain: basic attacks and spells deal +50% damage OR basic attacks heal 50 Health on-hit."
+        "effect": "At the start of each planning phase, gain: basic attacks and spells deal +50% damage OR basic attacks heal 50 Health on-hit."
     },
     {
         "name": "Thornmail",
@@ -178,12 +178,12 @@
         "name": "Sword Breaker",
         "short": "disarm",
         "recipe": ["Chain Vest", "Negatron Cloak"],
-        "effect": "Basic Attacks have a 33% chance to disarm the target for 3 seconds, preventing that enemy from Basic Attacking."
+        "effect": "Basic attacks have a 33% chance to disarm the target for 3 seconds, preventing that enemy from Basic Attacking."
     },
     {
         "name": "Red Buff",
         "recipe": ["Chain Vest", "Giant's Belt"],
-        "effect": "Basic Attacks burn the target, dealing 20% of the target's maximum Health over 10 seconds and preventing 80% of healing."
+        "effect": "Basic attacks burn the target, dealing 20% of the target's maximum Health over 10 seconds and preventing 80% of healing."
     },
     {
         "name": "Warden's Mail",
@@ -221,7 +221,7 @@
         "name": "Warmog's Armor",
         "short": "warmogs",
         "recipe": ["Giant's Belt", "Giant's Belt"],
-        "effect": "The wearer regenerates 6% of their missing Health per second."
+        "effect": "The wearer regens 6% of their missing Health per second."
     },
     {
         "name": "Frozen Mallet",
@@ -248,6 +248,6 @@
         "name": "Thief's Gloves",
         "short": "gloves",
         "recipe": ["Sparring Gloves", "Sparring Gloves"],
-        "effect": "At the beginning of each planning phase, the wearer equips 2 temporary items. Temporary items increase in power based on your player level."
+        "effect": "At the start of each planning phase, the wearer equips 2 temporary items. Temporary items increase in power based on your player level."
     }
 ]
