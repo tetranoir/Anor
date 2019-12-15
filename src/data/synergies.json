@@ -36,7 +36,10 @@
     "Ranger": {
       "2": "Rangers have a 35% chance to gain x2 attack speed for 3 seconds every 3 seconds.",
       "4": "Rangers have a 80% chance to gain x2 attack speed for 3 seconds every 3 seconds.",
-      "6": "Rangers have a 100% chance to gain x2.5 attack speed for 3 seconds every 3 seconds."
+      "6": "Rangers x2.5 attack speed."
+    },
+    "Soulbound": {
+      "2": "The first Soulbound champion to die will instead continue to fight until all other Soulbound champions are dead."
     },
     "Summoner": {
       "3": "Summoned units gain +30% bonus health and last longer.",
