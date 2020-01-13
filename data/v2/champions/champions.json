@@ -633,5 +633,25 @@
     "class": [
       "Warden"
     ]
+  },
+  {
+    "name": "Leona",
+    "tier": 1,
+    "origin": [
+      "Lunar"
+    ],
+    "class": [
+      "Warden"
+    ]
+  },
+  {
+    "name": "Karma",
+    "tier": 3,
+    "origin": [
+      "Lunar"
+    ],
+    "class": [
+      "Mystic"
+    ]
   }
 ]

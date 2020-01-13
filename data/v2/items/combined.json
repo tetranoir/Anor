@@ -67,13 +67,12 @@
         "name": "Statikk Shiv",
         "short": "shiv",
         "recipe": ["Recurve Bow", "Tear of the Goddess"],
-        "effect": "On every third basic attack, deal 100 magical damage to 3 enemies."
+        "effect": "On every third basic attack, deal 80 magic damage to 3/4/5 enemies (scales with wearer’s Star Level)."
     },
     {
-        "name": "Phantom Dancer",
-        "short": "pd",
+        "name": "Titan's Resolve",
         "recipe": ["Recurve Bow", "Chain Vest"],
-        "effect": "Negates the bonus damage from critical strikes."
+        "effect": "When the wearer is hit or inflicts a critical strike, gain a 2% stacking damage bonus, up to 100%. At 50 stacks, gain 25 armor and magic resist. Resets every round."
     },
     {
         "name": "Runaan's Hurricane",
@@ -94,10 +93,9 @@
         "effect": "Wearer is also a Blademaster."
     },
     {
-        "name": "Repeating Crossbow",
-        "short": "crossbow",
+        "name": "Last Whisper",
         "recipe": ["Recurve Bow", "Sparring Gloves"],
-        "effect": "This item is re-equipped to a new ally when the wearer dies, granting a stacking +30% attack speed and +30% critical chance this combat."
+        "effect": "Critical hits reduce the target’s Armor by 90% for 3 seconds. Effect does not stack."
     },
     {
         "name": "Rabadon's Deathcap",
@@ -109,24 +107,24 @@
         "name": "Luden's Echo",
         "short": "ludens",
         "recipe": ["Needlessly Large Rod", "Tear of the Goddess"],
-        "effect": "The wearer's spells deal 150 magic damage to the first target hit and up to 3 nearby enemies."
+        "effect": "The wearer's spells deal 120/160/200 magic damage (scales with wearer’s Star Level)."
     },
     {
         "name": "Locket of the Iron Solari",
         "short": "locket",
         "recipe": ["Needlessly Large Rod", "Chain Vest"],
-        "effect": "When combat begins, the wearer and all allies within 2 hexes in the same row gain a shield that blocks 300 damage for 8 seconds."
+        "effect": "When combat begins, the wearer and all allies within two hexes in the same row are shielded 250/275/300 damage for 8 seconds (scales with wearer’s Star Level)."
     },
     {
         "name": "Ionic Spark",
         "recipe": ["Needlessly Large Rod", "Negatron Cloak"],
-        "effect": "When an enemy casts a spell, the wearer deals 100 true damage to the caster."
+        "effect": "Enemies within 3 hexes that cast a spell are zapped, taking magic damage equal to 200% of their max Mana."
     },
     {
         "name": "Morellonomicon",
         "short": "morellos",
         "recipe": ["Needlessly Large Rod", "Giant's Belt"],
-        "effect": "When spell damage burns the target for 20% of the target's maximum health and prevents 80% of healing over 10 seconds. Unique."
+        "effect": "When spell damage burns the target for 18% of the target's maximum health and prevents 80% of healing over 10 seconds. Unique."
     },
     {
         "name": "Inferno's Cinder",
@@ -147,12 +145,12 @@
     {
         "name": "Frozen Heart",
         "recipe": ["Tear of the Goddess", "Chain Vest"],
-        "effect": "Reduces the Attack Speed of adjacent enemies by 25%."
+        "effect": "Reduces the Attack Speed of adjacent enemies by 40%. Effect does not stack but does increase radius."
     },
     {
         "name": "Hush",
         "recipe": ["Tear of the Goddess", "Negatron Cloak"],
-        "effect": "Basic Attacks have a 33% chance to silence the target, preventing the them from gaining mana for 4 seconds."
+        "effect": "Basic Attacks have a 20% chance to silence the target, preventing the them from gaining mana for 4 seconds."
     },
     {
         "name": "Redemption",
@@ -170,9 +168,9 @@
         "effect": "At the start of each planning phase, gain: basic attacks and spells deal +50% damage OR basic attacks heal 50 Health on-hit."
     },
     {
-        "name": "Thornmail",
+        "name": "Bramble Vest",
         "recipe": ["Chain Vest", "Chain Vest"],
-        "effect": "When the wearer is hit by a Basic Attack, they reflect 100% of the mitigated damage as magic damage."
+        "effect": "Negates bonus damage from incoming critical hits. On hit by a Basic Attack, deal 80/120/160 magic damage to all nearby enemies (cooldown 1 second). Scales with wearer’s Star Level."
     },
     {
         "name": "Sword Breaker",
@@ -183,7 +181,7 @@
     {
         "name": "Red Buff",
         "recipe": ["Chain Vest", "Giant's Belt"],
-        "effect": "Basic attacks burn the target, dealing 20% of the target's maximum Health over 10 seconds and preventing 80% of healing."
+        "effect": "Basic attacks burn the target, dealing 18% of the target's maximum Health over 10 seconds and preventing 80% of healing."
     },
     {
         "name": "Warden's Mail",
@@ -194,7 +192,7 @@
         "name": "Iceborn Gauntlet",
         "short": "gauntlet",
         "recipe": ["Chain Vest", "Sparring Gloves"],
-        "effect": "When the wearer dodges, they create a zone of ice. Enemies inside the zone have their Attack Speed reduced by 25%."
+        "effect": "After casting a spell, the wearer’s next basic attack freezes the target for 1.5 seconds."
     },
     {
         "name": "Dragon's Claw",
@@ -215,7 +213,7 @@
     {
         "name": "Quicksilver",
         "recipe": ["Negatron Cloak", "Sparring Gloves"],
-        "effect": "The wearer gains a shield that prevents the next crowd control effect from applying. This shield refreshes after 3 seconds."
+        "effect": "The wearer is immune from crowd control."
     },
     {
         "name": "Warmog's Armor",
