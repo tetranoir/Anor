@@ -126,7 +126,20 @@ function aggregateItems(itemsSourcePath, externalPath, targetFilePath, name) {
   });
 }
 
-aggregateSynergies(p.join(source, 'synergies'), p.join(target, 'synergies.json'), 'synergies');
+function passThroughMeta(sourcePath, targetPath, name) {
+  try {
+    fs.writeFileSync(targetPath, fs.readFileSync(sourcePath));
+  } catch(e) {
+    console.log(sourcePath, e);
+  }
+  console.log(`${name} was saved at ${targetPath}`);
+}
+
+aggregateSynergies(
+  p.join(source, 'synergies'),
+  p.join(target, 'synergies.json'),
+  'synergies'
+);
 aggregateChampions(
   p.join(source, 'champions'),
   p.join(source, 'external'),
@@ -138,4 +151,9 @@ aggregateItems(
   p.join(source, 'external'),
   p.join(target, 'items.json'),
   'items'
+);
+passThroughMeta(
+  p.join(source, 'meta', 'current.json'),
+  p.join(target, 'meta.json'),
+  'meta'
 );

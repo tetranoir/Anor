@@ -167,18 +167,16 @@
       "Recurve Bow",
       "Tear of the Goddess"
     ],
-    "effect": "On every third basic attack, deal 100 magical damage to 3 enemies.",
+    "effect": "On every third basic attack, deal 80 magic damage to 3/4/5 enemies (scales with wearer’s Star Level).",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3087.png"
   },
-  "Phantom Dancer": {
-    "name": "Phantom Dancer",
-    "short": "pd",
+  "Titan's Resolve": {
+    "name": "Titan's Resolve",
     "recipe": [
       "Recurve Bow",
       "Chain Vest"
     ],
-    "effect": "Negates the bonus damage from critical strikes.",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3046.png"
+    "effect": "When the wearer is hit or inflicts a critical strike, gain a 2% stacking damage bonus, up to 100%. At 50 stacks, gain 25 armor and magic resist. Resets every round."
   },
   "Runaan's Hurricane": {
     "name": "Runaan's Hurricane",
@@ -210,15 +208,13 @@
     "effect": "Wearer is also a Blademaster.",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3153.png"
   },
-  "Repeating Crossbow": {
-    "name": "Repeating Crossbow",
-    "short": "crossbow",
+  "Last Whisper": {
+    "name": "Last Whisper",
     "recipe": [
       "Recurve Bow",
       "Sparring Gloves"
     ],
-    "effect": "This item is re-equipped to a new ally when the wearer dies, granting a stacking +30% attack speed and +30% critical chance this combat.",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3036.png"
+    "effect": "Critical hits reduce the target’s Armor by 90% for 3 seconds. Effect does not stack."
   },
   "Rabadon's Deathcap": {
     "name": "Rabadon's Deathcap",
@@ -237,7 +233,7 @@
       "Needlessly Large Rod",
       "Tear of the Goddess"
     ],
-    "effect": "The wearer's spells deal 150 magic damage to the first target hit and up to 3 nearby enemies.",
+    "effect": "The wearer's spells deal 120/160/200 magic damage (scales with wearer’s Star Level).",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3285.png"
   },
   "Locket of the Iron Solari": {
@@ -247,7 +243,7 @@
       "Needlessly Large Rod",
       "Chain Vest"
     ],
-    "effect": "When combat begins, the wearer and all allies within 2 hexes in the same row gain a shield that blocks 300 damage for 8 seconds.",
+    "effect": "When combat begins, the wearer and all allies within two hexes in the same row are shielded 250/275/300 damage for 8 seconds (scales with wearer’s Star Level).",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3190.png"
   },
   "Ionic Spark": {
@@ -256,7 +252,7 @@
       "Needlessly Large Rod",
       "Negatron Cloak"
     ],
-    "effect": "When an enemy casts a spell, the wearer deals 100 true damage to the caster.",
+    "effect": "Enemies within 3 hexes that cast a spell are zapped, taking magic damage equal to 200% of their max Mana.",
     "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/9c/Ionic_Spark_item.png/revision/latest?cb=20171223001148"
   },
   "Morellonomicon": {
@@ -266,7 +262,7 @@
       "Needlessly Large Rod",
       "Giant's Belt"
     ],
-    "effect": "When spell damage burns the target for 20% of the target's maximum health and prevents 80% of healing over 10 seconds. Unique.",
+    "effect": "When spell damage burns the target for 18% of the target's maximum health and prevents 80% of healing over 10 seconds. Unique.",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3165.png"
   },
   "Inferno's Cinder": {
@@ -303,7 +299,7 @@
       "Tear of the Goddess",
       "Chain Vest"
     ],
-    "effect": "Reduces the Attack Speed of adjacent enemies by 25%.",
+    "effect": "Reduces the Attack Speed of adjacent enemies by 40%. Effect does not stack but does increase radius.",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3110.png"
   },
   "Hush": {
@@ -312,7 +308,7 @@
       "Tear of the Goddess",
       "Negatron Cloak"
     ],
-    "effect": "Basic Attacks have a 33% chance to silence the target, preventing the them from gaining mana for 4 seconds.",
+    "effect": "Basic Attacks have a 20% chance to silence the target, preventing the them from gaining mana for 4 seconds.",
     "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/6/66/Hush_item.png/revision/latest?cb=20190925184254"
   },
   "Redemption": {
@@ -342,14 +338,13 @@
     "effect": "At the start of each planning phase, gain: basic attacks and spells deal +50% damage OR basic attacks heal 50 Health on-hit.",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/profileicon/1628.png"
   },
-  "Thornmail": {
-    "name": "Thornmail",
+  "Bramble Vest": {
+    "name": "Bramble Vest",
     "recipe": [
       "Chain Vest",
       "Chain Vest"
     ],
-    "effect": "When the wearer is hit by a Basic Attack, they reflect 100% of the mitigated damage as magic damage.",
-    "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3035.png"
+    "effect": "Negates bonus damage from incoming critical hits. On hit by a Basic Attack, deal 80/120/160 magic damage to all nearby enemies (cooldown 1 second). Scales with wearer’s Star Level."
   },
   "Sword Breaker": {
     "name": "Sword Breaker",
@@ -367,7 +362,7 @@
       "Chain Vest",
       "Giant's Belt"
     ],
-    "effect": "Basic attacks burn the target, dealing 20% of the target's maximum Health over 10 seconds and preventing 80% of healing.",
+    "effect": "Basic attacks burn the target, dealing 18% of the target's maximum Health over 10 seconds and preventing 80% of healing.",
     "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/e/e7/Red_BramblebackSquare.png/revision/latest/scale-to-width-down/64?cb=20140620025406"
   },
   "Warden's Mail": {
@@ -386,7 +381,7 @@
       "Chain Vest",
       "Sparring Gloves"
     ],
-    "effect": "When the wearer dodges, they create a zone of ice. Enemies inside the zone have their Attack Speed reduced by 25%.",
+    "effect": "After casting a spell, the wearer’s next basic attack freezes the target for 1.5 seconds.",
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.23.1/img/item/3025.png"
   },
   "Dragon's Claw": {
@@ -423,7 +418,7 @@
       "Negatron Cloak",
       "Sparring Gloves"
     ],
-    "effect": "The wearer gains a shield that prevents the next crowd control effect from applying. This shield refreshes after 3 seconds.",
+    "effect": "The wearer is immune from crowd control.",
     "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/d/d1/Quicksilver_item.png/revision/latest?cb=20190925184346"
   },
   "Warmog's Armor": {

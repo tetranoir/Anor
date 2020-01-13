@@ -57,6 +57,7 @@ import './components/GridChart.scss';
 import * as championModule from './data/champions.json';
 import * as synergyModule from './data/synergies.json';
 import * as itemModule from './data/items.json';
+import * as metaModule from './data/meta.json';
 
 
 declare global {
@@ -114,10 +115,16 @@ interface EnrichedItemsMap {
   [id: string]: EnrichedItemsMap;
 }
 
+interface MetaConfig {
+  patch: string;
+  patch_links: string[];
+}
+
 // DATA
 const rawChampionData = Object.values((championModule as any).default) as Champion[];
 const synergyData = (synergyModule as any).default as SynergyTypeMap<Synergy>;
 const itemData = (itemModule as any).default as ItemMap;
+const metaConfig = (metaModule as any).default as MetaConfig;
 
 const championData: (Champion & ChampionEnrichment)[] = rawChampionData.map(c => ({
   ...c,
@@ -176,7 +183,7 @@ function makeGridNodeFromItem(item: Item): GridNode {
   // todo abstract node-data creation to gridchart
   if (icon) {
     node.element = (
-      <div className="node-data">
+      <div className="node-data" title={name}>
         <img src={icon} />
         {node.data}
       </div>
@@ -695,6 +702,9 @@ function Ariandel() {
             <ChampionImages champions={champions} />
           </defs>
         </ForceGraph>
+      </div>
+      <div className="bottom-container">
+        patch: {metaConfig.patch}
       </div>
     </div>
   );

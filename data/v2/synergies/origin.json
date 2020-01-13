@@ -32,6 +32,9 @@
         "6": "When a Light unit dies, all other Light units gain +25% attack speed and heal 25% of the dead unit's maximum health.",
         "9": "When a Light unit dies, all other Light units gain +35% attack speed and heal 25% of the dead unit's maximum health."
     },
+    "Lunar": {
+        "2": "Every 7 seconds, your team gains 15% Critical Strike Chance and Damage, and 10% Spell Power. (Stacks up to 4 times)."
+    },
     "Mountain": {
         "2": "At the start of combat, a random ally gains a 1500 health stoneshield."
     },

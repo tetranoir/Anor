@@ -706,5 +706,27 @@
       "Warden"
     ],
     "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Amumu.png"
+  },
+  "Leona": {
+    "name": "Leona",
+    "tier": 1,
+    "origin": [
+      "Lunar"
+    ],
+    "class": [
+      "Warden"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Leona.png"
+  },
+  "Karma": {
+    "name": "Karma",
+    "tier": 3,
+    "origin": [
+      "Lunar"
+    ],
+    "class": [
+      "Mystic"
+    ],
+    "icon": "https://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Karma.png"
   }
 }

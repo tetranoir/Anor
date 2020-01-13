@@ -32,9 +32,6 @@ function useUrlState(name, Type, defaultValue) {
   return [value, setValue];
 }
 
-function booleanVal(v: string) {
-  return v === 'true';
-}
 const BooleanVal = {
   deserialize(v: string): boolean {
     return v === '1';
@@ -43,8 +40,6 @@ const BooleanVal = {
     return v ? '1' : '0';
   },
 };
-
-
 
 // State handling in app
 interface StateVars {

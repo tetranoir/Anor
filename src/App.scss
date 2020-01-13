@@ -149,6 +149,13 @@ div[hidden] {
   right: 50%;
 }
 
+.bottom-container {
+  position: absolute;
+  bottom: 5px;
+  right: 5%;
+  font-size: 9px;
+}
+
 .panel {
   padding: 0 0 5px 0;
   background-color: #DDD;

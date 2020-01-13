@@ -71,7 +71,7 @@ export function GridChartHtml(props: GridChartHtmlProps) {
   const [[selectedX, selectedY], setSelectedXY] = useState([-1, -1]);
 
   const renderLabel = (node: GridNode) => (
-    <span className={cx('node-label', labelClass)} style={labelStyle}>
+    <span className={cx('node-label', labelClass)} style={labelStyle} title={node.id}>
       {node.label || node.id}
     </span>
   );
