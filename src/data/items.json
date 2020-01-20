@@ -176,7 +176,8 @@
       "Recurve Bow",
       "Chain Vest"
     ],
-    "effect": "When the wearer is hit or inflicts a critical strike, gain a 2% stacking damage bonus, up to 100%. At 50 stacks, gain 25 armor and magic resist. Resets every round."
+    "effect": "When the wearer is hit or inflicts a critical strike, gain a 2% stacking damage bonus, up to 100%. At 50 stacks, gain 25 armor and magic resist. Resets every round.",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/0/00/Titan%27s_Resolve_TFT_item.png/revision/latest?cb=20200107124611"
   },
   "Runaan's Hurricane": {
     "name": "Runaan's Hurricane",
@@ -214,7 +215,8 @@
       "Recurve Bow",
       "Sparring Gloves"
     ],
-    "effect": "Critical hits reduce the target’s Armor by 90% for 3 seconds. Effect does not stack."
+    "effect": "Critical hits reduce the target’s Armor by 90% for 3 seconds. Effect does not stack.",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/c/cf/Mortal_Reminder_item.png/revision/latest?cb=20171221224017"
   },
   "Rabadon's Deathcap": {
     "name": "Rabadon's Deathcap",
@@ -344,7 +346,8 @@
       "Chain Vest",
       "Chain Vest"
     ],
-    "effect": "Negates bonus damage from incoming critical hits. On hit by a Basic Attack, deal 80/120/160 magic damage to all nearby enemies (cooldown 1 second). Scales with wearer’s Star Level."
+    "effect": "Negates bonus damage from incoming critical hits. On hit by a Basic Attack, deal 80/120/160 magic damage to all nearby enemies (cooldown 1 second). Scales with wearer’s Star Level.",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/98/Bramble_Vest_TFT_item.png/revision/latest?cb=20200107124434"
   },
   "Sword Breaker": {
     "name": "Sword Breaker",

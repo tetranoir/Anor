@@ -214,5 +214,17 @@
   {
     "name": "Giant Slayer",
     "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/2/21/Giant_Slayer_item.png/revision/latest?cb=20171221183216"
+  },
+  {
+    "name": "Bramble Vest",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/9/98/Bramble_Vest_TFT_item.png/revision/latest?cb=20200107124434"
+  },
+  {
+    "name": "Titan's Resolve",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/0/00/Titan%27s_Resolve_TFT_item.png/revision/latest?cb=20200107124611"
+  },
+  {
+    "name": "Last Whisper",
+    "icon": "https://vignette.wikia.nocookie.net/leagueoflegends/images/c/cf/Mortal_Reminder_item.png/revision/latest?cb=20171221224017"
   }
 ]

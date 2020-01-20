@@ -309,6 +309,17 @@ $secondary-med: #2985F2;
 }
 
 #item-grid {
+  .node-data {
+    position: relative;
+  }
+  .node-data .node-indicator {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    height: 5px;
+    width: 5px;
+    background-color: 'red';
+  }
   .node-data img {
     float: left;
     height: 46px;

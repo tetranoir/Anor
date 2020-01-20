@@ -118,6 +118,8 @@ export function GridChartHtml(props: GridChartHtmlProps) {
 
   const resultsNodes = y.map((yNode, j) => {
     const xResults = x.map((xNode, i) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const [selected, setSelected] = useState(false);
       const rNode = operator(xNode, yNode);
       return (
         <div
@@ -125,9 +127,13 @@ export function GridChartHtml(props: GridChartHtmlProps) {
           className={cx("grid-node result-node",
             { 'selected-x': selectedX === i },
             { 'selected-y': selectedY === j },
+            { selected },
           )}
           style={nodeStyle}
-          onClick={() => setSelectedXY([i, j])}
+          onClick={() => {
+            setSelectedXY([i, j]);
+            setSelected(!selected);
+          }}
         >
           {rNode.element || renderData(rNode)}
           {showLabels && renderLabel(rNode)}
