@@ -145,8 +145,14 @@ div[hidden] {
 
 .top-container {
   position: absolute;
+  display: flex;
   top: 10px;
   right: 50%;
+
+  & > div,
+  & > form {
+    margin-right: 10px;
+  }
 }
 
 .bottom-container {
@@ -206,8 +212,13 @@ div[hidden] {
     font-size: 14px;
     padding: 2px 5px;
   }
-
 }
+
+.select-io {
+  font-size: 14px;
+  padding: 2px 5px;
+}
+
 /* https://paletton.com/#uid=53C0u0kl1Wx1x+IcEXDsUWkWEVB */
 /* blue pastels dark -> light */
 /* #036FF0   #2985F2   #60A3F3   #9DC5F6 */

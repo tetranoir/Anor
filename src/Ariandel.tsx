@@ -456,6 +456,35 @@ function renderKeysAsCheckboxes(keyToMap, name='filters') {
   );
 }
 
+interface InputIOProps {
+  prompt: string;
+  fn: Function;
+}
+function InputIO(props: InputIOProps) {
+  const { prompt, fn } = props;
+  const [value, setValue] = useState('');
+
+  function handleChange(event) {
+    setValue(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    fn(value);
+    setValue('');
+    event.preventDefault();
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        {prompt}
+        <input type="text" value={value} onChange={handleChange} />
+      </label>
+      <input type="submit" value="Enter" />
+    </form>
+  );
+}
+
 const filterNull = R.filter(R.identity);
 // Evaluates the thresholds that arise from a set of champions
 function evalChampionThresholds(champions: Champion[]): SynergyThreshold[] {
@@ -573,6 +602,18 @@ function Ariandel() {
 
   const [centralityMode, setCentralityMode] = useState<CentralityMode|null>(null);
 
+  function selectChampionsFromString(str: string) {
+    const tokens = str.split(/[^a-zA-Z]/).filter(s => s).map(s => s.toLowerCase());
+    champions.forEach(c => {
+      const cid = c[id].toLowerCase();
+      tokens.forEach(tok => {
+        if (cid.includes(tok) || tok.includes(cid)) {
+          c.setSelected(true);
+        }
+      });
+    });
+  }
+
   function toggleSelectChampion(id: string) {
     const champion = idToChampion[id];
     if (champion.filtered) {
@@ -668,6 +709,12 @@ function Ariandel() {
         />
       </div>
       <div className="top-container">
+        <div className="panel select-io">
+          <InputIO
+            prompt="Select:"
+            fn={selectChampionsFromString}
+          />
+        </div>
         <ItemReferenceModal
           basicItems={gridAxisNodes}
           combineItems={combineItems}
