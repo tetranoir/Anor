@@ -16,6 +16,7 @@
     "ngraph.centrality": "^2.0.0",
     "ngraph.graph": "^19.0.1",
     "node-sass": "^4.13.0",
+    "presi": "^1.0.1",
     "ramda": "^0.26.1",
     "react": "^16.12.0",
     "react-d3-graph": "^2.3.0",
