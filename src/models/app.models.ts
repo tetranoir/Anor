@@ -62,14 +62,9 @@ export type State = StateVars & StateSets;
 export function useAppState<T>(t: T, id: string): State & T {
   const [filtered, setFiltered] = useState(false);
   const [selected, setSelected] = useUrlState(id, BooleanVal, false);
-  // const [selected, setSelected] = useQueryParam(id.replace(/[' ]/g,''), BooleanParam);
   const [grouped, setGrouped] = useState(false);
   const [highlighted, setHighlighted] = useState(false);
   const [hovered, setHovered] = useState(false);
-
-  // useEffect(() => {
-  //   setSelectedQ(selected);
-  // }, [selected]);
 
   return {
     ...t,
@@ -103,7 +98,6 @@ export const mergeStateVars = (a: StateVars, b: StateVars): StateVars => ({
   hovered: a.hovered && b.hovered,
 });
 
-
 // TODO: move somewhere because these are data+app convenience types
 // Synergy handling in app
 export type Threshold = [number, string];
@@ -113,16 +107,20 @@ export interface SynergyThreshold {
   threshes: Threshold[];
 }
 
+// Enrichments are for functions and
 // Adds stuff to synergy to make it easier to use
 export interface SynergyEnrichment extends SynergyThreshold {
   getThresholdStr: (n: number) => Threshold | null;
 }
 
 export interface ItemEnrichment<T extends Item> {
-  usedIn: T[]; // the items this item is in recipes for
-  madeFrom: T[]; // the items this item is made from
+  // The items this item is in recipes for.
+  usedIn: T[];
+  // the items this item is made from.
+  madeFrom: T[];
 }
 
 export interface ChampionEnrichment {
-  short: string; // short name, lowercase using only \w characters
+  // Short name, lowercase using only word (\w) characters. Used in URL
+  short: string;
 }

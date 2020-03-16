@@ -24,23 +24,6 @@ export const isChampion = o => {
 };
 
 /* this whole section is bad */
-export const classstrs = [
-  'assassin', 'blademaster', 'brawler', 'elementalist','guardian',
-  'gunslinger', 'knight', 'ranger', 'shapeshifter', 'sorcerer'
-].join('|');
-
-export const originstrs = [
-  'demon', 'dragon', 'exile', 'glacial', 'hextech', 'imperial', 'ninja',
-  'robot', 'pirate', 'phantom', 'noble', 'void', 'wild', 'yordle'
-].join('|');
-
-export const datatype = {
-  name: '',
-  class: [classstrs],
-  origin: [originstrs],
-  iconSrc: '',
-};
-
 export type SynergyType = 'class' | 'origin';
 /* end bad sectiong */
 
@@ -74,8 +57,5 @@ if (typeof module !== 'undefined' && module.exports) {
     keys,
     id,
     isChampion,
-    classstrs,
-    originstrs,
-    datatype,
   };
 }

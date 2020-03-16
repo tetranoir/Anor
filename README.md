@@ -38,3 +38,10 @@ your thing.
 - [ ] Some champion icons could better reflect in game skins
 - [ ] Fix terrible css (define primary, secondary, dark primary, dark secondary)
 - [x] Url state
+
+## Technical
+The data pipeline looks like this:
+
+```
+[Input Sources] => capture() => [Raw Data] => parse() => [Normalized Data] => index() => [View]
+```

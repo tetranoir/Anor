@@ -15,7 +15,7 @@ import * as R from 'ramda';
  * @param {string[]} dest  Destination nodes as a list of ids.
  *
  * @return {Transitions[]} Returns a depedency graph of transitions, each
- *.                        transition having a list of nodes to add and an
+ *                         transition having a list of nodes to add and an
  *                         list of nodes to remove. Each transition should only
  *                         only be applied after its parents are completed.
  */

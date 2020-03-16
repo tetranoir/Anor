@@ -1,15 +1,12 @@
+// v5
 // third party
 import React, {
   useState, useEffect, useLayoutEffect, useMemo, cloneElement
 } from 'react';
-import { useQueryParam, NumberParam, StringParam, BooleanParam } from 'use-query-params';
 import Modal from 'react-modal';
-// import { Graph } from 'react-d3-graph';
-// import { Graph, DefaultLink, DefaultNode } from '@vx/network';
 import {
   InteractiveForceGraph, ForceGraphNode, ForceGraphLink,ForceGraph
 } from 'react-vis-force';
-// import { scaleCategory20 } from 'd3-scale';
 import cx from 'classnames/bind';
 import * as R from 'ramda';
 import * as S from 'sanctuary';
