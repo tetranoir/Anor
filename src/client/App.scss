@@ -17,219 +17,69 @@ html {
 }
 
 .app {
+  position: relative;
+  display: grid;
+  grid-template-columns: 160px auto fit-content(260px);
+  grid-template-rows: 48px auto;
   height: 100vh;
   width: 100vw;
-  overflow: scroll;
+  overflow: hidden;
   font-family: helvetica;
 }
 
-.checkboxes {
-  z-index: 5;
+.top-bar {
+  position: relative;
+  z-index: 1;
+  grid-row: 1;
+  grid-column: 1 / 4;
+}
 
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-    margin: unset;
-  }
+.left-bar {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  width: 0;
+  grid-column: 1;
+  grid-row: 1 / 2;
+}
 
-  input ~ label {
-    background-color: unset;
-    cursor: pointer;
-    padding: 2px 4px;
-    margin: 1px 0;
-  }
-
-  input:checked ~ label {
-    background-color: #BBB;
-  }
-
-  .champion {
-    padding-left: 10px;
-    font-size: 10px;
-    display: flex;
-  }
-
-  .depth0 {
-    padding: 10px 5px;
-  }
-
-  .depth0 > div {
-    padding-right: 5px;
-  }
-
-  .depth1 {
-    flex-direction: column;
-    // max-width: 90px;
-  }
-
-  .checkboxes-container {
-    font-size: 10px;
-    display: flex;
-    place-items: start;
-  }
-
-  .checkboxes-container:not([hidden]) {
-    border-top-left-radius: 0;
-  }
-
-  &[is="active"] .checkboxes-toggle {
-    border-bottom: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .checkboxes-toggle {
-    display: inline-block;
-    padding: 2px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-bottom: -1px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .checkboxes {
-    // display: flex;
-    // flex-wrap: wrap;
-    // margin: 12px 12px 0 12px;;
-    // padding: 4px;
-
-    .labeledinput {
-      display: flex;
-      place-items: center;
-    }
-
-    .labeledinput > label {
-      text-transform: capitalize;
-      white-space: nowrap;
-    }
-  }
+.right-panel {
+  position: relative;
+  z-index: 1;
+  width: 260px;
+  height: 100%;
+  grid-column: 3 / 4;
+  display: flex;
+  flex-direction: column;
 }
 
 div[hidden] {
   display: none !important;
 }
 
-.right-container {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  display: flex;
-  width: 150px;
-  flex-direction: column;
+/* https://paletton.com/#uid=24g0u0kjnttdWPMh-Cif1jgfjeP */
+// Purple, Yellow
+// 1,4 => light,dark
 
-  & > div {
-    margin-bottom: 10px;
-  }
+$color-primary-0: #614AA1;  // Main Primary color */
+$color-primary-1: #A28BE3;
+$color-primary-2: #7C63C1;
+$color-primary-3: #493D69;
+$color-primary-4: #382F51;
 
-  &.offset1 {
-    right: 170px;
-  }
-}
+$color-complement-0: #EBD45D; // Main Complement color */
+$color-complement-1: #FFED90;
+$color-complement-2: #FFE873;
+$color-complement-3: #998E51;
+$color-complement-4: #766D3E;
 
-.left-container {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
 
-  & > div {
-    margin-bottom: 10px;
-  }
-}
-
-.top-container {
-  position: absolute;
-  display: flex;
-  top: 10px;
-  right: 50%;
-
-  & > div,
-  & > form {
-    margin-right: 10px;
-  }
-}
-
-.bottom-container {
-  position: absolute;
-  bottom: 5px;
-  right: 5%;
-  font-size: 9px;
-}
-
-.panel {
-  padding: 0 0 5px 0;
-  background-color: #DDD;
-  border: 1px solid #777;
-  border-radius: 3px;
-  opacity: 0.9;
-  color: #222;
-
-  .title {
-    padding: 0 5px 2px 5px;
-  }
-}
-
-.champion-list {
-  .champion {
-    padding: 0 10px;
-    font-size: 10px;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #BBB;
-    }
-  }
-}
-
-.synergy-list {
-  .synergy {
-    font-size: 10px;
-
-    .threshold {
-      margin-right: 5px;
-    }
-
-    .name {
-      font-weight: bold;
-      padding-top: 5px;
-    }
-
-    & > div {
-      padding: 0 10px;
-    }
-  }
-}
-
-.reference-modal {
-  button {
-    cursor: pointer;
-    font-size: 14px;
-    padding: 2px 5px;
-  }
-}
-
-.select-io {
-  font-size: 14px;
-  padding: 2px 5px;
-}
-
-/* https://paletton.com/#uid=53C0u0kl1Wx1x+IcEXDsUWkWEVB */
-/* blue pastels dark -> light */
-/* #036FF0   #2985F2   #60A3F3   #9DC5F6 */
-/* purple pastels dark -> light */
-/* #1E04F2   #4935F4   #7869F4   */
-$primary-dark: #4935F4;
-$secondary-dark: #036FF0;
-$secondary-med: #2985F2;
 #graph {
-  transition: stroke .3s ease-in, opacity .2s ease-in;
-  background-color: #EEEEEE;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: stroke .2s ease-in, opacity .2s ease-in;
+  background-color: $color-primary-4;
 
   image.node-icon {
     height: 40px;
@@ -244,15 +94,22 @@ $secondary-med: #2985F2;
     z-index: 0;
     opacity: 0.8;
     font-weight: 500;
+    fill: $color-primary-1;
   }
-  text.node-label.highlighted,
-  text.node-label.selected,
+  text.node-label.highlighted {
+    opacity: 1;
+    z-index: 2;
+    fill: $color-complement-2;
+  }
+  text.node-label.selected {
+    opacity: 1;
+    z-index: 2;
+    fill: $color-complement-0;
+  }
   text.node-label.hovered {
     opacity: 1;
     z-index: 2;
-    stroke-width: 0.8px;
-    stroke: #BBB;
-    font-weight: 900;
+    fill: $color-complement-2;
   }
   text.node-label.filtered {
     opacity: 0;
@@ -260,19 +117,19 @@ $secondary-med: #2985F2;
 
   line.graph-link {
     opacity: 0.1;
-    stroke: #000;
+    stroke: $color-primary-1;
     stroke-width: 3;
     z-index: 1;
   }
-  line.graph-link.highlighted {
-    stroke: $secondary-dark;
-    opacity: 1.0;
-    z-index: 3;
-  }
   line.graph-link.selected {
-    stroke: $primary-dark;
-    opacity: 1.0;
+    stroke: $color-complement-0;
+    opacity: 0.6;
     z-index: 2;
+  }
+  line.graph-link.highlighted {
+    stroke: $color-complement-2;
+    opacity: 0.6;
+    z-index: 3;
   }
   line.graph-link.filtered {
     opacity: 0.0;
@@ -283,18 +140,18 @@ $secondary-med: #2985F2;
     opacity: 0.7;
     stroke-width: 5px;
     r: 20px;
-    stroke: #BBB;
+    stroke: $color-primary-1;
   }
   circle.graph-node.highlighted {
-    stroke: $secondary-dark;
+    stroke: $color-complement-2;
     opacity: 1;
   }
   circle.graph-node.selected {
-    stroke: $primary-dark;
+    stroke: $color-complement-0;
     opacity: 1;
   }
   circle.graph-node.hovered, {
-    stroke: $secondary-med;
+    stroke: $color-complement-2;
     opacity: 1;
   }
   circle.graph-node.filtered {

@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import { useState, useEffect} from 'react';
 
-import { Item } from './modeldata';
+import { Item, Threshold } from './data.models';
 
 /* Used as global singleton */
 const urlParams = new URLSearchParams(window.location.search);
@@ -24,7 +24,8 @@ function useUrlState(name, Type, defaultValue) {
     } else {
       urlParams.set(name, Type.serialize(value));
     }
-    window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
+    window.history.replaceState({}, '',
+        `${window.location.pathname}?${urlParams}`);
   }, [value]);
 
   hasLoaded = true;
@@ -50,24 +51,47 @@ interface StateVars {
   hovered: boolean;
 }
 interface StateSets {
-  setFiltered: (boolean) => void;
-  setSelected: (boolean) => void;
-  setGrouped: (boolean) => void;
-  setHighlighted: (boolean) => void;
-  setHovered: (boolean) => void;
+  setFiltered: (b: boolean) => void;
+  setSelected: (b: boolean) => void;
+  setGrouped: (b: boolean) => void;
+  setHighlighted: (b: boolean) => void;
+  setHovered: (b: boolean) => void;
 }
 // Stateful properites of for interactable objects
-export type State = StateVars & StateSets;
-// Attaches State functionality to object
-export function useAppState<T>(t: T, id: string): State & T {
+export type ClientState = StateVars & StateSets;
+// // Attaches State functionality to object by mutating the original object
+// export function useClientState<T>(t: T & Partial<ClientStateUser>,
+//     id: string): T & ClientStateUser {
+//   const [filtered, setFiltered] = useState(false);
+//   const [selected, setSelected] = useUrlState(id, BooleanVal, false);
+//   const [grouped, setGrouped] = useState(false);
+//   const [highlighted, setHighlighted] = useState(false);
+//   const [hovered, setHovered] = useState(false);
+
+//   const state = {
+//     filtered,
+//     selected,
+//     grouped,
+//     highlighted,
+//     hovered,
+//     setFiltered,
+//     setSelected,
+//     setGrouped,
+//     setHighlighted,
+//     setHovered,
+//   };
+
+//   return Object.assign(t, {state});
+// }
+// Attaches State functionality to object by mutating the original object
+export function useClientState(id: string): ClientState {
   const [filtered, setFiltered] = useState(false);
   const [selected, setSelected] = useUrlState(id, BooleanVal, false);
   const [grouped, setGrouped] = useState(false);
   const [highlighted, setHighlighted] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  return {
-    ...t,
+  const state = {
     filtered,
     selected,
     grouped,
@@ -79,6 +103,8 @@ export function useAppState<T>(t: T, id: string): State & T {
     setHighlighted,
     setHovered,
   };
+
+  return state;
 }
 
 // Picks state props from an object
@@ -98,19 +124,11 @@ export const mergeStateVars = (a: StateVars, b: StateVars): StateVars => ({
   hovered: a.hovered && b.hovered,
 });
 
-// TODO: move somewhere because these are data+app convenience types
-// Synergy handling in app
-export type Threshold = [number, string];
-
-export interface SynergyThreshold {
-  name: string;
-  threshes: Threshold[];
-}
-
-// Enrichments are for functions and
+// Enrichments are for functions, pointers, and derived state used in client
 // Adds stuff to synergy to make it easier to use
-export interface SynergyEnrichment extends SynergyThreshold {
-  getThresholdStr: (n: number) => Threshold | null;
+export interface SynergyEnrichment {
+  count: number;
+  countThreshIdx: number; // current thresh index
 }
 
 export interface ItemEnrichment<T extends Item> {
@@ -120,7 +138,10 @@ export interface ItemEnrichment<T extends Item> {
   madeFrom: T[];
 }
 
+
 export interface ChampionEnrichment {
   // Short name, lowercase using only word (\w) characters. Used in URL
   short: string;
+  // All traits
+  traits: string[];
 }

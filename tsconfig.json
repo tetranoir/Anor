@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "lib": [
       "dom",
       "dom.iterable",
@@ -17,10 +17,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "sourceMap": true,
+    "jsx": "preserve",
+    "baseUrl": "src"
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "**/_*.*"
   ],
   "typeRoots": [
     "node_modules/@types",

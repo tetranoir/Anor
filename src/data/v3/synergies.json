@@ -1,0 +1,416 @@
+[
+  {
+    "name": "Blademaster",
+    "description": "Blademasters' Basic Attacks have a chance to trigger two additional attacks against their target. These additional attacks deal damage like Basic Attacks and trigger on-hit effects.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 3,
+        "max": 5,
+        "effect": "30% Chance On Hit"
+      },
+      {
+        "style": "gold",
+        "min": 6,
+        "effect": "55% Chance On Hit"
+      }
+    ],
+    "icon": "v3/traits/blademaster.png"
+  },
+  {
+    "name": "Blaster",
+    "description": "Every fourth Basic Attack from a Blaster fires additional attacks at random enemies. These additional attacks deal damage like Basic Attacks, trigger on-hit effects, and can critically hit.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "3 Additional Attacks"
+      },
+      {
+        "style": "gold",
+        "min": 4,
+        "effect": "6 Additional Attacks"
+      }
+    ],
+    "icon": "v3/traits/blaster.png"
+  },
+  {
+    "name": "Brawler",
+    "description": "Brawlers gain bonus Maximum Health.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "300 Health"
+      },
+      {
+        "style": "gold",
+        "min": 4,
+        "effect": "600 Health"
+      }
+    ],
+    "icon": "v3/traits/brawler.png"
+  },
+  {
+    "name": "Celestial",
+    "description": "All allies heal for some of the damage they deal with spells and attacks.",
+    "type": "origin",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "15% of Damage Dealt"
+      },
+      {
+        "style": "silver",
+        "min": 4,
+        "max": 5,
+        "effect": "25% of Damage Dealt"
+      },
+      {
+        "style": "gold",
+        "min": 6,
+        "effect": "50% of Damage Dealt"
+      }
+    ],
+    "icon": "v3/traits/celestial.png"
+  },
+  {
+    "name": "Chrono",
+    "description": "All allies gain attack speed every few seconds.",
+    "type": "origin",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "15% Attack Speed"
+      },
+      {
+        "style": "silver",
+        "min": 4,
+        "max": 5,
+        "effect": "35% Attack Speed"
+      },
+      {
+        "style": "gold",
+        "min": 6,
+        "effect": "65% Attack Speed"
+      }
+    ],
+    "icon": "v3/traits/chrono.png"
+  },
+  {
+    "name": "Cybernetic",
+    "description": "Cybernetic champions with at least one item gain Health and Attack Damage.",
+    "type": "origin",
+    "thresholds": [
+      {
+        "style": "silver",
+        "min": 3,
+        "max": 5,
+        "effect": "35 Attack Damage and 350 Health"
+      },
+      {
+        "style": "gold",
+        "min": 6,
+        "effect": "85 Attack Damage and 850 Health"
+      }
+    ],
+    "icon": "v3/traits/cybernetic.png"
+  },
+  {
+    "name": "Dark Star",
+    "description": "When a Dark Star champion dies they give increased damage, plus any previous stacks of this effect, to the nearest ally Dark Star champion.",
+    "type": "origin",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 3,
+        "max": 5,
+        "effect": "50% Increased Damage"
+      },
+      {
+        "style": "gold",
+        "min": 6,
+        "effect": "80% Increased Damage"
+      }
+    ],
+    "icon": "v3/traits/darkstar.png"
+  },
+  {
+    "name": "Demolitionist",
+    "description": "Damage from Demolitionists' spellcasts stuns their targets for a few seconds. (Once per spellcast)",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "gold",
+        "min": 2,
+        "effect": "Bonus Active"
+      }
+    ],
+    "icon": "v3/traits/demolitionist.png"
+  },
+  {
+    "name": "Infiltrator",
+    "innate": "At the start of combat, Infiltrators move to the enemy's backline.",
+    "description": "Infiltrators gain Attack Speed for a few seconds at the start of combat.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "Bonus Active"
+      },
+      {
+        "style": "gold",
+        "min": 4,
+        "effect": "Bonus Active and refreshes to 90% Attack Speed on takedown"
+      }
+    ],
+    "icon": "v3/traits/infiltrator.png"
+  },
+  {
+    "name": "Mana-Reaver",
+    "description": "Mana-Reavers' Basic Attacks increase the mana cost of their target's next spellcast by a percentage.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "First Attack"
+      },
+      {
+        "style": "gold",
+        "min": 4,
+        "effect": "All Attacks"
+      }
+    ],
+    "icon": "v3/traits/manareaver.png"
+  },
+  {
+    "name": "Mech-Pilot",
+    "description": "At the start of combat, three random Mech-Pilots are teleported into a Super-Mech. The Super-Mech has the combined Health, Attack Damage, and Traits of its pilots, as well as 3 random items from among them. When the Super-Mech dies the Pilots are ejected, granted Mana, and continue to fight.",
+    "type": "origin",
+    "thresholds": [
+      {
+        "style": "gold",
+        "min": 3,
+        "effect": "Bonus Active"
+      }
+    ],
+    "icon": "v3/traits/mechpilot.png"
+  },
+  {
+    "name": "Mercenary",
+    "innate": "Upgrades for Mercenaries' spells have a chance to appear in the shop.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "gold",
+        "min": 1,
+        "effect": "Bonus Active"
+      }
+    ],
+    "icon": "v3/traits/mercenary.png"
+  },
+  {
+    "name": "Mystic",
+    "description": "All allies gain Magic Resistance.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "30 Magic Resist"
+      },
+      {
+        "style": "gold",
+        "min": 4,
+        "effect": "120 Magic Resist"
+      }
+    ],
+    "icon": "v3/traits/mystic.png"
+  },
+  {
+    "name": "Protector",
+    "description": "Protectors shield themselves for a few seconds whenever they cast a spell. This shield doesn't stack.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "20% Max Health Shield"
+      },
+      {
+        "style": "gold",
+        "min": 4,
+        "effect": "30% Max Health Shield"
+      }
+    ],
+    "icon": "v3/traits/protector.png"
+  },
+  {
+    "name": "Rebel",
+    "description": "At the start of combat, Rebels gain a shield and bonus damage for each adjacent Rebel. The shield lasts for a few seconds.",
+    "type": "origin",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 3,
+        "max": 5,
+        "effect": "125 Health Shield and 10% Increased Damage"
+      },
+      {
+        "style": "gold",
+        "min": 6,
+        "effect": "200 Health Shield and 12% Increased Damage"
+      }
+    ],
+    "icon": "v3/traits/rebel.png"
+  },
+  {
+    "name": "Sniper",
+    "description": "Snipers deal percentage increased damage for each hex between themselves and their target.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "gold",
+        "min": 2,
+        "effect": "Bonus Active"
+      }
+    ],
+    "icon": "v3/traits/sniper.png"
+  },
+  {
+    "name": "Sorcerer",
+    "description": "All allies have increased Spell Power.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "20% Spell Power"
+      },
+      {
+        "style": "silver",
+        "min": 4,
+        "max": 5,
+        "effect": "40% Spell Power"
+      },
+      {
+        "style": "gold",
+        "min": 6,
+        "effect": "80% Spell Power"
+      }
+    ],
+    "icon": "v3/traits/sorcerer.png"
+  },
+  {
+    "name": "Space Pirate",
+    "description": "Whenever a Space Pirate lands a killing blow on a Champion there is a chance to drop extra loot.",
+    "type": "origin",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "1 Gold"
+      },
+      {
+        "style": "gold",
+        "min": 4,
+        "effect": "1 Gold and 10% chance for an item"
+      }
+    ],
+    "icon": "v3/traits/spacepirate.png"
+  },
+  {
+    "name": "Star Guardian",
+    "description": "Star Guardians' spellcasts grant Mana to other Star Guardians, spread among them.",
+    "type": "origin",
+    "thresholds": [
+      {
+        "style": "silver",
+        "min": 3,
+        "max": 5,
+        "effect": "30 Mana"
+      },
+      {
+        "style": "gold",
+        "min": 6,
+        "effect": "60 Mana"
+      }
+    ],
+    "icon": "v3/traits/starguardian.png"
+  },
+  {
+    "name": "Starship",
+    "innate": "Starships gain mana per second, maneuver around the board, and are immune to movement impairing effects, but can't make Basic Attacks.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "gold",
+        "min": 1,
+        "effect": "Bonus Active"
+      }
+    ],
+    "icon": "v3/traits/starship.png"
+  },
+  {
+    "name": "Valkyrie",
+    "description": "Valkyrie attacks and spells always critically hit targets below a percentage health.",
+    "type": "origin",
+    "thresholds": [
+      {
+        "style": "gold",
+        "min": 2,
+        "effect": "Bonus Active"
+      }
+    ],
+    "icon": "v3/traits/valkyrie.png"
+  },
+  {
+    "name": "Vanguard",
+    "description": "Vanguard champions gain bonus Armor.",
+    "type": "class",
+    "thresholds": [
+      {
+        "style": "bronze",
+        "min": 2,
+        "max": 3,
+        "effect": "60 Armor"
+      },
+      {
+        "style": "gold",
+        "min": 4,
+        "effect": "250 Armor"
+      }
+    ],
+    "icon": "v3/traits/vanguard.png"
+  },
+  {
+    "name": "Void",
+    "description": "Attacks and spells from Void champions deal true damage.",
+    "type": "origin",
+    "thresholds": [
+      {
+        "style": "gold",
+        "min": 3,
+        "effect": "Bonus Active"
+      }
+    ],
+    "icon": "v3/traits/void.png"
+  }
+]

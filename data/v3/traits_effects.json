@@ -1,0 +1,285 @@
+[
+  {
+    "key": "Set3_Blademaster",
+    "sets": [
+      {
+        "min": 3,
+        "effect": "30% Chance On Hit"
+      },
+      {
+        "min": 6,
+        "effect": "55% Chance On Hit"
+      }
+    ]
+  },
+  {
+    "key": "Blaster",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "3 Additional Attacks"
+      },
+      {
+        "min": 4,
+        "effect": "6 Additional Attacks"
+      }
+    ]
+  },
+  {
+    "key": "Set3_Brawler",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "300 Health"
+      },
+      {
+        "min": 4,
+        "effect": "600 Health"
+      }
+    ]
+  },
+  {
+    "key": "Set3_Celestial",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "15% of Damage Dealt"
+      },
+      {
+        "min": 4,
+        "effect": "25% of Damage Dealt"
+      },
+      {
+        "min": 6,
+        "effect": "50% of Damage Dealt"
+      }
+    ]
+  },
+  {
+    "key": "Chrono",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "15% Attack Speed"
+      },
+      {
+        "min": 4,
+        "effect": "35% Attack Speed"
+      },
+      {
+        "min": 6,
+        "effect": "65% Attack Speed"
+      }
+    ]
+  },
+  {
+    "key": "Cybernetic",
+    "sets": [
+      {
+        "min": 3,
+        "effect": "35 Attack Damage and 350 Health"
+      },
+      {
+        "min": 6,
+        "effect": "85 Attack Damage and 850 Health"
+      }
+    ]
+  },
+  {
+    "key": "DarkStar",
+    "sets": [
+      {
+        "min": 3,
+        "effect": "50% Increased Damage"
+      },
+      {
+        "min": 6,
+        "effect": "80% Increased Damage"
+      }
+    ]
+  },
+  {
+    "key": "Demolitionist",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "Bonus Active"
+      }
+    ]
+  },
+  {
+    "key": "Infiltrator",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "Bonus Active"
+      },
+      {
+        "min": 4,
+        "effect": "Bonus Active and refreshes to 90% Attack Speed on takedown"
+      }
+    ]
+  },
+  {
+    "key": "ManaReaver",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "First Attack"
+      },
+      {
+        "min": 4,
+        "effect": "All Attacks"
+      }
+    ]
+  },
+  {
+    "key": "MechPilot",
+    "sets": [
+      {
+        "min": 3,
+        "effect": "Bonus Active"
+      }
+    ]
+  },
+  {
+    "key": "Mercenary",
+    "sets": [
+      {
+        "min": 1,
+        "effect": "Bonus Active"
+      }
+    ]
+  },
+  {
+    "key": "Set3_Mystic",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "30 Magic Resist"
+      },
+      {
+        "min": 4,
+        "effect": "120 Magic Resist"
+      }
+    ]
+  },
+  {
+    "key": "Protector",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "20% Max Health Shield"
+      },
+      {
+        "min": 4,
+        "effect": "30% Max Health Shield"
+      }
+    ]
+  },
+  {
+    "key": "Rebel",
+    "sets": [
+      {
+        "min": 3,
+        "effect": "125 Health Shield and 10% Increased Damage"
+      },
+      {
+        "min": 6,
+        "effect": "200 Health Shield and 12% Increased Damage"
+      }
+    ]
+  },
+  {
+    "key": "Sniper",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "Bonus Active"
+      }
+    ]
+  },
+  {
+    "key": "Set3_Sorcerer",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "20% Spell Power"
+      },
+      {
+        "min": 4,
+        "effect": "40% Spell Power"
+      },
+      {
+        "min": 6,
+        "effect": "80% Spell Power"
+      }
+    ]
+  },
+  {
+    "key": "SpacePirate",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "1 Gold"
+      },
+      {
+        "min": 4,
+        "effect": "1 Gold and 10% chance for an item"
+      }
+    ]
+  },
+  {
+    "key": "StarGuardian",
+    "sets": [
+      {
+        "min": 3,
+        "effect": "30 Mana"
+      },
+      {
+        "min": 6,
+        "effect": "60 Mana"
+      }
+    ]
+  },
+  {
+    "key": "Starship",
+    "sets": [
+      {
+        "min": 1,
+        "effect": "Bonus Active"
+      }
+    ]
+  },
+  {
+    "key": "Valkyrie",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "Bonus Active"
+      }
+    ]
+  },
+  {
+    "key": "Vanguard",
+    "sets": [
+      {
+        "min": 2,
+        "effect": "60 Armor"
+      },
+      {
+        "min": 4,
+        "effect": "250 Armor"
+      }
+    ]
+  },
+  {
+    "key": "Set3_Void",
+    "sets": [
+      {
+        "min": 3,
+        "effect": "Bonus Active"
+      }
+    ]
+  }
+]

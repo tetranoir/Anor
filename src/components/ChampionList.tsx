@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames/bind';
 
-import { Champion } from '../knowledge/modeldata';
+import { Champion } from '../models/data.models';
 
 interface ChampionListProps {
   title: string;

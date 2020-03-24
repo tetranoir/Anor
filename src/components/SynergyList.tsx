@@ -1,8 +1,11 @@
 import React from 'react';
 import cx from 'classnames/bind';
 
-import { SynergyThreshold } from '../knowledge/modelapp';
-
+type Threshold = [number, string];
+interface SynergyThreshold {
+  name: string;
+  threshes: Threshold[];
+}
 interface SynergyListProps {
   title: string;
   className?: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Champion } from '../knowledge/modeldata';
-import { encodeStr } from '../loader/mapsToGraph';
+import { Champion } from '../models/data.models';
+import { encodeStr } from '../utils';
 
 interface ChampionImagesProps {
   champions: Champion[];

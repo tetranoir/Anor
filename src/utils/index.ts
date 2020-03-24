@@ -1,1 +1,2 @@
-export { objFromAry } from './object.utils';
+export { index, Index, prop, Prop } from './object.utils';
+export { encodeStr } from './string.utils';

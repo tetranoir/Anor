@@ -1,4 +1,6 @@
-// Data replicas in js
+import {Z} from 'presi';
+
+// App model replicas in js
 
 // object keys properties
 export const keys: SynergyType[] = ['class', 'origin'];
@@ -19,13 +21,12 @@ export interface Champion {
   icon: string;
 }
 
-export const isChampion = o => {
-  return keys.reduce((acc, key) => acc && Boolean(o[key]), true);
+export function isChampion(o: any): o is Champion {
+  return keys.reduce((acc, key) => acc && Boolean(o[key]), true as boolean);
 };
 
-/* this whole section is bad */
-export type SynergyType = 'class' | 'origin';
-/* end bad sectiong */
+export const SynergyType = Z.oneOf(Z.literal('class'), Z.literal('origin'));
+export type SynergyType = ReturnType<typeof SynergyType>;
 
 // map of synergy name to synergy data
 export interface SynergyMap {
@@ -38,9 +39,20 @@ export interface SynergyTypeMap<T> {
   }
 }
 
+export type Threshold = {
+  style: string;
+  effect: string;
+  min: number;
+  max?: number;
+};
+
 export interface Synergy {
-  passive?: string;
-  [threshold: number]: string;
+  name: string;
+  innate?: string;
+  description: string;
+  type: SynergyType;
+  thresholds: Threshold[];
+  icon: string;
 }
 
 export interface Item {

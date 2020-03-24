@@ -2,7 +2,8 @@ import cx from 'classnames/bind';
 import * as R from 'ramda';
 import * as ngraph from 'ngraph.graph';
 
-import { NGraphGraph } from '../types/ngraph';
+import { NGraphGraph } from '../../types/ngraph';
+import { encodeStr } from '../../utils';
 
 // if false, then hide. if true, then filter
 const hideFilter = false;
@@ -15,9 +16,6 @@ export const mapReactVisForceToNGraph = (fLinks: RVF_ForceLink[], graph = NGraph
   return graph;
 }
 
-export function encodeStr(s: string) {
-  return s.replace(/[\W]/g,'');
-}
 
 /// EXPORT to react-vis-force
 type HexColor = string;
@@ -102,11 +100,6 @@ export const mapToReactVisForce: mapToReactVisForce = (id, objs, maps, nodeProps
   const hLinks: RVF_ForceLink[] = [];
   maps.forEach(map => {
     Object.entries(map).forEach(([synergy, objMaps]) => {
-      // TODO, this is clearly bad, should instead find and hide links between
-      // synergies with only a thresh of 1
-      if (synergy === "Avatar") {
-        return;
-      }
       const objs = Object.values(objMaps);
       for (let i = 0; i < objs.length - 1; i++) {
         const src = objs[i];
