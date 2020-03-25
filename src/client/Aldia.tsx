@@ -16,7 +16,7 @@ import * as d3 from 'd3';
 import {
   NavigationView, SplitViewCommand, Button, AppBarButton, CommandBar,
   AppBarSeparator, FloatNav, SplitView, SplitViewPane, ListView, Separator,
-  TextBox, IconButton
+  TextBox, IconButton, Flyout, FlyoutContent
 } from 'react-uwp';
 
 // fundamentals
@@ -227,18 +227,53 @@ function Aldia() {
     return noSourceChampions;
   }
 
-  function setChampionHighlight(name: string, bool: boolean) {
+  function setRelatedChampionHighlight(name: string, bool: boolean) {
     const champion: ClientChampion = index(champions, prop('name'))[name];
     if (champion.filtered) return;
     relatedChampions(champion).forEach(c => c.setHighlighted(bool));
+  }
+
+  function setChampionHovered(name: string, bool: boolean) {
+    const champion: ClientChampion = index(champions, prop('name'))[name];
+    if (champion.filtered) return;
     champion.setHovered(bool);
   }
 
+  const [hoverXY, setHoverXY] = useState<[number, number]|undefined>(undefined);
+  const [hoveredChampionId, setHoveredChampionId] = useState<string|undefined>(undefined);
+  const [hovering, setHovering] = useState(false);
+
+  function resetHover() {
+    if (hovering) return;
+    hoveredChampionId && setChampionHovered(hoveredChampionId, false);
+    setHoverXY(undefined);
+    setHoveredChampionId(undefined);
+  }
+
   function attachNodeEvents(node) {
+    const {id} = node.props.node;
     return cloneElement(node, {
-      onMouseDown: () => toggleSelectChampion(node.props.node.id),
-      onMouseOver: () => setChampionHighlight(node.props.node.id, true),
-      onMouseOut: () => setChampionHighlight(node.props.node.id, false),
+      onMouseDown: () => toggleSelectChampion(id),
+      onMouseOver: e => {
+        // unset previous hovered
+        hoveredChampionId && setChampionHovered(hoveredChampionId, false);
+
+        setHovering(true);
+        setRelatedChampionHighlight(id, true)
+        // set new hovered
+        setHoveredChampionId(id);
+        setChampionHovered(id, true);
+        // move tooltip
+        const rect = e.currentTarget.getBoundingClientRect();
+        setHoverXY([rect.right, rect.top]);
+      },
+      onMouseOut: () => {
+        // Turn this on/off for sticky hovering
+        hoveredChampionId && setChampionHovered(hoveredChampionId, false);
+
+        setHovering(false);
+        setRelatedChampionHighlight(id, false);
+      },
     });
   }
 
@@ -276,7 +311,7 @@ function Aldia() {
   process.env.NODE_ENV !== 'production'
       && console.log('ALDIA RENDER', Date.now() - start);
   return (
-    <div className="app">
+    <div className="app" onMouseDown={resetHover}>
       <div className="top-bar">
         <CommandBar
           labelPosition="right"
@@ -376,7 +411,9 @@ function Aldia() {
           style={{padding: 0, width: '260px'}}
           listItemStyle={{padding: '0 8px', display: 'flex', alignItems: 'center'}}
         />
-        {hovered[0] && <ListView
+      </div>
+      {hoverXY && hovered[0] &&
+        <ListView
           listSource={[
             {
               itemNode: <h3>{hovered[0].name}</h3>,
@@ -410,11 +447,17 @@ function Aldia() {
               style: {height: '8px'},
             },
           ]}
-          style={{padding: 0, width: '260px'}}
+          style={{
+            padding: 0,
+            width: '160px',
+            zIndex: 1,
+            position: 'absolute',
+            left: `${hoverXY[0] + 8}px`, // x
+            top: `${hoverXY[1] - 20}px`, // y
+          }}
           listItemStyle={{padding: '0 8px', display: 'flex', alignItems: 'center'}}
         />
-        }
-      </div>
+      }
       <div id="graph">
        <ForceGraph
           showLabels
