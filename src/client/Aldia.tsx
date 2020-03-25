@@ -398,7 +398,8 @@ function Aldia() {
                     src={index(synergies, prop('name'))[s.name].icon}
                   />
                   <FlyoutContent style={{ width: '160px', transform: 'translateX(-48px)' }} autoCloseTimeout={100} horizontalPosition="left" verticalPosition="center">
-                    {s.innate}<br></br>{s.description}
+                    {s.innate && s.innate + '\n'}
+                    {s.description}
                   </FlyoutContent>
                 </Flyout>
                 <h3 style={{margin: '0 8px 0 4px'}}>{s.count}</h3>
