@@ -152,7 +152,7 @@
       {
         "style": "gold",
         "min": 2,
-        "effect": "Bonus Active"
+        "effect": "Spells stun targets for 1.5 seconds"
       }
     ],
     "icon": "v3/traits/demolitionist.png"
@@ -167,12 +167,12 @@
         "style": "bronze",
         "min": 2,
         "max": 3,
-        "effect": "Bonus Active"
+        "effect": "50% Attack Speed"
       },
       {
         "style": "gold",
         "min": 4,
-        "effect": "Bonus Active and refreshes to 90% Attack Speed on takedown"
+        "effect": "80% Attack Speed and refreshes on takedown"
       }
     ],
     "icon": "v3/traits/infiltrator.png"
@@ -204,7 +204,7 @@
       {
         "style": "gold",
         "min": 3,
-        "effect": "Bonus Active"
+        "effect": "Create Super-Mech"
       }
     ],
     "icon": "v3/traits/mechpilot.png"
@@ -217,7 +217,7 @@
       {
         "style": "gold",
         "min": 1,
-        "effect": "Bonus Active"
+        "effect": "Ability upgrades appear in shop"
       }
     ],
     "icon": "v3/traits/mercenary.png"
@@ -287,7 +287,7 @@
       {
         "style": "gold",
         "min": 2,
-        "effect": "Bonus Active"
+        "effect": "12% increased damage for each hex of distance"
       }
     ],
     "icon": "v3/traits/sniper.png"
@@ -376,7 +376,7 @@
       {
         "style": "gold",
         "min": 2,
-        "effect": "Bonus Active"
+        "effect": "Attacks and Spells always crit targets below 50% health"
       }
     ],
     "icon": "v3/traits/valkyrie.png"
@@ -408,7 +408,7 @@
       {
         "style": "gold",
         "min": 3,
-        "effect": "Bonus Active"
+        "effect": "Deal True damage"
       }
     ],
     "icon": "v3/traits/void.png"

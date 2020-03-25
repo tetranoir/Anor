@@ -103,7 +103,7 @@
     "sets": [
       {
         "min": 2,
-        "effect": "Bonus Active"
+        "effect": "Spells stun targets for 1.5 seconds"
       }
     ]
   },
@@ -112,11 +112,11 @@
     "sets": [
       {
         "min": 2,
-        "effect": "Bonus Active"
+        "effect": "50% Attack Speed"
       },
       {
         "min": 4,
-        "effect": "Bonus Active and refreshes to 90% Attack Speed on takedown"
+        "effect": "80% Attack Speed and refreshes on takedown"
       }
     ]
   },
@@ -138,7 +138,7 @@
     "sets": [
       {
         "min": 3,
-        "effect": "Bonus Active"
+        "effect": "Create Super-Mech"
       }
     ]
   },
@@ -147,7 +147,7 @@
     "sets": [
       {
         "min": 1,
-        "effect": "Bonus Active"
+        "effect": "Ability upgrades appear in shop"
       }
     ]
   },
@@ -195,7 +195,7 @@
     "sets": [
       {
         "min": 2,
-        "effect": "Bonus Active"
+        "effect": "12% increased damage for each hex of distance"
       }
     ]
   },
@@ -256,7 +256,7 @@
     "sets": [
       {
         "min": 2,
-        "effect": "Bonus Active"
+        "effect": "Attacks and Spells always crit targets below 50% health"
       }
     ]
   },
@@ -278,7 +278,7 @@
     "sets": [
       {
         "min": 3,
-        "effect": "Bonus Active"
+        "effect": "Deal True damage"
       }
     ]
   }

@@ -16,7 +16,7 @@ import * as d3 from 'd3';
 import {
   NavigationView, SplitViewCommand, Button, AppBarButton, CommandBar,
   AppBarSeparator, FloatNav, SplitView, SplitViewPane, ListView, Separator,
-  TextBox, IconButton, Flyout, FlyoutContent
+  TextBox, IconButton, Flyout, FlyoutContent, Tooltip
 } from 'react-uwp';
 
 // fundamentals
@@ -352,7 +352,7 @@ function Aldia() {
             ...selected.map(c => ({
               itemNode: <>
                 <IconButton
-                  size={25}
+                  size={24}
                   style={{opacity: 0.3}}
                   hoverStyle={{opacity: 1, color: '#EBD45D'}}
                   onClick={() => toggleSelectChampion(c.name)}
@@ -392,14 +392,19 @@ function Aldia() {
             },
             ...selectedSynergies.map(s => ({
               itemNode: <>
-                <img
-                  style={{height: '40px', filter: cssColorFilter[s.thresholds[s.countThreshIdx]?.style]}}
-                  src={index(synergies, prop('name'))[s.name].icon}
-                  title={s.name}
-                />
+                <Flyout>
+                  <img
+                    style={{height: '40px', filter: cssColorFilter[s.thresholds[s.countThreshIdx]?.style]}}
+                    src={index(synergies, prop('name'))[s.name].icon}
+                  />
+                  <FlyoutContent style={{ width: '160px', transform: 'translateX(-48px)' }} autoCloseTimeout={100} horizontalPosition="left" verticalPosition="center">
+                    {s.innate}<br></br>{s.description}
+                  </FlyoutContent>
+                </Flyout>
                 <h3 style={{margin: '0 8px 0 4px'}}>{s.count}</h3>
-                <p style={{opacity: 0.4}}>{s.thresholds.map(t => t.min).join(' ')}</p>
-                <h4 style={{marginLeft: 'auto'}}>{s.name}</h4>
+                <p style={{opacity: 0.4, width: '8px', margin: '0 8px 0 0', fontSize: '12px'}}>{s.thresholds.map(t => t.min).join(' ')}</p>
+                <p style={{fontSize: '12px', textAlign: 'left'}}>{s.thresholds[s.countThreshIdx]?.effect}</p>
+                <h5 style={{marginLeft: 'auto', textAlign: 'right'}}>{s.name}</h5>
               </>,
             })),
             {

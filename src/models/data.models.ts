@@ -49,7 +49,7 @@ export type Threshold = {
 export interface Synergy {
   name: string;
   innate?: string;
-  description: string;
+  description?: string;
   type: SynergyType;
   thresholds: Threshold[];
   icon: string;

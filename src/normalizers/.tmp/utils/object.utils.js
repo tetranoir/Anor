@@ -93,4 +93,13 @@ function Prop() {
 exports.Prop = Prop;
 // Global singleton Prop
 exports.prop = Prop();
+// Count accumulator
+function counter(acc, item) {
+    if (!acc[item]) {
+        acc[item] = 0;
+    }
+    acc[item] += 1;
+    return acc;
+}
+exports.counter = counter;
 //# sourceMappingURL=object.utils.js.map
