@@ -50,7 +50,7 @@
     "ngraph.centrality": "^2.0.0",
     "ngraph.graph": "^19.0.4",
     "node": "^13.10.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "office-ui-fabric-react": "^7.105.1",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",
